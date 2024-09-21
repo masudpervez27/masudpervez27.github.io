@@ -18,7 +18,7 @@ main:
     url: /resources/    
     
   - title: "CV"
-    url: /cv/
+    url: /files/Resume.pdf
 
   - title: "About Me"
     url: /about/
