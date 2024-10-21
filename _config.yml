@@ -19,10 +19,10 @@ locale                   : "en-US"
 rtl                      : # true, false (default) # turns direction of the page into right to left for RTL languages
 title                    : "Masud's HomePage"
 title_separator          : "-"
-subtitle                 : # site tagline that appears below site title in masthead
+subtitle                 : "A Place for My Portfolio and Blog"
 name                     : "Masud's HomePage"
-description              : "A Place for My Portfolio and Blog"
-url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+description              : "Data Scientist | Statistician"
+url                      : "https://masudpervez27.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
@@ -90,7 +90,7 @@ baidu_site_verification  :
 
 # Social Sharing
 twitter:
-  username               :
+  username               : 
 facebook:
   username               :
   app_id                 :
@@ -120,21 +120,20 @@ author:
   email            :
   links:
     - label: "Email"
-      icon: "fas fa-fw fa-envelope-square"
+      icon: "fa-solid fa-envelope"
       url: "mailto:masud.pervez@yahoo.com"
     - label: "GitHub"
       icon: "fab fa-github"
       url: "https://github.com/masudpervez27"
     - label: "Linkedin"
       icon: "fa-brands fa-linkedin"
-      url: "https://linkedin.com/masud-pervez-431a0418"
-    - label: "X"
+      url: "https://linkedin.com/in/masud-pervez-431a0418"
+    - label: "X (formerly Twitter)"
       icon: "fa-brands fa-x-twitter"
       url: "https://x.com/MasudPe15462403"
     - label: "Website"
       icon: "fas fa-fw fa-link"
       # url: "https://your-website.com"
-
     - label: "Facebook"
       icon: "fab fa-fw fa-facebook-square"
       # url: "https://facebook.com/"
@@ -151,6 +150,9 @@ footer:
     - label: "GitHub"
       icon: "fab fa-github"
       url: "https://github.com/masudpervez27"
+    - label: "Linkedin"
+      icon: "fa-brands fa-linkedin"
+      url: "https://linkedin.com/in/masud-pervez-431a0418"
     - label: "GitLab"
       icon: "fab fa-fw fa-gitlab"
       # url:
