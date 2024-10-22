@@ -5,6 +5,8 @@ date: 2024-10-21T21:44:20+00:00
 ---
 
 📐 Hello there I’m Masud! <br>
+Expert Data Scientist about uncovering data's secrets, blending datascience with innovation.
+
 **Career Objectives**
 
 📐 My name is Masud Pervez, an experienced Data Scientist with over 7 years of expertise. I currently work in fraud detection at a bank, where I leverage advanced machine learning models to identify fraudulent activities. My prior work includes developing models for customer attrition, lifetime value prediction, churn analysis, and recommendation systems.
