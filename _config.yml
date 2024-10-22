@@ -23,10 +23,10 @@ subtitle                 : "A Place for My Portfolio and Blog"
 name                     : "Masud Pervez" # &name is a YAML anchor which can be *referenced later
 description              : "A Passionate Data Scientist & Statistician"
 url                      : "https://masudpervez27.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
-baseurl                  : "/masudpervez27" # the subpath of your site, e.g. "/blog"
+baseurl                  : #"/masudpervez27" # the subpath of your site, e.g. "/blog"
 repository               : "masudpervez27/masudpervez27.github.io"
-teaser                   : "/assets/images/unsplash-image-8" # path of fallback teaser image, e.g. "/assets/images/500x300.png"
-logo                     : "/assets/images/apple-touch-icon.png" # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
+teaser                   : #"/assets/images/unsplash-image-8" # path of fallback teaser image, e.g. "/assets/images/500x300.png"
+logo                     : #"/assets/images/apple-touch-icon.png" # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 breadcrumbs              : # true, false (default)
 words_per_minute         : 200
