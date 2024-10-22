@@ -20,11 +20,11 @@ rtl                      : # true, false (default) # turns direction of the page
 title                    : "Masud's HomePage"
 title_separator          : "-"
 subtitle                 : "A Place for My Portfolio and Blog"
-name                     : "Masud's HomePage"
-description              : "Data Scientist | Statistician"
+name                     : "Masud Pervez" # &name is a YAML anchor which can be *referenced later
+description              : "A Passionate Data Scientist & Statistician"
 url                      : "https://masudpervez27.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
-baseurl                  : # the subpath of your site, e.g. "/blog"
-repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
+baseurl                  : "/masudpervez27" # the subpath of your site, e.g. "/blog"
+repository               : "masudpervez27/masudpervez27.github.io"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
@@ -344,3 +344,11 @@ defaults:
       author_profile: true
       share: true
       comment: true
+
+collections:
+  portfolio:
+    output: true
+    permalink: /:collection/:path/
+  posts:
+    output: true
+    permalink: /:collection/:path/
