@@ -31,6 +31,6 @@ main:
   - title: "Contact"
     url: /contact/
 
-  - title: "External Link"
-    url: https://google.com
-    target: _blank
+  # - title: "External Link"
+  #  url: https://google.com
+  #  target: _blank
