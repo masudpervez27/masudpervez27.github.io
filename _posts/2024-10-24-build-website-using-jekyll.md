@@ -55,7 +55,7 @@ url: "https://yourusername.github.io/my-website"
 ### Step 5: Choose the Minimalist Theme
 You can either clone the Minimalist theme directly or add it to your existing Jekyll site. If you haven't created your site yet, you can find the Minimalist theme here.
 
-To use it, add the theme to your _config.yml:
+To use it, add the theme to your `_config.yml`:
 
 ```yaml
 theme: minimal
