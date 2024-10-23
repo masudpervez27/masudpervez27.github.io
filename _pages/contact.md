@@ -1,6 +1,9 @@
 ---
 title: "Contact Me"
 permalink: /contact/
+header:
+image: /assests/images/unsplash-image-8.jpg 
+teaser: /assests/images/unsplash-image-8.jpg
 date: 2024-10-21T21:44:20+00:00
 ---
 
