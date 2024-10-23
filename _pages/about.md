@@ -1,19 +1,19 @@
 ---
-title: "About"
+title: "About Me"
+layout: single
 permalink: /about/
 date: 2024-10-21T21:44:20+00:00
 ---
 
-📐 Hello there I’m Masud! <br>
-Expert Data Scientist about uncovering data's secrets, blending datascience with innovation.
+👋 Hey there! I’m Masud!
+I’m a passionate Data Scientist on a mission to uncover the secrets of data and blend innovation with insights.
 
-**Career Objectives**
+🌟 With over 7 years of experience, I currently tackle fraud detection at a bank, using advanced machine learning models to spot suspicious activities. Before this, I developed models for customer retention, lifetime value predictions, and recommendation systems.
 
-📐 My name is Masud Pervez, an experienced Data Scientist with over 7 years of expertise. I currently work in fraud detection at a bank, where I leverage advanced machine learning models to identify fraudulent activities. My prior work includes developing models for customer attrition, lifetime value prediction, churn analysis, and recommendation systems.
+🤖 I’m particularly fascinated by Generative AI and Natural Language Processing (NLP) and can’t wait to dive deeper into these exciting fields! I also have a solid foundation in forecasting and statistical analysis.
 
-📐 I am deeply interested in Generative AI and Natural Language Processing (NLP), and I am eager to continue learning and developing in these fieslds. Additionally, forecasting and statistical analysis are key areas of my expertise, supported by a strong foundation in statistics.
+📊 I thrive on working with large datasets, from cleaning and processing to extracting valuable insights. My toolkit includes regression, Random Forest, SVM, and XGBoost, all powered by my love for Python and its amazing libraries like Pandas, PyTorch, and Matplotlib. I’ve also been involved in building practical AI systems!
 
-📐 I have extensive experience working with large datasets, from data cleaning and processing to mining and extracting insights. Throughout my career, I have built and fine-tuned machine learning models using techniques such as regression, Random Forest, SVM, and XGBoost. I am highly proficient in Python and its libraries for machine learning and data visualization, including Pandas, PyTorch, and Matplotlib. I have also worked on projects focused on building AI systems for practical applications.
+🏸 In my free time, I love to play badminton and am passionate about photography and video editing. I enjoy learning new things that pique my interest!
 
-More details about my projects and achievements can be found below. :)
-
+Check out more about my projects, portfolio, and posts throughout the site! 🚀
