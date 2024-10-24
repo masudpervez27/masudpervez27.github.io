@@ -8,12 +8,12 @@ search: false
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
 
-.hero-image {
-    width: 100%;
-    height: auto; /* Optional: maintains aspect ratio */
-  }
+// .hero-image {
+//     width: 100%;
+//     height: auto; /* Optional: maintains aspect ratio */
+//   }
 
-.contact-header-image .post-header-image .home-header-image{
-    width: 100%;  // Adjust as needed (e.g., 50%, 75%)
-    height: auto; // Maintains aspect ratio
-  }
+// .contact-header-image .post-header-image .home-header-image{
+//     width: 100%;  // Adjust as needed (e.g., 50%, 75%)
+//     height: auto; // Maintains aspect ratio
+//   }

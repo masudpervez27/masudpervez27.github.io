@@ -1,5 +1,6 @@
 ---
 title: Home
+layout: single
 permalink: /
 header:
     image: /assets/images/bg-post-resize.jpg

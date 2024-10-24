@@ -99,7 +99,47 @@ Open your browser and navigate to http://localhost:4000 to view your site.
 ### Step 9: Visit Your Live Site
 After a few minutes, your site will be live at https://yourusername.github.io/my-website. Check it out!
 
+**Additionally**
+## Changing Font and Font Size in Your Jekyll Theme
+
+Customizing the font and font size in your Jekyll site can enhance its overall look and feel. Here’s how you can do it:
+
+### Step 1: Locate the CSS File
+
+1. **Find the CSS file**: Look for a CSS file in your theme's directory. Commonly, it will be located in the `assets/css/` folder or directly in the root directory. The file might be named `style.css`, `main.css`, or similar.
+
+### Step 2: Edit the CSS File
+
+2. **Open the CSS file**: Use your favorite text editor to open the CSS file.
+
+3. **Add your custom styles**: To change the font and font size, you can add the following CSS rules:
+
+```css
+/* Change the body font and font size */
+body {
+    font-family: 'YourFontName', sans-serif; /* Replace with your desired font */
+    font-size: 16px; /* Adjust the size as needed */
+}
+
+/* Change headings font and font size */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'YourFontName', sans-serif; /* Replace with your desired font */
+    font-size: 2em; /* Adjust sizes for different headings */
+}
+
+```
+## Step 3: Choose a Font
+Using Google Fonts: If you want to use a specific font, consider using Google Fonts. Add the following link to your HTML file's `<head>` section (typically found in `_layouts/default.html`):
+
+```html
+<link href="https://fonts.googleapis.com/css2?family=YourFontName&display=swap" rel="stylesheet">
+```
+Replace YourFontName with the name of the font you want to use.
+
+## Step 4: Preview Changes
+Save the changes: After making these adjustments, save the CSS file and refresh your site (if using `jekyll serve`) to see the new font and font size in action.
+
 **Final Thoughts**
-I was truly amazed by how my portfolio website turned out using this method. The Jekyll Minimalist theme provided a clean and elegant design that perfectly showcased my projects. Plus, hosting on GitHub Pages made the process incredibly seamless and cost-effective!
+I was truly amazed by how my portfolio website turned out using this method. The Jekyll Minimalist theme provided a clean and elegant design that perfectly showcased my projects. Plus, hosting on GitHub Pages made the process incredibly seamless and cost-effective! And customizing your site's typography can significantly improve its readability and aesthetics. Experiment with different fonts and sizes until you find the perfect combination for your Jekyll site!
 
 Feel free to reach out if you have any questions or need help with your Jekyll site. Happy building! 🚀
