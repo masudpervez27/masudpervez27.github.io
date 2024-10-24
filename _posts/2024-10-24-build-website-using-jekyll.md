@@ -8,8 +8,6 @@ image: /assets/images/headers/2023-02-05-blog-portfolio-with-mm-header.jpg
 teaser: /assets/images/headers/2023-02-05-blog-portfolio-with-mm-header.jpg
 ---
 
-# How to Create a Website Using the Jekyll Minimalist Theme and Host It on GitHub Pages for Free
-
 Creating a website has never been easier, especially with tools like Jekyll and GitHub Pages. In this post, I'll walk you through the steps to build a stunning website using the Jekyll Minimalist theme and host it for free on GitHub Pages. Recently, I built my own portfolio website using this method, and I was astonished by the final result—it's sleek, functional, and a great showcase of my work!
 
 ## Why Jekyll and GitHub Pages?
@@ -139,7 +137,7 @@ Replace YourFontName with the name of the font you want to use.
 ## Step 4: Preview Changes
 Save the changes: After making these adjustments, save the CSS file and refresh your site (if using `jekyll serve`) to see the new font and font size in action.
 
-**Final Thoughts**
+## Final Thoughts
 I was truly amazed by how my portfolio website turned out using this method. The Jekyll Minimalist theme provided a clean and elegant design that perfectly showcased my projects. Plus, hosting on GitHub Pages made the process incredibly seamless and cost-effective! And customizing your site's typography can significantly improve its readability and aesthetics. Experiment with different fonts and sizes until you find the perfect combination for your Jekyll site!
 
 Feel free to reach out if you have any questions or need help with your Jekyll site. Happy building! 🚀
