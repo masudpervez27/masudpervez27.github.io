@@ -40,7 +40,7 @@ pip install torch transformers
 
 ## Data Preparation for Intent Classification
 
-For this tutorial, let’s assume a small dataset with various user intents, such as <span style="background-color:grey">greeting</span>, <span style="background-color:grey">weather</span>, <span style="background-color:grey">news</span>, and  <span style="background-color:grey">goodbye</span>.
+For this tutorial, let’s assume a small dataset with various user intents, such as <span style="background-color:lightgray">greeting</span>, <span style="background-color:lightgray">weather</span>, <span style="background-color:lightgray">news</span>, and  <span style="background-color:lightgray">goodbye</span>.
 
 Here’s an example dataset:
 
