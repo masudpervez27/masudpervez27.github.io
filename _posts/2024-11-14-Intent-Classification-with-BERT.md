@@ -1,5 +1,5 @@
 ---
-title: "🚀 Boost Your Chatbot's IQ: Intent Classification with BERT and PyTorch in Python"
+title: "🚀 Part 1: Boost Your Chatbot's IQ: Intent Classification with BERT and PyTorch in Python"
 date: 2024-11-14
 last_modified_at: 2024-11-14
 tags:
