@@ -24,7 +24,7 @@ teaser: /assets/images/headers/2023-02-05-blog-portfolio-with-mm-header.jpg
 
 ## Introduction
 
-In the world of chatbots, **intent classification** is crucial. It determines how accurately your bot understands the user’s request and responds appropriately. Leveraging the power of **BERT** (Bidirectional Encoder Representations from Transformers) in **PyTorch** allows us to boost our chatbot’s IQ by accurately categorizing intents. In this blog, we'll walk through how to use BERT and PyTorch to build a simple yet powerful intent classifier in Python.
+In the world of chatbots, **intent classification** is crucial. It determines how accurately your bot understands the user’s request and responds appropriately. Leveraging the power of **BERT** (Bidirectional Encoder Representations from Transformers) in **PyTorch** allows us to boost our chatbot’s IQ by accurately categorizing intents. In this blog, we'll walk through how to use BERT and PyTorch to build a simple yet powerful intent classifier in Python. ![Image]({{ site.baseurl }}/assets/images/headers/2023-02-05-Intent-Classification-with-BERT.png){: .align-right width="300px"}
 
 ## Why Use BERT for Intent Classification?
 
