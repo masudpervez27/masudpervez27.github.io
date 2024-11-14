@@ -209,7 +209,7 @@ The classification report provides a detailed breakdown, including:
 A well-balanced F1-score across classes indicates a robust model that can classify intents effectively.
 
 ## Conclusion
-By using BERT and PyTorch, we’ve created a powerful intent classifier for a chatbot, allowing it to accurately interpret user requests. This foundational model can be further improved by fine-tuning on a larger, domain-specific dataset, or by applying transfer learning techniques.
+By using **BERT** and **PyTorch**, we’ve created a powerful intent classifier for a chatbot, allowing it to accurately interpret user requests. This foundational model can be further improved by fine-tuning on a larger, domain-specific dataset, or by applying transfer learning techniques.
 
 # Code Summary
 Here's a summary of the main steps covered:
