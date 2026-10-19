@@ -1,29 +1,16 @@
 # main links
 main:
-
   - title: "Home"
     url: /
+  - title: "Services"
+    url: /services/
+  - title: "Case Studies"
+    url: /projects/
   - title: "About"
     url: /about/
-
-  - title: "Portfolio"
-    url: /portfolio/
-
-  - title: "Projects"
-    url: /projects/
-
-  - title: "Posts"
+  - title: "Insights"
     url: /posts/
-
   - title: "CV"
-    url: /files/Resume.pdf
-    
-  - title: "Resources"
-    url: /resources/
-
+    url: /cv/
   - title: "Contact"
     url: /contact/
-
-  # - title: "External Link"
-  #  url: https://google.com
-  #  target: _blank

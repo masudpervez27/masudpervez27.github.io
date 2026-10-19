@@ -8,12 +8,561 @@ search: false
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
 
-// .hero-image {
-//     width: 100%;
-//     height: auto; /* Optional: maintains aspect ratio */
-//   }
+/* ==========================================================================
+   Modern Data Science & AI Consulting Theme Overrides
+   ========================================================================== */
 
-// .contact-header-image .post-header-image .home-header-image{
-//     width: 100%;  // Adjust as needed (e.g., 50%, 75%)
-//     height: auto; // Maintains aspect ratio
-//   }
+:root {
+  --primary-accent: #0284c7;
+  --primary-accent-dark: #0369a1;
+  --primary-accent-light: #e0f2fe;
+  --accent-teal: #0d9488;
+  --accent-emerald: #10b981;
+  --dark-slate: #0f172a;
+  --card-bg: #ffffff;
+  --card-border: #e2e8f0;
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --card-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Typography & Layout Polish */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #1e293b;
+  line-height: 1.65;
+}
+
+.masthead {
+  border-bottom: 1px solid var(--card-border);
+  background-color: #ffffff;
+}
+
+.masthead__menu-item a {
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: -0.01em;
+  transition: color 0.15s ease-in-out;
+  &:hover {
+    color: var(--primary-accent);
+  }
+}
+
+.site-title {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--dark-slate);
+}
+
+.site-subtitle {
+  font-size: 0.75rem;
+  color: var(--accent-teal);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+}
+
+/* Author Sidebar Styling */
+.author__avatar img {
+  border-radius: 16px;
+  border: 3px solid #f1f5f9;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.2s ease;
+}
+
+.author__name {
+  font-weight: 800;
+  color: var(--dark-slate);
+}
+
+.author__bio {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: #475569;
+}
+
+/* Status Pill in Sidebar */
+.consulting-status-item {
+  margin: 0.75rem 0 0.5rem 0;
+  list-style: none;
+}
+
+.consulting-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+  border-radius: 9999px;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.status-indicator-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #10b981;
+  display: inline-block;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.3);
+  animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); }
+  70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.consulting-meta-item {
+  margin: 0.25rem 0 0.5rem 0;
+  list-style: none;
+}
+
+.fskatt-tag {
+  display: inline-block;
+  font-size: 0.74rem;
+  font-weight: 700;
+  background-color: #f0f9ff;
+  color: #0369a1;
+  border: 1px solid #bae6fd;
+  border-radius: 6px;
+  padding: 0.2rem 0.5rem;
+}
+
+.consulting-phone-item {
+  margin-top: 0.25rem;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   Consulting Hero & Modern Components
+   ========================================================================== */
+
+.hero-consulting {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #ffffff;
+  padding: 2.75rem 2.25rem;
+  border-radius: 16px;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.15);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(14, 165, 233, 0.25) 0%, rgba(14, 165, 233, 0) 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .hero-tagline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #38bdf8;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.35rem 0.85rem;
+    border-radius: 9999px;
+    margin-bottom: 1rem;
+  }
+
+  h1.hero-headline {
+    color: #ffffff;
+    font-size: 2.15rem;
+    font-weight: 800;
+    line-height: 1.25;
+    margin: 0.5rem 0 1rem 0;
+    letter-spacing: -0.02em;
+
+    span.highlight {
+      background: linear-gradient(90deg, #38bdf8, #818cf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  p.hero-subtext {
+    font-size: 1.05rem;
+    color: #cbd5e1;
+    max-width: 680px;
+    line-height: 1.6;
+    margin-bottom: 1.75rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+  }
+}
+
+/* Modern Action Buttons */
+.btn-consulting-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #0284c7;
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.75rem 1.4rem;
+  border-radius: 10px;
+  text-decoration: none !important;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+  transition: all 0.2s ease;
+  border: none;
+
+  &:hover {
+    background: #0369a1;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(2, 132, 199, 0.45);
+    color: #ffffff !important;
+  }
+}
+
+.btn-consulting-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff !important;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.75rem 1.4rem;
+  border-radius: 10px;
+  text-decoration: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    color: #ffffff !important;
+  }
+}
+
+/* ==========================================================================
+   Metrics Stat Grid
+   ========================================================================== */
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.25rem;
+  margin: 2rem 0 3rem 0;
+}
+
+.metric-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 1.4rem;
+  box-shadow: var(--card-shadow);
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--card-shadow-hover);
+    border-color: #cbd5e1;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #0284c7, #38bdf8);
+  }
+
+  .metric-number {
+    font-size: 2.1rem;
+    font-weight: 800;
+    color: var(--dark-slate);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .metric-label {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0.4rem 0 0.2rem 0;
+  }
+
+  .metric-desc {
+    font-size: 0.8rem;
+    color: #64748b;
+    line-height: 1.4;
+    margin: 0;
+  }
+}
+
+/* ==========================================================================
+   Services Cards
+   ========================================================================== */
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 1.75rem 0 3rem 0;
+}
+
+.service-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 1.75rem;
+  box-shadow: var(--card-shadow);
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--card-shadow-hover);
+    border-color: #93c5fd;
+  }
+
+  .service-icon-box {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    margin-bottom: 1.1rem;
+    background: #e0f2fe;
+    color: #0284c7;
+  }
+
+  h3.service-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--dark-slate);
+    margin: 0 0 0.75rem 0;
+    letter-spacing: -0.01em;
+  }
+
+  p.service-desc {
+    font-size: 0.92rem;
+    color: #475569;
+    line-height: 1.55;
+    margin-bottom: 1.25rem;
+    flex-grow: 1;
+  }
+
+  .service-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.25rem 0;
+
+    li {
+      font-size: 0.85rem;
+      color: #334155;
+      margin-bottom: 0.45rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+
+      i {
+        color: #0ea5e9;
+        margin-top: 0.2rem;
+        font-size: 0.8rem;
+      }
+    }
+  }
+
+  .tech-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 1rem;
+
+    .tech-pill {
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: #f1f5f9;
+      color: #475569;
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
+    }
+  }
+}
+
+/* ==========================================================================
+   Case Studies Cards
+   ========================================================================== */
+
+.case-study-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: var(--card-shadow);
+  margin-bottom: 2rem;
+  transition: all 0.2s ease;
+
+  &:hover {
+    box-shadow: var(--card-shadow-hover);
+    border-color: #93c5fd;
+  }
+
+  .case-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+
+    .client-tag {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background: #e0f2fe;
+      color: #0369a1;
+      padding: 0.3rem 0.75rem;
+      border-radius: 6px;
+    }
+
+    .role-tag {
+      font-size: 0.82rem;
+      color: #64748b;
+      font-weight: 600;
+    }
+  }
+
+  h2.case-title {
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: var(--dark-slate);
+    margin: 0.25rem 0 1rem 0;
+  }
+
+  .impact-callout {
+    background: #f8fafc;
+    border-left: 4px solid #0284c7;
+    padding: 1rem 1.25rem;
+    border-radius: 0 8px 8px 0;
+    margin: 1.25rem 0;
+
+    strong {
+      color: #0369a1;
+      font-size: 0.95rem;
+    }
+
+    p {
+      margin: 0.35rem 0 0 0;
+      font-size: 0.9rem;
+      color: #334155;
+    }
+  }
+}
+
+/* ==========================================================================
+   B2B Enskild Firma Engagement Banner
+   ========================================================================== */
+
+.b2b-engagement-banner {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 16px;
+  padding: 2rem;
+  margin: 2.5rem 0;
+
+  h3 {
+    color: #166534;
+    font-weight: 800;
+    margin-top: 0;
+  }
+
+  .engagement-perks {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+
+    .perk-item {
+      display: flex;
+      gap: 0.6rem;
+      align-items: flex-start;
+
+      i {
+        color: #16a34a;
+        margin-top: 0.25rem;
+      }
+
+      strong {
+        display: block;
+        color: #14532d;
+        font-size: 0.9rem;
+      }
+
+      span {
+        font-size: 0.82rem;
+        color: #374151;
+      }
+    }
+  }
+}
+
+/* ==========================================================================
+   Consulting CTA Box
+   ========================================================================== */
+
+.cta-box {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #ffffff;
+  padding: 2.5rem 2rem;
+  border-radius: 16px;
+  text-align: center;
+  margin: 3rem 0;
+
+  h2 {
+    color: #ffffff;
+    font-weight: 800;
+    margin-top: 0;
+    font-size: 1.85rem;
+  }
+
+  p {
+    color: #cbd5e1;
+    font-size: 1.05rem;
+    max-width: 600px;
+    margin: 0 auto 1.75rem auto;
+  }
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .hero-consulting {
+    padding: 1.75rem 1.25rem;
+
+    h1.hero-headline {
+      font-size: 1.65rem;
+    }
+  }
+}

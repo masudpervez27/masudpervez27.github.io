@@ -17,18 +17,18 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 # Site Settings
 locale                   : "en-US"
 rtl                      : # true, false (default) # turns direction of the page into right to left for RTL languages
-title                    : "Masud's HomePage"
-title_separator          : "-"
-subtitle                 : "A Place for My Portfolio and Blog"
+title                    : "Masud Pervez"
+title_separator          : "|"
+subtitle                 : "Data Science & AI Consulting (F-skatt)"
 name                     : "Masud Pervez" # &name is a YAML anchor which can be *referenced later
-description              : "A Passionate Data Scientist & Statistician"
+description              : "Senior Data Scientist & ML Engineer specializing in Real-Time Fraud Systems, MLOps, & Scalable Spark Pipelines. Available for B2B Consulting via Enskild Firma (F-skatt) in Stockholm & Remote."
 url                      : "https://masudpervez27.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : #"/masudpervez27" # the subpath of your site, e.g. "/blog"
 repository               : "masudpervez27/masudpervez27.github.io"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : #"/assets/images/apple-touch-icon.png" # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
-masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
-breadcrumbs              : # true, false (default)
+masthead_title           : "Masud Pervez | AI & Data Consulting"
+breadcrumbs              : false
 words_per_minute         : 200
 enable_copy_code_button  : # true, false (default)
 copyright                : # "copyright" name, defaults to site.title
@@ -115,53 +115,35 @@ analytics:
 author:
   name             : "Masud Pervez"
   avatar           : "/assets/images/bio-photo.jpg"
-  bio              : "I love diving into my passions - whether it's exploring Data Science, Machine Learning, AI, or getting creative with Photography and Video Editing!"
+  bio              : "Senior Data Scientist & ML Engineer specializing in Real-Time Fraud Systems, MLOps, & Scalable Spark Pipelines. Available for B2B Consulting via Enskild Firma (F-skatt)."
   location         : "Stockholm, Sweden"
-  email            :
+  email            : "masud.pervez@yahoo.com"
   links:
-    - label: "Email"
-      icon: "fa-solid fa-envelope"
-      url: "mailto:masud.pervez@yahoo.com"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/masud-pervez-431a0418"
     - label: "GitHub"
-      icon: "fab fa-github"
+      icon: "fab fa-fw fa-github"
       url: "https://github.com/masudpervez27"
-    - label: "Linkedin"
-      icon: "fa-brands fa-linkedin"
-      url: "https://linkedin.com/in/masud-pervez-431a0418"
-    - label: "X (formerly Twitter)"
-      icon: "fa-brands fa-x-twitter"
-      url: "https://x.com/MasudPe15462403"
-    - label: "Website"
-      icon: "fas fa-fw fa-link"
-      # url: "https://your-website.com"
-    - label: "Facebook"
-      icon: "fab fa-fw fa-facebook-square"
-      # url: "https://facebook.com/"
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope"
+      url: "mailto:masud.pervez@yahoo.com"
+    - label: "Phone"
+      icon: "fas fa-fw fa-phone"
+      url: "tel:+46704094857"
 
 # Site Footer
 footer:
   links:
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      # url:
-    - label: "Facebook"
-      icon: "fab fa-fw fa-facebook-square"
-      # url:
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/masud-pervez-431a0418"
     - label: "GitHub"
-      icon: "fab fa-github"
+      icon: "fab fa-fw fa-github"
       url: "https://github.com/masudpervez27"
-    - label: "Linkedin"
-      icon: "fa-brands fa-linkedin"
-      url: "https://linkedin.com/in/masud-pervez-431a0418"
-    - label: "GitLab"
-      icon: "fab fa-fw fa-gitlab"
-      # url:
-    - label: "Bitbucket"
-      icon: "fab fa-fw fa-bitbucket"
-      # url:
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      # url:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope"
+      url: "mailto:masud.pervez@yahoo.com"
 
 
 # Reading Files
@@ -335,18 +317,18 @@ defaults:
     values:
       layout: single
       author_profile: true
-  # _portfolio
+  # _projects
   - scope:
       path: ""
-      type: portfolio
+      type: projects
     values:
       layout: single
       author_profile: true
       share: true
-      comment: true
+      comment: false
 
 collections:
-  portfolio:
+  projects:
     output: true
     permalink: /:collection/:path/
   posts:
