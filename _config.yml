@@ -19,9 +19,9 @@ locale                   : "en-US"
 rtl                      : # true, false (default) # turns direction of the page into right to left for RTL languages
 title                    : "Masud Pervez"
 title_separator          : "|"
-subtitle                 : "Data Science & AI Consulting (F-skatt)"
+subtitle                 : "Senior Data Science, MLOps & AI Consulting"
 name                     : "Masud Pervez" # &name is a YAML anchor which can be *referenced later
-description              : "Senior Data Scientist & ML Engineer specializing in Real-Time Fraud Systems, MLOps, & Scalable Spark Pipelines. Available for B2B Consulting via Enskild Firma (F-skatt) in Stockholm & Remote."
+description              : "Senior Data Scientist & ML Engineer specializing in Real-Time ML Systems, MLOps, & Scalable Big Data Pipelines. Available for B2B Consulting via Enskild Firma (F-skatt) in Stockholm & Remote."
 url                      : "https://masudpervez27.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : #"/masudpervez27" # the subpath of your site, e.g. "/blog"
 repository               : "masudpervez27/masudpervez27.github.io"
@@ -115,9 +115,8 @@ analytics:
 author:
   name             : "Masud Pervez"
   avatar           : "/assets/images/bio-photo.jpeg"
-  bio              : "Senior Data Scientist & ML Engineer specializing in Real-Time Fraud Systems, MLOps, & Scalable Spark Pipelines. Available for B2B Consulting via Enskild Firma (F-skatt)."
+  bio              : "Senior Data Scientist & ML Engineer specializing in Real-Time ML Systems, MLOps, & Scalable Spark Pipelines. Available for B2B Consulting — Stockholm & Remote."
   location         : "Stockholm, Sweden"
-  email            : "masud.pervez@yahoo.com"
   links:
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"

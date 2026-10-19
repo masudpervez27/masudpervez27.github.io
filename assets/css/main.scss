@@ -383,6 +383,13 @@ h1, h2, h3, h4, h5, h6, .service-title, .case-title {
     vertical-align: middle !important;
     line-height: 1 !important;
   }
+
+  span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+  }
 }
 
 .btn-consulting-primary {

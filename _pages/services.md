@@ -7,7 +7,7 @@ classes: wide
 ---
 
 <div class="hero-tagline" style="margin-bottom: 1.5rem;">
-  <i class="fas fa-briefcase"></i><span>Tailored B2B Consulting &bull; Enskild Firma (F-skatt) &bull; Stockholm, Sweden</span>
+  <i class="fas fa-briefcase"></i><span>Tailored B2B Consulting &bull; Stockholm, Sweden &bull; Nordics &amp; Remote</span>
 </div>
 
 I provide senior-level engineering and advisory services to financial institutions, media enterprises, and tech companies seeking to build resilient, high-ROI machine learning and artificial intelligence capabilities.
@@ -90,7 +90,7 @@ I provide senior-level engineering and advisory services to financial institutio
 ## How to Engage
 
 <div class="b2b-engagement-banner">
-  <h3>Engagement Models (Swedish Enskild Firma)</h3>
+  <h3>Engagement Models</h3>
   <div class="engagement-perks">
     <div class="perk-item">
       <i class="fas fa-code-branch"></i>

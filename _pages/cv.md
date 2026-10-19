@@ -7,7 +7,7 @@ classes: wide
 ---
 
 <div class="hero-tagline" style="margin-bottom: 1.5rem;">
-  <i class="fas fa-user-shield"></i><span>Verified Credentials &bull; Stockholm, Sweden &bull; Enskild Firma (F-skatt)</span>
+  <i class="fas fa-user-shield"></i><span>Verified Credentials &bull; Stockholm, Sweden</span>
 </div>
 
 ## Professional Summary

@@ -7,7 +7,7 @@ classes: wide
 ---
 
 <div class="hero-tagline" style="margin-bottom: 1.5rem;">
-  <i class="fas fa-handshake"></i><span>Direct B2B Inquiries &bull; Enskild Firma (F-skatt) &bull; Stockholm, Sweden</span>
+  <i class="fas fa-handshake"></i><span>Direct B2B Inquiries &bull; Stockholm, Sweden</span>
 </div>
 
 Whether you are looking to bring in a senior specialist for an upcoming machine learning initiative, audit an existing fraud prevention architecture, or request a complete Curriculum Vitae (PDF), I welcome the opportunity to connect.
@@ -24,7 +24,7 @@ Whether you are looking to bring in a senior specialist for an upcoming machine 
       Send project briefs, RFPs, or CV requests directly. Typically answered within 24 hours.
     </p>
     <p>
-      <a href="mailto:masud.pervez@yahoo.com?subject=Consulting%20Inquiry%20/%20CV%20Request" class="btn-consulting-primary" style="font-size: 0.88rem; padding: 0.6rem 1rem;"><i class="fas fa-paper-plane"></i><span>masud.pervez@yahoo.com</span></a>
+      <a href="mailto:masud.pervez@yahoo.com?subject=Consulting%20Inquiry%20/%20CV%20Request" class="btn-consulting-primary" style="font-size: 0.88rem; padding: 0.6rem 1rem;"><i class="fas fa-paper-plane"></i><span>Send Email</span></a>
     </p>
   </div>
 
@@ -37,7 +37,7 @@ Whether you are looking to bring in a senior specialist for an upcoming machine 
       Connect on LinkedIn for professional networking, recommendations, and direct messaging.
     </p>
     <p>
-      <a href="https://www.linkedin.com/in/masud-pervez-431a0418" target="_blank" rel="noopener noreferrer" class="btn-consulting-primary" style="font-size: 0.88rem; padding: 0.6rem 1rem;"><i class="fab fa-linkedin"></i><span>linkedin.com/in/masud-pervez-431a0418</span></a>
+      <a href="https://www.linkedin.com/in/masud-pervez-431a0418" target="_blank" rel="noopener noreferrer" class="btn-consulting-primary" style="font-size: 0.88rem; padding: 0.6rem 1rem;"><i class="fab fa-linkedin"></i><span>Connect on LinkedIn</span></a>
     </p>
   </div>
 
@@ -50,7 +50,7 @@ Whether you are looking to bring in a senior specialist for an upcoming machine 
       Explore code repositories, open-source implementations, and machine learning architectures.
     </p>
     <p>
-      <a href="https://github.com/masudpervez27" target="_blank" rel="noopener noreferrer" class="btn-consulting-primary" style="font-size: 0.88rem; padding: 0.6rem 1rem;"><i class="fab fa-github"></i><span>github.com/masudpervez27</span></a>
+      <a href="https://github.com/masudpervez27" target="_blank" rel="noopener noreferrer" class="btn-consulting-primary" style="font-size: 0.88rem; padding: 0.6rem 1rem;"><i class="fab fa-github"></i><span>View GitHub Profile</span></a>
     </p>
   </div>
 </div>
