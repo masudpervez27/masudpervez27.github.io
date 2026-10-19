@@ -12,7 +12,7 @@ classes: wide
 
 ## Professional Summary
 
-I am a Senior Data Scientist, Machine Learning Engineer, and Statistician with **8+ years of enterprise experience** designing, deploying, and governing real-time fraud detection systems, scalable Apache Spark data pipelines, and quantitative optimization solutions for tier-1 Scandinavian institutions including **Skandinaviska Enskilda Banken (SEB)**, **Bonnier News**, and **Tobii Pro**.
+I am a Senior Data Scientist, Machine Learning Engineer, and Statistician with **10+ years of enterprise experience** designing, deploying, and governing real-time fraud detection systems, scalable Apache Spark data pipelines, and quantitative optimization solutions for tier-1 Scandinavian institutions including **Skandinaviska Enskilda Banken (SEB)**, **Bonnier News**, and **Tobii Pro**.
 
 ---
 
@@ -43,7 +43,7 @@ I am a Senior Data Scientist, Machine Learning Engineer, and Statistician with *
     <p class="metric-desc">Delivered via mathematical Newsvendor optimization for Bonnier News.</p>
   </div>
   <div class="metric-card">
-    <div class="metric-number">8+ Years</div>
+    <div class="metric-number">10+ Years</div>
     <div class="metric-label">Enterprise Experience</div>
     <p class="metric-desc">Tier-1 production track record (SEB, Bonnier News, Tobii Pro).</p>
   </div>
