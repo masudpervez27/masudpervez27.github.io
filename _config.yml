@@ -114,7 +114,7 @@ analytics:
 # Site Author
 author:
   name             : "Masud Pervez"
-  avatar           : "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/images/bio-photo.jpeg"
   bio              : "Senior Data Scientist & ML Engineer specializing in Real-Time Fraud Systems, MLOps, & Scalable Spark Pipelines. Available for B2B Consulting via Enskild Firma (F-skatt)."
   location         : "Stockholm, Sweden"
   email            : "masud.pervez@yahoo.com"
@@ -128,22 +128,10 @@ author:
     - label: "Email"
       icon: "fas fa-fw fa-envelope"
       url: "mailto:masud.pervez@yahoo.com"
-    - label: "Phone"
-      icon: "fas fa-fw fa-phone"
-      url: "tel:+46704094857"
 
 # Site Footer
 footer:
-  links:
-    - label: "LinkedIn"
-      icon: "fab fa-fw fa-linkedin"
-      url: "https://www.linkedin.com/in/masud-pervez-431a0418"
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/masudpervez27"
-    - label: "Email"
-      icon: "fas fa-fw fa-envelope"
-      url: "mailto:masud.pervez@yahoo.com"
+  links: []
 
 
 # Reading Files

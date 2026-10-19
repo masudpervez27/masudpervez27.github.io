@@ -25,6 +25,19 @@ search: false
   --card-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
+/* ==========================================================================
+   CRITICAL: Universal Icon & Text Alignment Fixes
+   ========================================================================== */
+
+i.fas, i.fab, i.far, i.fal, i.fad, i.fa-solid, i.fa-brands, i.fa-regular, .svg-inline--fa {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  vertical-align: middle !important;
+  line-height: 1 !important;
+  flex-shrink: 0 !important;
+}
+
 /* Typography & Layout Polish */
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -62,7 +75,7 @@ body {
   display: block;
 }
 
-/* Author Sidebar Styling */
+/* Author Sidebar Styling & Links */
 .author__avatar img {
   border-radius: 16px;
   border: 3px solid #f1f5f9;
@@ -81,16 +94,47 @@ body {
   color: #475569;
 }
 
+/* Author URLs Sidebar - Icon and Text strictly in ONE row */
+.author__urls {
+  li {
+    white-space: nowrap !important;
+    list-style: none !important;
+  }
+
+  a {
+    display: inline-flex !important;
+    align-items: center !important;
+    width: 100% !important;
+    gap: 0.55rem !important;
+    white-space: nowrap !important;
+    vertical-align: middle !important;
+
+    i, .svg-inline--fa {
+      width: 1.25em !important;
+      text-align: center !important;
+      margin-inline-end: 0 !important;
+      flex-shrink: 0 !important;
+      font-size: 1rem !important;
+    }
+
+    span.label {
+      display: inline !important;
+      padding-inline-start: 0 !important;
+      white-space: nowrap !important;
+    }
+  }
+}
+
 /* Status Pill in Sidebar */
 .consulting-status-item {
   margin: 0.75rem 0 0.5rem 0;
-  list-style: none;
+  list-style: none !important;
 }
 
 .consulting-badge-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.45rem !important;
   background: #ecfdf5;
   color: #065f46;
   border: 1px solid #a7f3d0;
@@ -99,6 +143,8 @@ body {
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.02em;
+  white-space: nowrap !important;
+  vertical-align: middle !important;
 }
 
 .status-indicator-dot {
@@ -109,6 +155,7 @@ body {
   display: inline-block;
   box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.3);
   animation: pulse-dot 2s infinite;
+  flex-shrink: 0 !important;
 }
 
 @keyframes pulse-dot {
@@ -119,24 +166,120 @@ body {
 
 .consulting-meta-item {
   margin: 0.25rem 0 0.5rem 0;
-  list-style: none;
+  list-style: none !important;
 }
 
 .fskatt-tag {
-  display: inline-block;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.4rem !important;
   font-size: 0.74rem;
   font-weight: 700;
   background-color: #f0f9ff;
   color: #0369a1;
   border: 1px solid #bae6fd;
   border-radius: 6px;
-  padding: 0.2rem 0.5rem;
+  padding: 0.25rem 0.55rem;
+  white-space: nowrap !important;
+  vertical-align: middle !important;
+
+  i, .svg-inline--fa {
+    margin-inline-end: 0 !important;
+  }
 }
 
-.consulting-phone-item {
-  margin-top: 0.25rem;
-  font-weight: 600;
-  font-size: 0.85rem;
+.btn-sidebar-cv {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.45rem !important;
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  color: #0369a1 !important;
+  background-color: #f0f9ff !important;
+  border: 1px solid #bae6fd !important;
+  border-radius: 8px !important;
+  padding: 0.35rem 0.65rem !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+  white-space: nowrap !important;
+  width: 100% !important;
+  justify-content: center !important;
+
+  &:hover {
+    background-color: #0284c7 !important;
+    color: #ffffff !important;
+    border-color: #0284c7 !important;
+  }
+
+  i {
+    margin-inline-end: 0 !important;
+  }
+}
+
+/* Modern Contact Form Styling */
+.consulting-contact-form-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 2.25rem 2rem;
+  box-shadow: var(--card-shadow);
+  margin: 2rem 0;
+
+  .form-group {
+    margin-bottom: 1.25rem;
+
+    label {
+      display: block;
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: #334155;
+      margin-bottom: 0.4rem;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 0.7rem 0.95rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      color: #1e293b;
+      background: #ffffff;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+
+      &:focus {
+        outline: none;
+        border-color: var(--primary-accent);
+        box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+      }
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+/* Headings with Icons - Always inline in one row */
+h1, h2, h3, h4, h5, h6, .service-title, .case-title {
+  i, .svg-inline--fa {
+    display: inline-flex !important;
+    align-items: center !important;
+    vertical-align: middle !important;
+    margin-inline-end: 0.5rem !important;
+    line-height: 1 !important;
+  }
 }
 
 /* ==========================================================================
@@ -166,9 +309,9 @@ body {
   }
 
   .hero-tagline {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
     background: rgba(255, 255, 255, 0.12);
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: #38bdf8;
@@ -179,6 +322,12 @@ body {
     padding: 0.35rem 0.85rem;
     border-radius: 9999px;
     margin-bottom: 1rem;
+    white-space: nowrap !important;
+    vertical-align: middle !important;
+
+    i, .svg-inline--fa {
+      margin-inline-end: 0 !important;
+    }
   }
 
   h1.hero-headline {
@@ -208,23 +357,41 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 0.85rem;
+    align-items: center;
   }
 }
 
-/* Modern Action Buttons */
+/* Modern Action Buttons with Inline Icons */
+.btn-consulting-primary,
+.btn-consulting-secondary,
+.btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.5rem !important;
+  white-space: nowrap !important;
+  vertical-align: middle !important;
+  text-decoration: none !important;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+
+  i, .svg-inline--fa {
+    margin-inline-end: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    vertical-align: middle !important;
+    line-height: 1 !important;
+  }
+}
+
 .btn-consulting-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
   background: #0284c7;
   color: #ffffff !important;
   font-weight: 700;
   font-size: 0.95rem;
   padding: 0.75rem 1.4rem;
-  border-radius: 10px;
-  text-decoration: none !important;
   box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
-  transition: all 0.2s ease;
   border: none;
 
   &:hover {
@@ -236,18 +403,12 @@ body {
 }
 
 .btn-consulting-secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
   background: rgba(255, 255, 255, 0.1);
   color: #ffffff !important;
   font-weight: 600;
   font-size: 0.95rem;
   padding: 0.75rem 1.4rem;
-  border-radius: 10px;
-  text-decoration: none !important;
   border: 1px solid rgba(255, 255, 255, 0.25);
-  transition: all 0.2s ease;
 
   &:hover {
     background: rgba(255, 255, 255, 0.2);
@@ -347,13 +508,17 @@ body {
     width: 48px;
     height: 48px;
     border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
     font-size: 1.25rem;
     margin-bottom: 1.1rem;
     background: #e0f2fe;
     color: #0284c7;
+
+    i, .svg-inline--fa {
+      margin-inline-end: 0 !important;
+    }
   }
 
   h3.service-title {
@@ -373,22 +538,24 @@ body {
   }
 
   .service-features {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 1.25rem 0;
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 0 1.25rem 0 !important;
 
     li {
       font-size: 0.85rem;
       color: #334155;
       margin-bottom: 0.45rem;
-      display: flex;
-      align-items: flex-start;
-      gap: 0.5rem;
+      display: flex !important;
+      align-items: flex-start !important;
+      gap: 0.55rem !important;
 
-      i {
+      i, .svg-inline--fa {
         color: #0ea5e9;
-        margin-top: 0.2rem;
+        margin-top: 0.25rem !important;
+        margin-inline-end: 0 !important;
         font-size: 0.8rem;
+        flex-shrink: 0 !important;
       }
     }
   }
@@ -502,28 +669,32 @@ body {
   .engagement-perks {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1rem;
+    gap: 1.25rem;
     margin-top: 1rem;
 
     .perk-item {
-      display: flex;
-      gap: 0.6rem;
-      align-items: flex-start;
+      display: flex !important;
+      gap: 0.65rem !important;
+      align-items: flex-start !important;
 
-      i {
+      > i, > .svg-inline--fa {
         color: #16a34a;
-        margin-top: 0.25rem;
+        margin-top: 0.25rem !important;
+        margin-inline-end: 0 !important;
+        flex-shrink: 0 !important;
       }
 
-      strong {
-        display: block;
-        color: #14532d;
-        font-size: 0.9rem;
-      }
+      div {
+        strong {
+          display: block;
+          color: #14532d;
+          font-size: 0.9rem;
+        }
 
-      span {
-        font-size: 0.82rem;
-        color: #374151;
+        span {
+          font-size: 0.82rem;
+          color: #374151;
+        }
       }
     }
   }
@@ -563,6 +734,10 @@ body {
 
     h1.hero-headline {
       font-size: 1.65rem;
+    }
+
+    .hero-tagline {
+      white-space: normal !important;
     }
   }
 }

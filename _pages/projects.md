@@ -7,7 +7,7 @@ classes: wide
 ---
 
 <div class="hero-tagline" style="margin-bottom: 1.5rem;">
-  <i class="fas fa-chart-line"></i> Proven Enterprise Track Record &bull; Measurable Business Outcomes
+  <i class="fas fa-chart-line"></i><span>Proven Enterprise Track Record &bull; Measurable Business Outcomes</span>
 </div>
 
 A selection of mission-critical machine learning, distributed big data, and statistical optimization initiatives delivered for leading European institutions.
@@ -151,7 +151,5 @@ A selection of mission-critical machine learning, distributed big data, and stat
 <div class="cta-box">
   <h2>Want to explore how these solutions apply to your systems?</h2>
   <p>I would be glad to review your current architecture and discuss implementation strategies.</p>
-  <a href="/contact/" class="btn-consulting-primary">
-    <i class="fas fa-comments"></i> Inquire About a Project
-  </a>
+  <a href="/contact/" class="btn-consulting-primary"><i class="fas fa-comments"></i><span>Inquire About a Project</span></a>
 </div>

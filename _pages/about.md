@@ -7,7 +7,7 @@ classes: wide
 ---
 
 <div class="hero-tagline" style="margin-bottom: 1.5rem;">
-  <i class="fas fa-user-check"></i> Senior Data Scientist &bull; Machine Learning Engineer &bull; Statistician
+  <i class="fas fa-user-check"></i><span>Senior Data Scientist &bull; Machine Learning Engineer &bull; Statistician</span>
 </div>
 
 ## Executive Summary &amp; Consulting Profile
@@ -110,11 +110,7 @@ A defining strength of my engineering practice is a deep, rigorous background in
   <h2>Let's discuss how I can support your team</h2>
   <p>Available for consulting engagements, contract roles, and technical advisory.</p>
   <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-    <a href="/contact/" class="btn-consulting-primary">
-      <i class="fas fa-envelope"></i> Contact Directly
-    </a>
-    <a href="/files/Resume.pdf" target="_blank" class="btn-consulting-secondary">
-      <i class="fas fa-download"></i> Download Full Resume
-    </a>
+    <a href="/contact/" class="btn-consulting-primary"><i class="fas fa-envelope"></i><span>Contact Directly</span></a>
+    <a href="/contact/#request-cv" class="btn-consulting-secondary"><i class="fas fa-file-contract"></i><span>Request Full CV (PDF)</span></a>
   </div>
 </div>

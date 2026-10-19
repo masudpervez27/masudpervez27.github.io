@@ -7,7 +7,7 @@ classes: wide
 ---
 
 <div class="hero-tagline" style="margin-bottom: 1.5rem;">
-  <i class="fas fa-briefcase"></i> Tailored B2B Consulting &bull; Enskild Firma (F-skatt) &bull; Stockholm, Sweden
+  <i class="fas fa-briefcase"></i><span>Tailored B2B Consulting &bull; Enskild Firma (F-skatt) &bull; Stockholm, Sweden</span>
 </div>
 
 I provide senior-level engineering and advisory services to financial institutions, media enterprises, and tech companies seeking to build resilient, high-ROI machine learning and artificial intelligence capabilities.
@@ -119,7 +119,5 @@ I provide senior-level engineering and advisory services to financial institutio
 <div class="cta-box">
   <h2>Let's discuss your technical challenges</h2>
   <p>Reach out to discuss your current challenges and explore how we can collaborate.</p>
-  <a href="/contact/" class="btn-consulting-primary">
-    <i class="fas fa-envelope"></i> Request Consultation
-  </a>
+  <a href="/contact/" class="btn-consulting-primary"><i class="fas fa-envelope"></i><span>Request Consultation</span></a>
 </div>
