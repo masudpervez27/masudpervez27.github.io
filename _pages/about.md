@@ -12,15 +12,15 @@ classes: wide
 
 ## Executive Summary &amp; Consulting Profile
 
-I am a Senior Data Scientist and Machine Learning Engineer with over **eight years of tier-1 enterprise experience** delivering production-grade machine learning systems, distributed data pipelines, and quantitative optimization models for leading Scandinavian institutions.
+I bridge the gap between advanced statistics and production-ready AI. With over **eight years of tier-1 enterprise experience**, I provide senior data science and machine learning engineering services to B2B organizations and growing SMEs — helping them build resilient ML systems, optimize complex data workflows, and make better decisions using data.
 
-Operating as an independent Swedish consultant via **Enskild Firma (approved for F-skatt)** based in Stockholm, I help businesses transform complex data into resilient, revenue-generating, and risk-mitigating production systems.
+Operating as an independent Swedish consultant based in Stockholm via *Enskild Firma*, I work across any industry — from financial services and media to retail, logistics, and beyond. My focus is always on **business value, system reliability, and measurable ROI**.
 
-Rather than merely experimenting with algorithms in isolated notebooks, my focus is rooted in **business value, system reliability, and measurable ROI**:
-* **Enterprise Risk:** Designed and deployed real-time machine learning systems at **Skandinaviska Enskilda Banken (SEB)** detecting fraudulent transactions with **over 60%–70% recall** while keeping false positives strictly controlled.
-* **Cost Optimization:** Engineered a cost-based threshold tuning framework balancing fraud losses against customer friction, directly optimizing capital efficiency.
-* **Profit Growth:** Increased physical distribution profitability by **16%** at **Bonnier News** through a custom stochastic Newsvendor optimization model.
-* **Production MLOps:** Built robust, modular Apache Spark and Scala/Python pipelines on Hadoop clusters and Google Cloud Platform (GCP), backed by continuous data/model governance and drift monitoring.
+Rather than merely experimenting with algorithms in isolated notebooks, I deliver production-grade solutions that create real business impact:
+* **Intelligent Automation:** Designed and deployed real-time ML systems at **Skandinaviska Enskilda Banken (SEB)** detecting patterns in live transaction data with **over 60–70% recall** while maintaining strict precision controls.
+* **Cost Optimization:** Engineered cost-based threshold tuning frameworks that directly balance operational loss against customer friction, applicable to any industry with asymmetric decision costs.
+* **Profit Growth:** Increased physical distribution profitability by **16%** at **Bonnier News** through a custom stochastic Newsvendor optimization model — the same mathematical approach applies to any supply chain or inventory challenge.
+* **Production MLOps:** Built robust, modular Apache Spark and Python pipelines on Hadoop and Google Cloud Platform (GCP), backed by continuous model governance and drift monitoring.
 
 ---
 
@@ -107,8 +107,8 @@ A defining strength of my engineering practice is a deep, rigorous background in
 ---
 
 <div class="cta-box">
-  <h2>Let's discuss how I can support your team</h2>
-  <p>Available for consulting engagements, contract roles, and technical advisory.</p>
+  <h2>Let's discuss how I can help your business</h2>
+  <p>Available for consulting engagements with companies of all sizes &mdash; from growing SMEs to large enterprises. Fixed-scope projects, embedded contractor roles, and strategic advisory welcome.</p>
   <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
     <a href="/contact/" class="btn-consulting-primary"><i class="fas fa-envelope"></i><span>Contact Directly</span></a>
     <a href="/contact/#request-cv" class="btn-consulting-secondary"><i class="fas fa-file-contract"></i><span>Request Full CV (PDF)</span></a>
