@@ -32,6 +32,32 @@ jekyll-include-cache, jemoji, jekyll-redirect-from
 `jekyll-redirect-from` is **not** in `DEFAULT_PLUGINS` — it must be listed explicitly or the
 `/projects/` and `/cv/` redirects will not be generated.
 
+`redirect_from: { json: false }` in `_config.yml` suppresses the public `/redirects.json`
+that the plugin would otherwise publish.
+
+### The `github-pages` meta-gem is NOT used
+
+`Gemfile` pins the individual plugins to the exact versions GitHub Pages itself runs
+(github-pages 232 → jekyll 3.10.0, liquid 4.0.4, kramdown 2.4.0,
+jekyll-redirect-from 0.16.0, jekyll-include-cache 0.2.1, jekyll-feed 0.17.0,
+jekyll-sitemap 1.4.0, jekyll-gist 1.5.0, jekyll-paginate 1.1.0, jemoji 0.13.0).
+
+**Do not reintroduce the `github-pages` meta-gem.** It transitively requires
+`jekyll-commonmark-ghpages` → `commonmarker ~> 0.22`, whose gemspec caps Ruby at `< 4.0`,
+so it cannot resolve on a modern local Ruby. This site uses kramdown
+(`markdown: kramdown`), never commonmark, and the theme is vendored locally — the
+individual plugins are a complete substitute.
+
+Two more version traps, both of which break the build on a modern Ruby:
+
+- **liquid must be ≥ 4.0.4.** Liquid 4.0.3 calls `Object#tainted?`, removed in Ruby 3.2 →
+  `undefined method 'tainted?' for false`.
+- **Declare the "bundled gems" in the Gemfile.** Ruby 3.4 moved `csv`, `base64`,
+  `bigdecimal`, `mutex_m`, `observer`, `abbrev`, `nkf`, `drb`, `getoptlong`, and `ostruct`
+  out of "default gems" into "bundled gems". Bundler hides bundled gems unless they are
+  declared, so Jekyll fails to load without them. All are pure-Ruby, so they are safe for
+  GitHub Pages' own build environment (which ignores the Gemfile entirely).
+
 ---
 
 ## Site map (6 nav tabs)
@@ -52,9 +78,19 @@ jekyll-include-cache, jemoji, jekyll-redirect-from
 | `/projects/` | `/experience/` | `_pages/projects-redirect.md` → `redirect_to` |
 | `/cv/` | `/about/#cv` | `_pages/cv-redirect.md` → `redirect_to` |
 
-Redirect stub files must have **no body content** — the plugin replaces the document's own
-output with the redirect page, so any body text is discarded. Keep `sitemap: false` on them so
-they stay out of the sitemap.
+The redirect is **not** an HTTP 301 — a static Pages site cannot emit one. The plugin
+renders a 200 page containing `<meta http-equiv="refresh" content="0; url=…">`,
+`<script>location=…</script>`, `<link rel="canonical">`, and `<meta name="robots" content="noindex">`.
+The browser treats `content="0"` as an immediate redirect; the canonical tag carries the SEO signal.
+
+The plugin's `generator.rb` does `doc.content = doc.output = page.output`, so the stub's
+own body is **discarded** whenever the plugin loads. A one-line "this page has moved" body
+is still worth keeping: it is the fail-safe if the plugin ever fails to load, in which case
+the stub renders as a normal page instead of a blank one. `sitemap: false` keeps the stubs
+out of the sitemap (the plugin forces it anyway — declaring it is explicit hygiene).
+
+The plugin ships its own `redirect.html` layout and injects it as `site.layouts["redirect"]`.
+**Do not author a `_layouts/redirect.html`** — it would shadow the plugin's.
 
 ---
 
@@ -139,27 +175,69 @@ commit and verify `main.css` serves correctly after pushing.
 
 ### Local build (Windows)
 
-Ruby is installed per-user at `C:\Users\user\rubyportable` (no admin needed).
+Ruby is installed per-user at `C:\Users\user\rubyportable` (no admin needed). It is
+**Ruby 4.0.7**, and the MSYS2 UCRT64 devkit provides the compiler for the native gems
+(`racc`, `json`, `commonmarker`, `http_parser.rb`, `eventmachine`).
 
 ```bash
-export PATH="/c/Users/user/rubyportable/bin:$PATH"
+export PATH="/c/Users/user/rubyportable/bin:/c/Users/user/rubyportable/msys64/ucrt64/bin:/c/Users/user/rubyportable/msys64/usr/bin:$PATH"
+export MSYSTEM=UCRT64
 cd "D:/masudpervez27.github.io"
 bundle install
 bundle exec jekyll build --trace
 ```
 
-`Gemfile` must keep its `source "https://rubygems.org"` line — without it bundler has no remote
-to resolve from and fails with "Could not find gem 'github-pages'".
+The devkit PATH is required — without `ucrt64/bin` on PATH the native gems fail to build.
+If the devkit is missing: `cmd //c "C:\Users\user\rubyportable\bin\ridk.cmd install 1 3"`
+(the `cmd //c` form is required — the plain `cmd /c` form silently no-ops), then
+`ridk enable` to put `ucrt64/bin` on PATH.
 
-**Cache gotcha:** `_layouts/default.html` uses `{% include_cached masthead.html %}`, and
-`jekyll-include-cache` caches to `.jekyll-cache/`. After editing `_data/navigation.yml`, run
-`rm -rf .jekyll-cache` or build with `--disable-disk-cache`, or the **old nav ships**. (In
-production each Pages build is a fresh process, so this only bites locally.)
+`Gemfile` must keep its `source "https://rubygems.org"` line — without it bundler has no remote
+to resolve from and fails with "Could not find gem 'jekyll'".
+
+**Offline installs:** the Ruby installation ships `.gem` files for the bundled gems in
+`C:\Users\user\rubyportable\lib\ruby\gems\4.0.0\cache`. If the network is unavailable,
+resolve from disk with
+`BUNDLE_CACHE_PATH="/c/Users/user/rubyportable/lib/ruby/gems/4.0.0/cache" bundle install --local`.
+
+**Cache note (verified, not a gotcha):** `_layouts/default.html` uses
+`{% include_cached masthead.html %}`, and `jekyll-include-cache`'s cache key is the include
+path plus explicit params only — `site.data` is **not** part of it, so a stale nav would in
+principle be possible. In practice it is not, and the reason is worth knowing:
+
+- Jekyll 3.10 has **no `Jekyll::Cache` class**, so the plugin falls back to its in-memory
+  `JekyllIncludeCache::Cache`, and it registers a `site, :pre_render` hook that **clears the
+  cache on every build**. No `.jekyll-cache` directory is created and no disk cache is used.
+- The cache is also per-process, so a production Pages build always starts cold.
+
+Empirically confirmed: adding a 7th nav item and rebuilding produced 7 nav items in the
+output with no cache clearing. `rm -rf .jekyll-cache` before building is still harmless
+insurance if you ever upgrade to a `jekyll-include-cache` version that persists to disk
+(0.3.x deliberately stops using `Jekyll::Cache` and keeps the in-memory behaviour).
 
 ### Deploy
 
 Push to `master`. GitHub Pages rebuilds automatically (~1–3 min). There is no CI workflow and no
 `gh` CLI in this environment — poll the live site with `curl` to confirm.
+
+---
+
+## Branding
+
+| Element | Source |
+|---|---|
+| Monogram mark | `assets/images/mp-monogram.svg` — an inline "MP" vector, no binary asset |
+| Masthead logo | `site.logo: "/assets/images/mp-monogram.svg"` |
+| Masthead name | `site.masthead_title: "Masud Pervez"` — the name alone; the pipe + "AI & Data Consulting" was doing the subtitle's job |
+| Masthead tagline | `site.subtitle: "Data Science · MLOps · AI Consulting"` — a three-pillar service line, sentence case, not ALL CAPS teal |
+| Favicon | `_includes/head/custom.html` — `rel="icon"` + `apple-touch-icon` pointing at the monogram |
+
+`site.masthead_title` and `site.subtitle` are referenced **only** in `_includes/masthead.html`
+— they do not affect `<title>` tags, SEO, or the footer. `site.title` ("Masud Pervez") and
+`site.description` are separate and unchanged.
+
+The minimal-mistakes default `assets/images/apple-touch-icon.png` ("MM" monogram) was
+**deleted** — it was off-brand and it was the iOS home-screen icon.
 
 ---
 
@@ -186,6 +264,10 @@ grep -o 'http-equiv="refresh"[^>]*' _site/projects/index.html   # → /experienc
 grep -o 'http-equiv="refresh"[^>]*' _site/cv/index.html         # → /about/#cv
 grep -c 'id="request-cv"' _site/contact/index.html               # → 1
 grep -c 'id="cv"' _site/about/index.html                         # → 1
+grep -o 'masthead__menu-item' _site/index.html | wc -l           # → 6
+ls _site/redirects.json                                          # → must NOT exist
+grep -c 'class="service-card"' _site/services/index.html         # → 8
+grep -c 'case-study-card' _site/experience/index.html            # → 5
 ```
 
 ### Live
@@ -198,6 +280,9 @@ curl -s  https://masudpervez27.github.io/          | grep -c 'masthead__menu-ite
 curl -so /dev/null -w '%{http_code} %{size_download}\n' \
      https://masudpervez27.github.io/assets/css/main.css          # → 200, non-trivial size
 ```
+
+GitHub Pages rebuilds take 1–3 min. If a change is not live yet, **poll before assuming
+failure** — a stale response is the usual cause, not a broken build.
 
 ---
 
