@@ -4,4 +4,9 @@
 <link rel="icon" type="image/svg+xml" href="{{ '/assets/images/mp-monogram.svg' | relative_url }}">
 <link rel="apple-touch-icon" href="{{ '/assets/images/mp-monogram.svg' | relative_url }}">
 
+{% if page.math %}
+<!-- kramdown emits \( \) and \[ \] for $$ math; MathJax renders them -->
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js" integrity="sha256-Cm3tWrvOEzMWWN0jnzQ4Kr0GSSx0txth6MqoES7FX6U=" crossorigin="anonymous"></script>
+{% endif %}
+
 <!-- end custom head snippets -->

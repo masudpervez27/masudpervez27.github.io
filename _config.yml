@@ -308,6 +308,7 @@ defaults:
       comments: # true
       share: true
       related: true
+      math: true
   # _pages
   - scope:
       path: ""

@@ -8,7 +8,7 @@ main:
     url: /experience/
   - title: "About"
     url: /about/
-  - title: "Insights"
+  - title: "Blog"
     url: /posts/
   - title: "Contact"
     url: /contact/

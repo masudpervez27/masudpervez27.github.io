@@ -62,7 +62,7 @@ the same set): `jekyll-paginate`, `jekyll-sitemap`, `jekyll-gist`, `jekyll-feed`
 | Services | `/services/` | `_pages/services.md` | The client offer: 8 service areas (problem → deliverables → benefit) + 4 engagement models |
 | Experience | `/experience/` | `_pages/experience.md` | Five past roles with what I owned and the outcome |
 | About | `/about/` | `_pages/about.md` | Summary, career timeline, education, tech stack, business details, CV request (`#cv`) |
-| Insights | `/posts/` | `_pages/posts.md` | Technical blog index, grouped by year (`layout: posts`) |
+| Blog | `/posts/` | `_pages/posts.md` | Technical blog index, grouped by year (`layout: posts`) |
 | Contact | `/contact/` | `_pages/contact.md` | Email / LinkedIn / GitHub + the contact & CV-request form (`#request-cv`) |
 
 Navigation is defined in `_data/navigation.yml`.
@@ -155,6 +155,7 @@ Create `_posts/YYYY-MM-DD-slug.md`:
 ---
 title: "Post title"
 date: 2026-10-21T10:00:00+02:00
+excerpt: "One or two sentences shown on the blog index."
 categories: [Machine Learning]
 tags: [Python, MLOps]
 header:
@@ -164,8 +165,18 @@ toc_label: "Contents"
 ---
 ```
 
-`layout`, `author_profile`, `read_time`, `share`, and `related` come from `_config.yml`
-defaults. The post is published at `/posts/<slug>/`.
+`layout`, `author_profile`, `read_time`, `share`, `related` and `math` come from `_config.yml`
+defaults. The post is published at `/posts/YYYY-MM-DD-slug/`. Dates in the future are not
+published until that date (Jekyll's default).
+
+Every post follows the **blog post standard** in [AGENT.md](AGENT.md): business problem, plain
+English explanation, step-by-step math with a plain-English reading of each equation, modular
+Python, a worked example with numbers, pitfalls, production KPIs, a checklist, and a link to the
+matching service. Examples stay generic (no employer or client names).
+
+**Math:** write all math with double dollars, `$$ ... $$`. Put display equations on their own
+lines with a blank line before and after. Single `$x$` is not rendered. MathJax is loaded only on
+pages with `math: true` (all posts by default).
 
 ### Add or change a service
 
@@ -238,6 +249,7 @@ build locally before pushing CSS changes.
 | Area | Status |
 |---|---|
 | Third-party CSS | Font Awesome is loaded with an SRI `integrity` hash + `crossorigin`. When upgrading Font Awesome, update the hash from `https://api.cdnjs.com/libraries/font-awesome/<version>?fields=sri`. |
+| Third-party JS | MathJax 3.2.2 (jsDelivr, pinned, SRI) loads only on pages with `math: true`. To upgrade, take the new `tex-chtml.js` hash from `https://data.jsdelivr.com/v1/packages/npm/mathjax@<version>?structure=flat` and prefix it with `sha256-`. |
 | External links | `target="_blank"` links use `rel="noopener noreferrer"`. |
 | Contact form | FormSubmit with its captcha enabled and a `_honey` honeypot field; input lengths are capped. |
 | Email exposure | The email address is public (sidebar, mailto links, form action). Expect some spam. |

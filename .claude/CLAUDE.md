@@ -68,7 +68,7 @@ Two more version traps, both of which break the build on a modern Ruby:
 | Services | `/services/` | `_pages/services.md` | **The offer to the client.** 8 service areas + engagement models |
 | Experience | `/experience/` | `_pages/experience.md` | **Employers only** — 5 real employee roles with outcomes |
 | About | `/about/` | `_pages/about.md` | Executive summary, condensed career timeline, education, tech arsenal, **CV section (`id="cv"`)** |
-| Insights | `/posts/` | `_pages/posts.md` | Blog index (`layout: collection`) |
+| Blog | `/posts/` | `_pages/posts.md` | Blog index grouped by year (`layout: posts`). Nav label is "Blog"; URL stays `/posts/` so existing links keep working |
 | Contact | `/contact/` | `_pages/contact.md` | Contact channels + **the one and only form** (`id="request-cv"`) |
 
 ### Redirects
@@ -311,5 +311,59 @@ failure** — a stale response is the usual cause, not a broken build.
 - `include: - .htaccess` and `- files` in `_config.yml` are no-ops (no `.htaccess`; `files/` is
   empty). Harmless.
 - Posts live in `_posts/` with `YYYY-MM-DD-slug.md`. Front matter sets `toc: true`,
-  `read_time: true`, `author_profile: true`; `related: true` and `share: true` come from
-  `_config.yml` defaults.
+  `read_time: true`, `author_profile: true`; `related: true`, `share: true` and `math: true`
+  come from `_config.yml` defaults.
+
+---
+
+## Blog post standard
+
+Posts are the showcase for prospective clients. Every post must follow this standard.
+
+### Required sections (in this order)
+
+1. **Opening paragraph**: first person, states the problem and what the reader will get. Also set
+   `excerpt:` in front matter to a one or two sentence summary (used on the blog index).
+2. `## The business problem`: who has it, what it costs, what goes wrong without a solution.
+3. `## The idea in plain English`: the method explained without formulas.
+4. `## How it works: the math, step by step`: every equation is followed by a plain-English
+   reading ("In plain English: ...", "Read it as: ...", or a "Line by line" bullet list).
+   Derive results, do not just state them.
+5. `## Implementation in Python`: modular code. A config dataclass, small pure functions, a
+   class with a clear interface, and a short usage example. Use `Protocol` interfaces for LLMs
+   and external services so code is vendor-neutral. Code must be correct for current library
+   versions.
+6. `## A worked example`: one realistic, generic scenario with concrete numbers carried through
+   the formulas. Check the arithmetic.
+7. `## Pitfalls and when not to use it`
+8. `## Measuring success in production`: the KPIs a business owner would track.
+9. `## Checklist`: plain bullets (kramdown does not render `- [ ]` task lists).
+10. `## Final thought`: short summary plus links to the matching `/services/#<anchor>` and
+    `/contact/`.
+
+### Content rules
+
+- **Generic examples only.** No employer names (SEB, Bonnier News, Tobii Pro, ...), no client
+  names, and no fraud or financial-crime examples. Use neutral scenarios such as a bakery chain,
+  a parcel hub, a spare-parts warehouse, a subscription service or an internal policy assistant.
+- **Personal, teaching tone.** First person ("In my experience", "I usually"), short sentences,
+  explain why before how. Do not invent specific past projects or results.
+- **No filler or AI-sounding wording.** Avoid: delve, landscape, leverage, seamless, robust,
+  unlock, harness, cutting-edge, game-changer, unprecedented, "in today's fast-paced world",
+  "let's dive in". Avoid em dashes in post bodies. No emojis in headings.
+- **Cross-link** related posts with full `/posts/YYYY-MM-DD-slug/` URLs.
+- If a post file is renamed, keep the old URL alive with `redirect_from:`.
+
+### Math formatting (MathJax)
+
+MathJax 3 (pinned, with SRI) is loaded by `_includes/head/custom.html` only when `page.math` is
+true, which is the default for posts. kramdown converts `$$...$$` to `\(...\)` (inline) or
+`\[...\]` (display), and MathJax renders those.
+
+- Use `$$...$$` for **all** math. A single `$x$` is not math in kramdown and shows as literal text.
+- Display math: `$$` on its own line, with a **blank line before and after** the block.
+- Inline math must not make up a whole paragraph or list item, or kramdown treats it as display.
+- No bare `|` inside inline math (kramdown may read it as a table cell); use `\lvert ... \rvert`
+  or `\mid`.
+- Never write two opening curly braces, or an opening brace followed by `%`, anywhere in a post,
+  including code blocks: Liquid will try to evaluate it and the build fails.

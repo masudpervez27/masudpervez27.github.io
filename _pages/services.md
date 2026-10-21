@@ -105,7 +105,7 @@ solve it, and hand over something your team can run without me.
   </div>
 
   <div class="service-provenance">
-    <i class="fas fa-lightbulb"></i><span>Independent practice — architecture documented in the Insights blog</span>
+    <i class="fas fa-lightbulb"></i><span>Independent practice — architecture documented on the blog</span>
   </div>
 </div>
 

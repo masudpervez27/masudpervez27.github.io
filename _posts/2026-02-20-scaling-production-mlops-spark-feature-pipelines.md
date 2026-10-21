@@ -1,142 +1,402 @@
 ---
-title: "Scaling Distributed Feature Pipelines & MLOps with PySpark and Microservices"
+title: "Reliable Feature Pipelines with PySpark: Point-in-Time Correctness, Idempotent Jobs and Drift Monitoring"
 date: 2026-02-20T10:00:00+01:00
+excerpt: "Most models that fail after launch fail because of the data pipeline, not the algorithm. How to build Spark feature pipelines that do not leak the future, can be rerun safely, and warn you when the data changes, with the math behind each check."
 categories:
   - MLOps
-  - Big Data
+  - Data Engineering
 tags:
   - Apache Spark
   - PySpark
-  - Microservices
+  - Feature Engineering
+  - Data Quality
   - Drift Detection
-  - Hadoop
+  - Python
 header:
   teaser: /assets/images/bg-post-resize.jpg
-author_profile: true
-read_time: true
 toc: true
 toc_label: "Contents"
-toc_icon: "server"
+toc_icon: "network-wired"
 ---
 
-When training models on tens of millions of historical events across multi-terabyte data lakes, local Python pipelines in Pandas quickly run out of memory. Building scalable, reproducible, and fault-tolerant feature pipelines requires distributed computing with **Apache Spark** combined with disciplined **MLOps practices**.
+When a model looks excellent in the notebook and disappointing in production, I now check the
+feature pipeline before I check the model. In most cases the cause is one of three things: a feature
+that accidentally used information from the future, a job that produced different numbers when it
+was rerun, or input data that slowly changed while nobody was watching. This post covers how I design
+Spark feature pipelines to prevent all three, with the math behind each check and modular PySpark
+code you can adapt.
 
-Here is an architectural walkthrough of how to structure modular Spark pipelines, monitor feature drift using statistical tests, and seamlessly bridge batch feature stores with real-time inference microservices.
+## The business problem
 
----
+A feature pipeline turns raw events (orders, logins, sensor readings, page views) into the table a
+model learns from and scores on. When it goes wrong, the symptoms are expensive and slow to diagnose:
 
-## 1. Modular Apache Spark Architecture
+- The model is approved on validation results that were too good, because of leakage. The business
+  plans around numbers that will never appear in reality.
+- A failed job is rerun and silently duplicates a day of data. Reports and model scores shift and
+  nobody can say why.
+- An upstream system changes a unit or a category code. The model keeps scoring, the scores become
+  meaningless, and the problem is noticed weeks later in the business results.
 
-A common anti-pattern in large-scale data science is the "monolithic PySpark script" where extraction, cleaning, windowed aggregation, and model training are intertwined. 
+Each of these costs far more in lost trust than in compute. A well designed pipeline makes them
+either impossible or loud.
 
-To maintain production stability, our architecture decouples into distinct stages:
+## The idea in plain English
 
-```
-[ Raw Event Lake (HDFS / GCP Cloud Storage) ]
-                      │
-                      ▼
-[ PySpark Data Extraction & Cleansing Job ]
-                      │
-                      ▼
-[ Feature Transformation & Window Aggregations ]
-                      │
-       ┌──────────────┴──────────────┐
-       ▼                             ▼
-[ Offline Feature Store ]    [ Online Cache (Redis) ]
-(Parquet / Hive for Training) (Key-Value for Real-Time)
-```
+Three rules carry most of the weight:
 
-### PySpark Windowed Feature Generation Example
+1. **Only use the past.** When you compute a feature for a given moment, use only events that had
+   already happened at that moment. Exactly as the model would see them in production.
+2. **Same input, same output.** Running the job twice for the same day must give the same result as
+   running it once. Then retries and backfills are safe.
+3. **Watch the inputs, not just the outputs.** Compare each day's feature distributions with a
+   reference period, and raise an alert when they move more than expected.
 
-```python
-from pyspark.sql import functions as F
-from pyspark.sql.window import Window
+Everything else, like partitioning, caching and cluster sizing, is about making these three rules
+fast and cheap.
 
-def generate_customer_temporal_features(df):
-    """
-    Computes rolling velocity and monetary aggregates per customer.
-    Input df contains: customer_id, timestamp, transaction_amount
-    """
-    # Define time-based windows using unix epoch timestamps
-    window_24h = (
-        Window.partitionBy("customer_id")
-        .orderBy(F.col("timestamp").cast("long"))
-        .rangeBetween(-86400, 0)
-    )
-    
-    window_30d = (
-        Window.partitionBy("customer_id")
-        .orderBy(F.col("timestamp").cast("long"))
-        .rangeBetween(-86400 * 30, 0)
-    )
+## How it works: the math, step by step
 
-    features_df = df.withColumn(
-        "tx_count_24h", F.count("transaction_amount").over(window_24h)
-    ).withColumn(
-        "tx_sum_24h", F.sum("transaction_amount").over(window_24h)
-    ).withColumn(
-        "tx_avg_30d", F.avg("transaction_amount").over(window_30d)
-    ).withColumn(
-        "tx_ratio_current_to_30d_avg",
-        F.col("transaction_amount") / (F.col("tx_avg_30d") + 1e-5)
-    )
+### Point-in-time correctness
 
-    return features_df
-```
+Let each entity (a customer, a machine, a store) be $$e$$, and let it produce events $$(t_j, v_j)$$
+with timestamp $$t_j$$ and value $$v_j$$. A rolling-window feature at time $$t$$ with window length
+$$w$$ is
 
----
+$$
+x_e^{\text{sum}}(t) = \sum_{j \,:\, t - w \le t_j < t} v_j
+$$
 
-## 2. Statistical Data Drift Monitoring: PSI & KS-Tests
+In plain English: add up the values of all events that happened in the window before $$t$$. The
+strict inequality $$t_j < t$$ is the important part. The event happening *at* time $$t$$ is what we
+are trying to predict or react to, so it must not be part of its own features.
 
-Even the best machine learning models degrade over time as consumer behavior, macroeconomic conditions, or system upstream schemas evolve. In regulated environments like banking and healthcare, silent model degradation cannot be tolerated.
+The label is defined over a future window of length $$h$$:
+
+$$
+y_e(t) = \mathbf{1}\left[\text{target event occurs in } [t, \, t + h)\right]
+$$
+
+In plain English: did the thing we care about happen in the next $$h$$ days after the moment we made
+the prediction. Features look backwards from $$t$$; labels look forwards from $$t$$. If any feature
+window overlaps the label window, the model is learning from the answer.
+
+### Recency-weighted features
+
+A plain window treats an event 29 days ago the same as one yesterday. An exponentially decayed sum
+weights recent events more:
+
+$$
+x_e^{\text{decay}}(t) = \sum_{j \,:\, t_j < t} v_j \, e^{-\lambda (t - t_j)},
+\qquad \lambda = \frac{\ln 2}{T_{1/2}}
+$$
+
+Read it as: each past event counts fully when it is fresh, and its weight halves every
+$$T_{1/2}$$ days. A half-life of 7 days means an event from two weeks ago counts one quarter.
+
+### Idempotency
+
+Let $$f$$ be the job that computes features for partition $$d$$ (a day). The job is idempotent if
+
+$$
+f(f(S, d), d) = f(S, d)
+$$
+
+where $$S$$ is the state of the feature table. In plain English: running the job for day $$d$$ a
+second time leaves the table exactly as it was after the first run. In Spark this is achieved by
+**overwriting the partition** for day $$d$$ rather than appending to it.
 
 ### Population Stability Index (PSI)
-We monitor distribution shift between baseline training features and incoming production data batches using the **Population Stability Index (PSI)**:
 
-$$\text{PSI} = \sum_{b=1}^{B} \left( P_b - Q_b \right) \cdot \ln\left( \frac{P_b}{Q_b} \right)$$
+To detect drift in a feature, split its reference distribution into $$B$$ bins (usually deciles).
+Let $$r_b$$ be the share of reference rows in bin $$b$$ and $$a_b$$ the share of today's rows in the
+same bin. Then
 
-* **$\text{PSI} < 0.10$**: Stable distribution; no action needed.
-* **$0.10 \le \text{PSI} < 0.25$**: Moderate shift; alert engineering team to evaluate.
-* **$\text{PSI} \ge 0.25$**: Significant distributional shift; triggers automated fallback and retraining.
+$$
+\text{PSI} = \sum_{b=1}^{B} (a_b - r_b) \, \ln\!\left(\frac{a_b}{r_b}\right)
+$$
 
-```python
-import numpy as np
+Line by line:
 
-def calculate_psi(expected, actual, num_buckets=10):
-    """
-    Calculates the Population Stability Index between reference (expected)
-    and production inference (actual) data arrays.
-    """
-    # Generate quantile bin edges from reference distribution
-    percentiles = np.linspace(0, 100, num_buckets + 1)
-    bin_edges = np.percentile(expected, percentiles)
-    bin_edges[0] -= 1e-5
-    bin_edges[-1] += 1e-5
+- $$a_b - r_b$$ says how much the share in bin $$b$$ moved.
+- $$\ln(a_b / r_b)$$ says how large that move is relative to the original share, and has the same
+  sign, so every term is zero or positive.
+- Summing over bins gives one number per feature.
 
-    # Bucket counts
-    expected_counts, _ = np.histogram(expected, bins=bin_edges)
-    actual_counts, _ = np.histogram(actual, bins=bin_edges)
+Common rules of thumb: below 0.1 is stable, 0.1 to 0.25 deserves a look, above 0.25 is a significant
+shift. PSI is a symmetric form of the Kullback-Leibler divergence, which is why it behaves well as a
+distance.
 
-    # Fractions with smoothing epsilon
-    p = (expected_counts / len(expected)) + 1e-4
-    q = (actual_counts / len(actual)) + 1e-4
+### Kolmogorov-Smirnov statistic
 
-    # Normalize back to 1
-    p /= np.sum(p)
-    q /= np.sum(q)
+A second check that does not need bins is the largest gap between the two cumulative distributions:
 
-    # PSI summation
-    psi_value = np.sum((p - q) * np.log(p / q))
-    return float(psi_value)
+$$
+D = \sup_{x} \left| F_{\text{ref}}(x) - F_{\text{today}}(x) \right|
+$$
+
+In plain English: walk along all possible values and find the point where the two distributions
+disagree most about "what share of values are below this". With very large samples almost any
+difference becomes statistically significant, so I use $$D$$ itself as an effect size with a fixed
+alert level rather than relying on the p-value.
+
+## Implementation in Python
+
+### Structure
+
+I keep each job in four small layers, so every part can be tested without a cluster:
+
+```
+features/
+  config.py        # windows, paths, thresholds (no logic)
+  transforms.py    # pure DataFrame -> DataFrame functions
+  quality.py       # data quality and drift checks
+  job.py           # read, transform, check, write for one partition
 ```
 
----
+### Configuration
 
-## 3. Microservices Deployment & Automated Governance
+```python
+# features/config.py
+from dataclasses import dataclass, field
 
-Once models are validated through CI/CD pipelines:
-1. **Containerized Serialization:** Models are exported in optimized formats (ONNX, Treelite, or optimized scikit-learn pickles) packaged inside lightweight Docker containers running FastAPI or Triton Inference Server.
-2. **Health Probes & Metrics:** Every container exports Prometheus telemetry tracking latency percentiles (p50, p95, p99), inference counts, and prediction distribution histograms.
-3. **Model Governance Audit Logs:** In compliance with regulatory requirements, each model prediction logs feature inputs, model version hash, threshold applied, and response timestamp into immutable audit tables.
 
-By combining distributed Spark batch computation with disciplined drift monitoring and microservices packaging, organizations achieve robust ML systems capable of processing millions of daily transactions without operational overhead.
+@dataclass(frozen=True)
+class FeatureConfig:
+    entity_col: str = "customer_id"
+    ts_col: str = "event_ts"
+    value_col: str = "amount"
+    windows_days: tuple[int, ...] = (7, 30, 90)
+    half_life_days: float = 14.0
+    events_path: str = "s3://lake/events/"
+    output_path: str = "s3://lake/features/customer_daily/"
+    psi_alert: float = 0.25
+    null_rate_alert: float = 0.02
+    key_cols: tuple[str, ...] = field(default=("customer_id", "as_of_date"))
+```
+
+### Transforms
+
+```python
+# features/transforms.py
+import math
+
+from pyspark.sql import DataFrame, Window
+from pyspark.sql import functions as F
+
+from features.config import FeatureConfig
+
+DAY = 86_400
+
+
+def snapshot_rows(entities: DataFrame, as_of_date: str) -> DataFrame:
+    """One row per entity at the start of the scoring day."""
+    return entities.select("customer_id").distinct().withColumn(
+        "as_of_ts", F.to_timestamp(F.lit(as_of_date))
+    ).withColumn("as_of_date", F.lit(as_of_date).cast("date"))
+
+
+def window_features(events: DataFrame, snapshots: DataFrame, cfg: FeatureConfig) -> DataFrame:
+    """Rolling sums and counts using only events strictly before as_of_ts."""
+    e, s = events.alias("e"), snapshots.alias("s")
+    max_window = max(cfg.windows_days) * DAY
+    joined = s.join(
+        e,
+        on=(F.col(f"e.{cfg.entity_col}") == F.col(f"s.{cfg.entity_col}"))
+        & (F.col(f"e.{cfg.ts_col}") < F.col("s.as_of_ts"))
+        & (F.col(f"e.{cfg.ts_col}") >= F.col("s.as_of_ts") - F.expr(f"INTERVAL {max_window} SECONDS")),
+        how="left",
+    )
+    age_s = F.col("s.as_of_ts").cast("long") - F.col(f"e.{cfg.ts_col}").cast("long")
+
+    aggs = []
+    for d in cfg.windows_days:
+        in_window = age_s <= d * DAY
+        aggs.append(F.sum(F.when(in_window, F.col(f"e.{cfg.value_col}"))).alias(f"sum_{d}d"))
+        aggs.append(F.count(F.when(in_window, F.lit(1))).alias(f"count_{d}d"))
+
+    decay = math.log(2) / (cfg.half_life_days * DAY)
+    aggs.append(F.sum(F.col(f"e.{cfg.value_col}") * F.exp(-decay * age_s)).alias("decayed_sum"))
+
+    out = joined.groupBy(F.col(f"s.{cfg.entity_col}").alias(cfg.entity_col), "s.as_of_date").agg(*aggs)
+    return out.fillna(0)
+
+
+def ratio_features(df: DataFrame, short: int = 7, long: int = 90) -> DataFrame:
+    """How the recent week compares with the longer-term average."""
+    weekly_avg_long = F.col(f"sum_{long}d") / F.lit(long / short)
+    return df.withColumn(
+        f"trend_{short}d_vs_{long}d",
+        F.when(weekly_avg_long > 0, F.col(f"sum_{short}d") / weekly_avg_long),
+    )
+```
+
+The join condition is where point-in-time correctness lives. `e.event_ts < s.as_of_ts` makes it
+impossible for an event at or after the snapshot time to enter a feature, no matter how the rest of
+the code changes.
+
+### Quality and drift checks
+
+```python
+# features/quality.py
+import numpy as np
+from pyspark.sql import DataFrame
+from pyspark.sql import functions as F
+
+
+class DataQualityError(RuntimeError):
+    pass
+
+
+def check_unique_keys(df: DataFrame, keys: tuple[str, ...]) -> None:
+    dupes = df.groupBy(*keys).count().filter("count > 1").limit(1).count()
+    if dupes:
+        raise DataQualityError(f"Duplicate keys on {keys}")
+
+
+def check_null_rates(df: DataFrame, max_rate: float) -> dict[str, float]:
+    total = df.count()
+    rates = df.select([(F.sum(F.col(c).isNull().cast("int")) / total).alias(c) for c in df.columns]).first()
+    bad = {c: r for c, r in rates.asDict().items() if r is not None and r > max_rate}
+    if bad:
+        raise DataQualityError(f"Null rate too high: {bad}")
+    return rates.asDict()
+
+
+def psi(reference: np.ndarray, current: np.ndarray, bins: int = 10, eps: float = 1e-4) -> float:
+    edges = np.unique(np.quantile(reference, np.linspace(0, 1, bins + 1)))
+    edges[0], edges[-1] = -np.inf, np.inf
+    r = np.histogram(reference, edges)[0] / len(reference) + eps
+    a = np.histogram(current, edges)[0] / len(current) + eps
+    return float(np.sum((a - r) * np.log(a / r)))
+
+
+def drift_report(reference: DataFrame, current: DataFrame, cols: list[str],
+                 sample_rows: int = 200_000) -> dict[str, float]:
+    """PSI per feature on bounded samples, so the check stays cheap."""
+    def sample(df: DataFrame, c: str) -> np.ndarray:
+        n = df.count()
+        frac = min(1.0, sample_rows / max(n, 1))
+        rows = df.select(c).dropna().sample(fraction=frac, seed=11).collect()
+        return np.array([row[0] for row in rows], dtype=float)
+
+    return {c: psi(sample(reference, c), sample(current, c)) for c in cols}
+```
+
+### The job
+
+```python
+# features/job.py
+from pyspark.sql import SparkSession
+
+from features import quality, transforms
+from features.config import FeatureConfig
+
+
+def run(spark: SparkSession, as_of_date: str, cfg: FeatureConfig = FeatureConfig()) -> None:
+    spark.conf.set("spark.sql.sources.partitionOverwriteMode", "dynamic")
+
+    events = spark.read.parquet(cfg.events_path)
+    snapshots = transforms.snapshot_rows(events, as_of_date)
+    features = transforms.ratio_features(transforms.window_features(events, snapshots, cfg))
+
+    quality.check_unique_keys(features, cfg.key_cols)
+    quality.check_null_rates(features.drop("trend_7d_vs_90d"), cfg.null_rate_alert)
+
+    reference = spark.read.parquet(cfg.output_path).filter(
+        f"as_of_date BETWEEN date_sub(to_date('{as_of_date}'), 120) AND date_sub(to_date('{as_of_date}'), 30)"
+    )
+    drift = quality.drift_report(reference, features, ["sum_30d", "count_30d", "decayed_sum"])
+    alerts = {k: v for k, v in drift.items() if v > cfg.psi_alert}
+    if alerts:
+        print(f"DRIFT WARNING {as_of_date}: {alerts}")  # send to your alerting channel
+
+    (features.write.mode("overwrite")
+        .partitionBy("as_of_date")
+        .parquet(cfg.output_path))
+```
+
+`partitionOverwriteMode=dynamic` with `mode("overwrite")` replaces only the partitions present in the
+DataFrame, which is today's date. That single setting is what makes the job idempotent: run it once
+or five times, the table ends up the same.
+
+### Testing a transform locally
+
+```python
+# tests/test_point_in_time.py
+from datetime import datetime
+
+from features.config import FeatureConfig
+from features.transforms import snapshot_rows, window_features
+
+
+def test_event_at_snapshot_time_is_excluded(spark):
+    events = spark.createDataFrame(
+        [("c1", datetime(2026, 2, 19, 12), 10.0),
+         ("c1", datetime(2026, 2, 20, 0), 999.0)],   # exactly at as_of_ts: must not count
+        ["customer_id", "event_ts", "amount"],
+    )
+    snaps = snapshot_rows(events, "2026-02-20")
+    row = window_features(events, snaps, FeatureConfig()).first()
+    assert row["sum_7d"] == 10.0
+```
+
+A test like this takes seconds on a laptop and protects the one property that, if broken, makes every
+validation number meaningless.
+
+## A worked example: daily customer features for a subscription service
+
+A subscription business with 3 million customers wants to score cancellation risk every morning, and
+to retrain monthly on two years of history.
+
+- **Backfill.** The same `run(spark, as_of_date)` is called for each of the 730 historical days. The
+  output is a training table where each row shows exactly what was known that morning. No separate
+  "training version" of the logic exists, so training and scoring cannot drift apart.
+- **Daily run.** The scheduler calls the job for today at 03:00. If it fails halfway, it is simply
+  rerun. Dynamic partition overwrite guarantees no duplicates.
+- **Drift catch.** One Monday, the PSI of `sum_30d` jumps to 0.6. Investigation shows an upstream
+  system started recording amounts in öre instead of kronor. The alert fires before the morning
+  scoring is used by the marketing team, the source is fixed, and the partition is recomputed.
+
+Without the check, that unit change would have pushed every customer into "high value" and wasted a
+retention campaign on the wrong people.
+
+## Pitfalls and when not to use it
+
+- **Using `current_timestamp()` inside transforms.** It makes reruns non-reproducible. Always pass
+  the `as_of_date` in.
+- **Joining on "latest" dimension tables.** If a customer's segment is joined from today's snapshot
+  while building historical rows, you leak the future. Use dated snapshots or slowly changing
+  dimension tables with validity ranges.
+- **Skewed keys.** A handful of very active entities can make one Spark task run for hours. Check the
+  key distribution and use salting or pre-aggregation for the heavy keys.
+- **PSI on tiny samples.** With few rows per bin, PSI is noisy. Use a minimum sample size or fewer
+  bins.
+- **Spark for small data.** If the data fits comfortably in memory on one machine, pandas or Polars
+  with the same design principles is simpler and cheaper. The principles matter more than the engine.
+
+## Measuring success in production
+
+- Job success rate and runtime per day, and number of manual reruns.
+- Gap between offline validation metrics and live performance (leakage shows up here).
+- Number of drift alerts per month and the share that pointed to real issues.
+- Time from an upstream change to its detection.
+- Compute cost per daily run.
+
+## Checklist
+
+- Every transform takes `as_of_date` as an argument and never reads the clock.
+- Join conditions enforce `event_ts < as_of_ts`.
+- Writes use dynamic partition overwrite.
+- Unique-key and null-rate checks run before the write.
+- PSI is computed for key features against a fixed reference window.
+- A unit test proves that events at the snapshot time are excluded.
+- The same code builds both the training backfill and the daily scoring table.
+
+## Final thought
+
+Good feature pipelines are not glamorous, but they decide whether a model can be trusted after its
+first month. Building them around point-in-time correctness, idempotency and drift monitoring has
+saved me far more time than any modelling trick. If your models behave differently in production
+than they did in testing, I can help find out why. See my
+[production MLOps service](/services/#production-mlops) or [contact me](/contact/).
