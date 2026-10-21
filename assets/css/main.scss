@@ -64,15 +64,23 @@ body {
   font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--dark-slate);
+  font-size: 1.05rem;
+  line-height: 1.2;
 }
 
 .site-subtitle {
-  font-size: 0.75rem;
-  color: var(--accent-teal);
+  font-size: 0.72rem;
+  color: #64748b;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.02em;
+  text-transform: none;
   display: block;
+  margin-top: 0.15rem;
+}
+
+.site-logo img {
+  max-height: 2rem;
+  border-radius: 8px;
 }
 
 /* Author Sidebar Styling & Links */

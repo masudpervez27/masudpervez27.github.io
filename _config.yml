@@ -19,15 +19,15 @@ locale                   : "en-US"
 rtl                      : # true, false (default) # turns direction of the page into right to left for RTL languages
 title                    : "Masud Pervez"
 title_separator          : "|"
-subtitle                 : "Senior Data Science, MLOps & AI Consulting"
+subtitle                 : "Data Science · MLOps · AI Consulting"
 name                     : "Masud Pervez" # &name is a YAML anchor which can be *referenced later
 description              : "Senior Data Scientist & ML Engineer specializing in Real-Time ML Systems, MLOps, & Scalable Big Data Pipelines. Available for B2B Consulting via Enskild Firma (F-skatt) in Stockholm & Remote."
 url                      : "https://masudpervez27.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : #"/masudpervez27" # the subpath of your site, e.g. "/blog"
 repository               : "masudpervez27/masudpervez27.github.io"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
-logo                     : #"/assets/images/apple-touch-icon.png" # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
-masthead_title           : "Masud Pervez | AI & Data Consulting"
+logo                     : "/assets/images/mp-monogram.svg" # monogram mark shown in the masthead
+masthead_title           : "Masud Pervez"
 breadcrumbs              : false
 words_per_minute         : 200
 enable_copy_code_button  : # true, false (default)
@@ -162,6 +162,7 @@ exclude:
   - package-lock.json
   - Rakefile
   - README
+  - AGENT.md
   - tmp
   - /docs # ignore Minimal Mistakes /docs
   - /test # ignore Minimal Mistakes /test
@@ -247,6 +248,10 @@ whitelist:
   - jekyll-feed
   - jekyll-include-cache
   - jekyll-redirect-from
+
+# Don't publish a public /redirects.json listing every old URL → new URL.
+redirect_from:
+  json: false
 
 
 # Archives

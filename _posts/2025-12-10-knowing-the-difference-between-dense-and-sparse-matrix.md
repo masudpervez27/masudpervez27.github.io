@@ -5,19 +5,19 @@ categories:
   - Linear Algebra
   - Performance
 tags:
-  - NumPy
+  - Sparse Matrix
+  - Dense Matrix
+  - Linear Algebra
   - Memory Optimization
-  - Sparse Matrices
+  - Python
 header:
   teaser: /assets/images/bg-post-resize.jpg
 author_profile: true
 read_time: true
 toc: true
 toc_label: "Contents"
-toc_icon: "calculator"
+toc_icon: "table"
 ---
-
-# Dense vs. Sparse Matrices: Which One Should You Use?
 
 In the world of data science, machine learning, and linear algebra, how we store data is just as important as the
 data itself. When dealing with large-scale computations, the choice between a **Dense Matrix** and a **Sparse
