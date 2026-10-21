@@ -1,9 +1,4 @@
----
-# Only the main Sass file needs front matter (the dashes are enough)
-search: false
----
-
-@charset "utf-8";
+--- # Only the main Sass file needs front matter (the dashes are enough) search: false --- @charset "utf-8";
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
@@ -29,7 +24,15 @@ search: false
    CRITICAL: Universal Icon & Text Alignment Fixes
    ========================================================================== */
 
-i.fas, i.fab, i.far, i.fal, i.fad, i.fa-solid, i.fa-brands, i.fa-regular, .svg-inline--fa {
+i.fas,
+i.fab,
+i.far,
+i.fal,
+i.fad,
+i.fa-solid,
+i.fa-brands,
+i.fa-regular,
+.svg-inline--fa {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -55,6 +58,7 @@ body {
   font-size: 0.95rem;
   letter-spacing: -0.01em;
   transition: color 0.15s ease-in-out;
+
   &:hover {
     color: var(--primary-accent);
   }
@@ -117,7 +121,8 @@ body {
     white-space: nowrap !important;
     vertical-align: middle !important;
 
-    i, .svg-inline--fa {
+    i,
+    .svg-inline--fa {
       width: 1.25em !important;
       text-align: center !important;
       margin-inline-end: 0 !important;
@@ -167,9 +172,17 @@ body {
 }
 
 @keyframes pulse-dot {
-  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); }
-  70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+  0% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6);
+  }
+
+  70% {
+    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
 }
 
 .consulting-meta-item {
@@ -191,7 +204,8 @@ body {
   white-space: nowrap !important;
   vertical-align: middle !important;
 
-  i, .svg-inline--fa {
+  i,
+  .svg-inline--fa {
     margin-inline-end: 0 !important;
   }
 }
@@ -244,7 +258,9 @@ body {
       margin-bottom: 0.4rem;
     }
 
-    input, select, textarea {
+    input,
+    select,
+    textarea {
       width: 100%;
       padding: 0.7rem 0.95rem;
       border: 1px solid #cbd5e1;
@@ -280,8 +296,17 @@ body {
 }
 
 /* Headings with Icons - Always inline in one row */
-h1, h2, h3, h4, h5, h6, .service-title, .case-title {
-  i, .svg-inline--fa {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.service-title,
+.case-title {
+
+  i,
+  .svg-inline--fa {
     display: inline-flex !important;
     align-items: center !important;
     vertical-align: middle !important;
@@ -333,7 +358,8 @@ h1, h2, h3, h4, h5, h6, .service-title, .case-title {
     white-space: nowrap !important;
     vertical-align: middle !important;
 
-    i, .svg-inline--fa {
+    i,
+    .svg-inline--fa {
       margin-inline-end: 0 !important;
     }
   }
@@ -384,7 +410,8 @@ h1, h2, h3, h4, h5, h6, .service-title, .case-title {
   transition: all 0.2s ease;
   cursor: pointer;
 
-  i, .svg-inline--fa {
+  i,
+  .svg-inline--fa {
     margin-inline-end: 0 !important;
     display: inline-flex !important;
     align-items: center !important;
@@ -531,7 +558,8 @@ h1, h2, h3, h4, h5, h6, .service-title, .case-title {
     background: #e0f2fe;
     color: #0284c7;
 
-    i, .svg-inline--fa {
+    i,
+    .svg-inline--fa {
       margin-inline-end: 0 !important;
     }
   }
@@ -567,7 +595,8 @@ h1, h2, h3, h4, h5, h6, .service-title, .case-title {
       align-items: flex-start !important;
       gap: 0.55rem !important;
 
-      i, .svg-inline--fa {
+      i,
+      .svg-inline--fa {
         color: #0ea5e9;
         margin-top: 0.25rem !important;
         margin-inline-end: 0 !important;
@@ -694,7 +723,8 @@ h1, h2, h3, h4, h5, h6, .service-title, .case-title {
       gap: 0.65rem !important;
       align-items: flex-start !important;
 
-      > i, > .svg-inline--fa {
+      >i,
+      >.svg-inline--fa {
         color: #16a34a;
         margin-top: 0.25rem !important;
         margin-inline-end: 0 !important;
@@ -815,7 +845,8 @@ h1, h2, h3, h4, h5, h6, .service-title, .case-title {
   font-weight: 600;
   color: #64748b;
 
-  i, .svg-inline--fa {
+  i,
+  .svg-inline--fa {
     color: var(--accent-teal);
     margin-inline-end: 0 !important;
     flex-shrink: 0;
@@ -834,7 +865,8 @@ h1, h2, h3, h4, h5, h6, .service-title, .case-title {
   text-decoration: none !important;
   transition: gap 0.2s ease, color 0.2s ease;
 
-  i, .svg-inline--fa {
+  i,
+  .svg-inline--fa {
     font-size: 0.78rem;
     transition: transform 0.2s ease;
   }
@@ -907,7 +939,7 @@ h1, h2, h3, h4, h5, h6, .service-title, .case-title {
   padding-top: 1rem;
   border-top: 2px solid var(--card-border);
 
-  > h2 {
+  >h2 {
     font-size: 1.6rem;
     font-weight: 800;
     color: var(--dark-slate);
@@ -949,13 +981,14 @@ h1, h2, h3, h4, h5, h6, .service-title, .case-title {
   padding: 0.35rem 0.85rem;
   border-radius: 9999px;
 
-  i, .svg-inline--fa {
+  i,
+  .svg-inline--fa {
     margin-inline-end: 0 !important;
   }
 }
 
 /* Full-width service cards on /services/ stack vertically */
-.page__content > .service-card {
+.page__content>.service-card {
   margin: 1.5rem 0;
 }
 
