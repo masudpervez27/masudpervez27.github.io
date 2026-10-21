@@ -734,7 +734,192 @@ h1, h2, h3, h4, h5, h6, .service-title, .case-title {
   }
 }
 
-/* Responsive tweaks */
+/* ==========================================================================
+   Top-Level Tech Pills
+   (.tech-pills is also nested inside .service-card; this rule allows the
+   pills to be used standalone, e.g. on the /experience/ employer cards)
+   ========================================================================== */
+
+.tech-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 1rem;
+  margin-top: 1.25rem;
+
+  .tech-pill {
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: #f1f5f9;
+    color: #475569;
+    padding: 0.2rem 0.55rem;
+    border-radius: 6px;
+  }
+}
+
+/* ==========================================================================
+   Service Card — Benefit Block, Provenance & Sub-heading
+   ========================================================================== */
+
+.service-subtitle {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #0369a1;
+  margin: 0 0 0.75rem 0;
+}
+
+.service-benefit {
+  background: #f0f9ff;
+  border-left: 4px solid var(--primary-accent);
+  border-radius: 0 8px 8px 0;
+  padding: 0.9rem 1.1rem;
+  margin-top: 1.25rem;
+
+  strong {
+    display: block;
+    color: #0369a1;
+    font-size: 0.88rem;
+    margin-bottom: 0.25rem;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: #334155;
+  }
+}
+
+/* Plain-text provenance line — names the employer, never a hyperlink */
+.service-provenance {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 1rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid #f1f5f9;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #64748b;
+
+  i, .svg-inline--fa {
+    color: var(--accent-teal);
+    margin-inline-end: 0 !important;
+    flex-shrink: 0;
+  }
+}
+
+/* "Learn more" link on the slim homepage pillar cards */
+.service-link {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: auto;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--primary-accent) !important;
+  text-decoration: none !important;
+  transition: gap 0.2s ease, color 0.2s ease;
+
+  i, .svg-inline--fa {
+    font-size: 0.78rem;
+    transition: transform 0.2s ease;
+  }
+
+  &:hover {
+    color: var(--primary-accent-dark) !important;
+    gap: 0.6rem;
+  }
+}
+
+/* ==========================================================================
+   Condensed Career Timeline (About page)
+   ========================================================================== */
+
+.timeline-list {
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  overflow: hidden;
+  margin: 1.5rem 0 2.5rem 0;
+  box-shadow: var(--card-shadow);
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 9.5rem 1fr;
+  grid-template-areas: "period role" "period org";
+  gap: 0.15rem 1.25rem;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--card-border);
+  transition: background 0.2s ease;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background: #f8fafc;
+  }
+}
+
+.timeline-period {
+  grid-area: period;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--primary-accent);
+  white-space: nowrap;
+}
+
+.timeline-role {
+  grid-area: role;
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--dark-slate);
+}
+
+.timeline-org {
+  grid-area: org;
+  font-size: 0.88rem;
+  color: #64748b;
+}
+
+/* ==========================================================================
+   CV Section Wrapper (About page)
+   ========================================================================== */
+
+.cv-section {
+  margin: 3rem 0 2rem 0;
+  padding-top: 1rem;
+  border-top: 2px solid var(--card-border);
+
+  > h2 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--dark-slate);
+    margin: 0.5rem 0 0.75rem 0;
+  }
+
+  h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--dark-slate);
+    margin: 2rem 0 0.75rem 0;
+  }
+
+  .metrics-grid {
+    margin: 1.25rem 0 1.5rem 0;
+  }
+}
+
+/* ==========================================================================
+   Responsive tweaks
+   ========================================================================== */
+
 @media (max-width: 768px) {
   .hero-consulting {
     padding: 1.75rem 1.25rem;
@@ -746,5 +931,12 @@ h1, h2, h3, h4, h5, h6, .service-title, .case-title {
     .hero-tagline {
       white-space: normal !important;
     }
+  }
+
+  .timeline-item {
+    grid-template-columns: 1fr;
+    grid-template-areas: "period" "role" "org";
+    gap: 0.2rem;
+    padding: 0.9rem 1.1rem;
   }
 }

@@ -4,13 +4,11 @@ main:
     url: /
   - title: "Services"
     url: /services/
-  - title: "Case Studies"
-    url: /projects/
+  - title: "Experience"
+    url: /experience/
   - title: "About"
     url: /about/
   - title: "Insights"
     url: /posts/
-  - title: "Request CV"
-    url: /cv/
   - title: "Contact"
     url: /contact/

@@ -4,6 +4,7 @@ layout: single
 permalink: /about/
 author_profile: true
 classes: wide
+description: "Senior Data Scientist, Machine Learning Engineer, and Statistician based in Stockholm, Sweden — ten years of production ML across banking, media, and clinical research."
 ---
 
 <div class="hero-tagline" style="margin-bottom: 1.5rem;">
@@ -12,7 +13,7 @@ classes: wide
 
 ## Executive Summary &amp; Consulting Profile
 
-I bridge the gap between advanced statistics and production-ready AI. With over **eight years of tier-1 enterprise experience**, I provide senior data science and machine learning engineering services to B2B organizations and growing SMEs — helping them build resilient ML systems, optimize complex data workflows, and make better decisions using data.
+I bridge the gap between advanced statistics and production-ready AI. With over **ten years of tier-1 enterprise experience**, I provide senior data science and machine learning engineering services to B2B organizations and growing SMEs — helping them build resilient ML systems, optimize complex data workflows, and make better decisions using data.
 
 Operating as an independent Swedish consultant based in Stockholm via *Enskild Firma*, I work across any industry — from financial services and media to retail, logistics, and beyond. My focus is always on **business value, system reliability, and measurable ROI**.
 
@@ -24,37 +25,38 @@ Rather than merely experimenting with algorithms in isolated notebooks, I delive
 
 ---
 
-## Professional Career History
+## Career Overview
 
-### **Skandinaviska Enskilda Banken (SEB)** | Stockholm, Sweden
-**Senior Data Scientist** &bull; *June 2021 – Present*
-* Spearheaded the architecture and live deployment of real-time machine learning fraud detection systems operating via microservices architecture.
-* Developed mathematically grounded cost-based threshold optimization models, enabling business stakeholders to balance fraud loss against customer payment interruption.
-* Engineered distributed Spark pipelines on Hadoop for feature computation, daily model inference, and metric logging across massive transactional data streams.
-* Implemented end-to-end model governance, drift detection, and retraining automation strategies.
-* Partnered cross-functionally across engineering, compliance, and product teams to evaluate external vendor RFPs and augment bank-wide financial crime defenses.
+Ten years across five employers, each in a different sector. Full detail — what I owned and the
+results — is on the [Experience](/experience/) page.
 
-### **Bonnier News** | Stockholm, Sweden
-**Data Scientist** &bull; *September 2018 – May 2021*
-* Engineered predictive machine learning models for customer churn prediction, subscription reactivation, and Customer Lifetime Value (CLV).
-* Built a personalized recommendation system to forecast next-best magazine and digital purchases, driving digital subscriber engagement.
-* Optimized logistics distribution via a mathematical Newsvendor model that achieved **16% profit growth** by curbing overage costs and stockouts.
-* Deployed scalable machine learning solutions on Google Cloud Platform (GCP).
-* Conducted rigorous A/B testing and retention analytics across 40+ publications, equipping executive leadership with actionable dashboards.
-
-### **Tobii Pro** | Stockholm, Sweden
-**Data Scientist &amp; Statistician** &bull; *May 2017 – September 2018*
-* Preprocessed and analyzed high-frequency eye-tracking survey datasets for consumer attention and behavioural pattern discovery using Python and R.
-* Applied statistical modeling (PCA, logistic regression, decision trees) and authored interactive stakeholder dashboards.
-
-### **Clinical Cancer Epidemiology, Karolinska Institutet** | Stockholm, Sweden
-**Statistician (Master's Project)** &bull; *September 2012 – December 2013*
-* Performed advanced epidemiological survey analytics for gynecological cancer survivors.
-* Utilized factor analysis, hierarchical cluster comparisons, and validation techniques to extract latent symptom constructs.
-
-### **Marks and Spencer** | Dhaka, Bangladesh
-**Planner and Data Integrity Analyst** &bull; *October 2007 – August 2008*
-* Analyzed international supply chain logistics, managed shipment integrity KPIs, and conducted supplier performance training.
+<div class="timeline-list">
+  <div class="timeline-item">
+    <span class="timeline-period">2021 – Present</span>
+    <span class="timeline-role">Senior Data Scientist</span>
+    <span class="timeline-org">Skandinaviska Enskilda Banken (SEB)</span>
+  </div>
+  <div class="timeline-item">
+    <span class="timeline-period">2018 – 2021</span>
+    <span class="timeline-role">Data Scientist</span>
+    <span class="timeline-org">Bonnier News</span>
+  </div>
+  <div class="timeline-item">
+    <span class="timeline-period">2017 – 2018</span>
+    <span class="timeline-role">Data Scientist &amp; Statistician</span>
+    <span class="timeline-org">Tobii Pro</span>
+  </div>
+  <div class="timeline-item">
+    <span class="timeline-period">2012 – 2013</span>
+    <span class="timeline-role">Statistician (Master's Project)</span>
+    <span class="timeline-org">Clinical Cancer Epidemiology, Karolinska Institutet</span>
+  </div>
+  <div class="timeline-item">
+    <span class="timeline-period">2007 – 2008</span>
+    <span class="timeline-role">Planner &amp; Data Integrity Analyst</span>
+    <span class="timeline-org">Marks &amp; Spencer</span>
+  </div>
+</div>
 
 ---
 
@@ -106,11 +108,77 @@ A defining strength of my engineering practice is a deep, rigorous background in
 
 ---
 
+<div id="cv" class="cv-section">
+  <h2>Curriculum Vitae &amp; Credentials</h2>
+
+  <p>My complete, unredacted Curriculum Vitae (PDF) — including full project references and
+  technical specifications — is available on request. The summary below covers the essentials.</p>
+
+  <h3>Professional Summary</h3>
+
+  <p>I am a Senior Data Scientist, Machine Learning Engineer, and Statistician with <strong>10+ years of enterprise experience</strong> designing, deploying, and governing real-time fraud detection systems, scalable Apache Spark data pipelines, and quantitative optimization solutions for tier-1 Scandinavian institutions including <strong>Skandinaviska Enskilda Banken (SEB)</strong>, <strong>Bonnier News</strong>, and <strong>Tobii Pro</strong>.</p>
+
+  <h3>Executive Highlights</h3>
+
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <div class="metric-number">&gt;60%–70%</div>
+      <div class="metric-label">Fraud Detection Recall</div>
+      <p class="metric-desc">Engineered real-time transaction scoring at SEB via microservices.</p>
+    </div>
+    <div class="metric-card">
+      <div class="metric-number">+16%</div>
+      <div class="metric-label">Profit Margin Growth</div>
+      <p class="metric-desc">Delivered via mathematical Newsvendor optimization for Bonnier News.</p>
+    </div>
+    <div class="metric-card">
+      <div class="metric-number">10+ Years</div>
+      <div class="metric-label">Enterprise Experience</div>
+      <p class="metric-desc">Tier-1 production track record (SEB, Bonnier News, Tobii Pro).</p>
+    </div>
+    <div class="metric-card">
+      <div class="metric-number">M.Sc.</div>
+      <div class="metric-label">Mathematical Statistics</div>
+      <p class="metric-desc">Stockholm University. Rigorous quantitative probability foundation.</p>
+    </div>
+  </div>
+
+  <h3>Career Summary</h3>
+
+  * **Senior Data Scientist** &bull; *Skandinaviska Enskilda Banken (SEB)* | 2021 – Present  
+    Real-time fraud detection systems, cost-based threshold tuning, modular Spark pipelines on Hadoop, model governance and drift monitoring.
+  * **Data Scientist** &bull; *Bonnier News* | 2018 – 2021  
+    Customer churn and lifetime value (CLV) models, magazine recommendation engines, Newsvendor optimization model (+16% profit growth), GCP deployment.
+  * **Data Scientist / Statistician** &bull; *Tobii Pro* | 2017 – 2018  
+    Eye-tracking behavioral survey analytics, multivariate dimensionality reduction (PCA), regression modeling, interactive dashboards.
+  * **Master's Statistician** &bull; *Clinical Cancer Epidemiology, Karolinska Institutet* | 2012 – 2013  
+    Factor analysis, hierarchical clustering validation for clinical symptom patterns in cancer survivors.
+
+  <h3>Academic History</h3>
+
+  * **M.Sc. in Mathematical Statistics** &bull; *Stockholm University, Sweden (2008 – 2015)*
+  * **M.Sc. in Applied Statistics** &bull; *University of Dhaka (I.S.R.T.), Bangladesh (2004 – 2006)*
+  * **B.Sc. in Applied Statistics** &bull; *University of Dhaka (I.S.R.T.), Bangladesh (1998 – 2004)*
+
+  <div class="b2b-engagement-banner" style="background: #eff6ff; border-color: #bfdbfe;">
+    <h3 style="color: #1e40af;"><i class="fas fa-lock"></i><span>GDPR-Compliant CV Distribution</span></h3>
+    <p style="color: #1e3a8a; margin-bottom: 1.25rem;">
+      To adhere to GDPR standards and protect client references and sensitive contact details from automated scrapers, my complete, unredacted Curriculum Vitae (PDF) is provided upon request to prospective clients, consulting brokers, and engineering leaders.
+    </p>
+    <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+      <a href="/contact/#request-cv" class="btn-consulting-primary"><i class="fas fa-paper-plane"></i><span>Request Full CV (PDF)</span></a>
+      <a href="mailto:masud.pervez@yahoo.com?subject=CV%20Request%20-%20Data%20Science%20Consulting" class="btn-consulting-secondary" style="background: #1e40af; border: none;"><i class="fas fa-envelope"></i><span>Email Direct Request</span></a>
+    </div>
+  </div>
+</div>
+
+---
+
 <div class="cta-box">
   <h2>Let's discuss how I can help your business</h2>
   <p>Available for consulting engagements with companies of all sizes &mdash; from growing SMEs to large enterprises. Fixed-scope projects, embedded contractor roles, and strategic advisory welcome.</p>
   <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
     <a href="/contact/" class="btn-consulting-primary"><i class="fas fa-envelope"></i><span>Contact Directly</span></a>
-    <a href="/contact/#request-cv" class="btn-consulting-secondary"><i class="fas fa-file-contract"></i><span>Request Full CV (PDF)</span></a>
+    <a href="/services/" class="btn-consulting-secondary"><i class="fas fa-briefcase"></i><span>Explore My Services</span></a>
   </div>
 </div>
