@@ -68,6 +68,7 @@ Whether you are looking to bring in a senior specialist for an upcoming machine 
     <input type="hidden" name="_subject" value="New Inquiry / CV Request via masudpervez27.github.io">
     <input type="hidden" name="_captcha" value="true">
     <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_next" value="{{ '/contact/thanks/' | absolute_url }}">
     <!-- honeypot: bots fill it, humans never see it -->
     <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
 
@@ -90,11 +91,11 @@ Whether you are looking to bring in a senior specialist for an upcoming machine 
       <div class="form-group">
         <label for="inquiry_type">Inquiry Type *</label>
         <select id="inquiry_type" name="inquiry_type" required>
-          <option value="Request Full CV (PDF)">Request Full CV (PDF)</option>
-          <option value="Senior Data Scientist / ML Contract">Senior Data Scientist / ML Contract</option>
-          <option value="Real-Time Fraud & Risk Architecture">Real-Time Fraud & Risk Architecture</option>
-          <option value="Enterprise Generative AI & RAG PoC">Enterprise Generative AI & RAG PoC</option>
-          <option value="General Consultation">General Consultation</option>
+          <option value="General consultation" selected>General consultation</option>
+          <option value="Project inquiry (diagnostic, proof of concept or build)">Project inquiry (diagnostic, proof of concept or build)</option>
+          <option value="Contract or interim role">Contract or interim role</option>
+          <option value="Request full CV (PDF)">Request full CV (PDF)</option>
+          <option value="Other">Other</option>
         </select>
       </div>
     </div>
