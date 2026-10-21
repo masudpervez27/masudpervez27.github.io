@@ -8,11 +8,12 @@ description: "Senior Data Scientist and Machine Learning Engineer roles across b
 ---
 
 <div class="hero-tagline" style="margin-bottom: 1.5rem;">
-  <i class="fas fa-briefcase"></i><span>Five Employers &bull; Senior Data Science &amp; ML Engineering Roles &bull; Stockholm, Sweden</span>
+  <i class="fas fa-briefcase"></i><span>Five Organisations &bull; Banking &bull; Media &bull; HCI &bull; Clinical Research &bull; Retail</span>
 </div>
 
-These are my roles as an **employee** — positions I held and systems I owned in production, not
-client engagements. I am now bringing that same ownership to consulting work.
+These are roles I held as an **employee** (and, at Karolinska Institutet, as a master's-thesis
+statistician) — positions I held and systems I owned in production, not client engagements. I am
+now bringing that same ownership to consulting work.
 
 Every entry below covers what I was responsible for, the technology I ran, and the measurable
 result it produced.

@@ -17,13 +17,11 @@ solve it, and hand over something your team can run without me.
 
 ---
 
-## 1. Real-Time ML Systems &amp; Intelligent Automation
-
 <div class="service-card" id="real-time-ml-systems">
   <div class="service-icon-box">
     <i class="fas fa-bolt"></i>
   </div>
-  <h3 class="service-title">Real-Time ML Systems &amp; Intelligent Automation</h3>
+  <h2 class="service-title">Real-Time ML Systems &amp; Intelligent Automation</h2>
 
   <p class="service-desc">
     <strong>The problem:</strong> rules-based checks cannot keep pace with transaction volume or
@@ -51,13 +49,11 @@ solve it, and hand over something your team can run without me.
 
 ---
 
-## 2. Production MLOps &amp; Distributed Big Data Engineering
-
 <div class="service-card" id="production-mlops">
   <div class="service-icon-box">
     <i class="fas fa-network-wired"></i>
   </div>
-  <h3 class="service-title">Production MLOps &amp; Distributed Big Data Engineering</h3>
+  <h2 class="service-title">Production MLOps &amp; Distributed Big Data Engineering</h2>
 
   <p class="service-desc">
     <strong>The problem:</strong> the prototype worked, and then it didn't — because the data
@@ -84,13 +80,11 @@ solve it, and hand over something your team can run without me.
 
 ---
 
-## 3. Enterprise Generative AI, RAG &amp; Multi-Agent Systems
-
 <div class="service-card" id="enterprise-generative-ai">
   <div class="service-icon-box">
     <i class="fas fa-brain"></i>
   </div>
-  <h3 class="service-title">Enterprise Generative AI, RAG &amp; Multi-Agent Systems</h3>
+  <h2 class="service-title">Enterprise Generative AI, RAG &amp; Multi-Agent Systems</h2>
 
   <p class="service-desc">
     <strong>The problem:</strong> a chatbot that hallucinates is worse than no chatbot — it
@@ -111,19 +105,17 @@ solve it, and hand over something your team can run without me.
   </div>
 
   <div class="service-provenance">
-    <i class="fas fa-building"></i><span>Delivered as production architecture at Bonnier News</span>
+    <i class="fas fa-lightbulb"></i><span>Independent practice — architecture documented in the Insights blog</span>
   </div>
 </div>
 
 ---
 
-## 4. Data-Driven Decision Making &amp; Business Intelligence
-
 <div class="service-card" id="data-driven-decision-making">
   <div class="service-icon-box">
     <i class="fas fa-chart-pie"></i>
   </div>
-  <h3 class="service-title">Data-Driven Decision Making &amp; Business Intelligence</h3>
+  <h2 class="service-title">Data-Driven Decision Making &amp; Business Intelligence</h2>
 
   <p class="service-desc">
     <strong>The problem:</strong> you have the data, but it stays in a spreadsheet while the
@@ -150,13 +142,11 @@ solve it, and hand over something your team can run without me.
 
 ---
 
-## 5. Forecasting &amp; Predictive Analytics
-
 <div class="service-card" id="forecasting-predictive-analytics">
   <div class="service-icon-box">
     <i class="fas fa-chart-line"></i>
   </div>
-  <h3 class="service-title">Forecasting &amp; Predictive Analytics</h3>
+  <h2 class="service-title">Forecasting &amp; Predictive Analytics</h2>
 
   <p class="service-desc">
     <strong>The problem:</strong> planning on last quarter's numbers means you are always one
@@ -183,13 +173,11 @@ solve it, and hand over something your team can run without me.
 
 ---
 
-## 6. Cloud Data &amp; AI Platform Engineering (GCP)
-
 <div class="service-card" id="cloud-data-ai-platform">
   <div class="service-icon-box">
     <i class="fas fa-cloud"></i>
   </div>
-  <h3 class="service-title">Cloud Data &amp; AI Platform Engineering (GCP)</h3>
+  <h2 class="service-title">Cloud Data &amp; AI Platform Engineering (GCP)</h2>
 
   <p class="service-desc">
     <strong>The problem:</strong> the models were never the bottleneck — getting the data to
@@ -216,13 +204,11 @@ solve it, and hand over something your team can run without me.
 
 ---
 
-## 7. Business Dashboards &amp; Decision Reporting
-
 <div class="service-card" id="business-dashboards">
   <div class="service-icon-box">
     <i class="fas fa-tachometer-alt"></i>
   </div>
-  <h3 class="service-title">Business Dashboards &amp; Decision Reporting</h3>
+  <h2 class="service-title">Business Dashboards &amp; Decision Reporting</h2>
 
   <p class="service-desc">
     <strong>The problem:</strong> nobody trusts the number, because they cannot see how it was
@@ -249,13 +235,11 @@ solve it, and hand over something your team can run without me.
 
 ---
 
-## 8. AI Automation &amp; Agentic Workflow
-
 <div class="service-card" id="ai-automation-agentic-workflow">
   <div class="service-icon-box">
     <i class="fas fa-robot"></i>
   </div>
-  <h3 class="service-title">AI Automation &amp; Agentic Workflow</h3>
+  <h2 class="service-title">AI Automation &amp; Agentic Workflow</h2>
 
   <p class="service-desc">
     <strong>The problem:</strong> your team spends its day moving information between systems
@@ -276,7 +260,7 @@ solve it, and hand over something your team can run without me.
   </div>
 
   <div class="service-provenance">
-    <i class="fas fa-building"></i><span>Delivered as production architecture at Bonnier News</span>
+    <i class="fas fa-lightbulb"></i><span>Independent practice — built on LangGraph and LangChain</span>
   </div>
 </div>
 

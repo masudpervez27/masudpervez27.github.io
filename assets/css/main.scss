@@ -536,11 +536,13 @@ h1, h2, h3, h4, h5, h6, .service-title, .case-title {
     }
   }
 
-  h3.service-title {
+  .service-title {
     font-size: 1.25rem;
     font-weight: 700;
     color: var(--dark-slate);
     margin: 0 0 0.75rem 0;
+    padding: 0;
+    border: none;
     letter-spacing: -0.01em;
   }
 
@@ -922,6 +924,39 @@ h1, h2, h3, h4, h5, h6, .service-title, .case-title {
   .metrics-grid {
     margin: 1.25rem 0 1.5rem 0;
   }
+}
+
+/* ==========================================================================
+   Landing page (homepage): the hero carries the visible H1
+   ========================================================================== */
+
+.landing .page__title {
+  display: none;
+}
+
+/* Standalone page tagline (outside the dark hero), e.g. About / Services / Contact */
+.hero-tagline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--primary-accent-light);
+  border: 1px solid #bae6fd;
+  color: var(--primary-accent-dark);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+
+  i, .svg-inline--fa {
+    margin-inline-end: 0 !important;
+  }
+}
+
+/* Full-width service cards on /services/ stack vertically */
+.page__content > .service-card {
+  margin: 1.5rem 0;
 }
 
 /* ==========================================================================

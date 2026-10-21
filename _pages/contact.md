@@ -60,30 +60,32 @@ Whether you are looking to bring in a senior specialist for an upcoming machine 
 <div id="request-cv" class="consulting-contact-form-card">
   <h2 style="margin-top: 0; color: var(--dark-slate); font-weight: 800;"><i class="fas fa-envelope"></i><span>Send a Message or Request Full CV</span></h2>
   <p style="color: #64748b; font-size: 0.95rem; margin-bottom: 1.5rem;">
-    Fill out the form below to initiate an inquiry or request my full CV (PDF) with verified credentials and client references. Messages are delivered directly to my inbox.
+    Fill out the form below to initiate an inquiry or request my full CV (PDF) with detailed role descriptions and professional references. Messages are delivered directly to my inbox.
   </p>
 
   <form action="https://formsubmit.co/masud.pervez@yahoo.com" method="POST">
     <!-- FormSubmit Configuration -->
     <input type="hidden" name="_subject" value="New Inquiry / CV Request via masudpervez27.github.io">
-    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_captcha" value="true">
     <input type="hidden" name="_template" value="table">
+    <!-- honeypot: bots fill it, humans never see it -->
+    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
 
     <div class="form-row">
       <div class="form-group">
         <label for="name">Your Name *</label>
-        <input type="text" id="name" name="name" required placeholder="e.g. Johan Andersson">
+        <input type="text" id="name" name="name" required maxlength="120" autocomplete="name" placeholder="e.g. Johan Andersson">
       </div>
       <div class="form-group">
         <label for="email">Work / Contact Email *</label>
-        <input type="email" id="email" name="email" required placeholder="name@company.com">
+        <input type="email" id="email" name="email" required maxlength="254" autocomplete="email" placeholder="name@company.com">
       </div>
     </div>
 
     <div class="form-row">
       <div class="form-group">
         <label for="company">Company / Organization</label>
-        <input type="text" id="company" name="company" placeholder="e.g. Financial Services AB">
+        <input type="text" id="company" name="company" maxlength="160" autocomplete="organization" placeholder="e.g. Financial Services AB">
       </div>
       <div class="form-group">
         <label for="inquiry_type">Inquiry Type *</label>
@@ -99,8 +101,12 @@ Whether you are looking to bring in a senior specialist for an upcoming machine 
 
     <div class="form-group">
       <label for="message">Project Overview / Request Details *</label>
-      <textarea id="message" name="message" rows="5" required placeholder="Please outline your project timeline, requirements, or CV request details..."></textarea>
+      <textarea id="message" name="message" rows="5" required maxlength="5000" placeholder="Please outline your project timeline, requirements, or CV request details..."></textarea>
     </div>
+
+    <p style="font-size: 0.8rem; color: #64748b; margin: 0 0 1rem 0;">
+      Submissions are relayed by <a href="https://formsubmit.co/" target="_blank" rel="noopener noreferrer">FormSubmit</a> to my inbox and used only to reply to your inquiry.
+    </p>
 
     <button type="submit" class="btn-consulting-primary" style="border: none; padding: 0.85rem 1.75rem; font-size: 1rem; width: 100%; justify-content: center;">
       <i class="fas fa-paper-plane"></i><span>Submit Inquiry</span>
@@ -141,8 +147,8 @@ Whether you are looking to bring in a senior specialist for an upcoming machine 
     <div class="perk-item">
       <i class="fas fa-shield-alt"></i>
       <div>
-        <strong>Privacy &amp; GDPR Compliant</strong>
-        <span>Personal information submitted is treated confidentially and never shared with third parties.</span>
+        <strong>Privacy &amp; GDPR</strong>
+        <span>Your details are used only to respond to your inquiry, are not sold or used for marketing, and are deleted on request.</span>
       </div>
     </div>
   </div>

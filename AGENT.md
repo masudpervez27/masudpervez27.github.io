@@ -138,6 +138,10 @@ inconsistency. Keep all mentions at "10+ years" / "ten years".
 The CV section uses an **explicit `<div id="cv">`**, not a markdown heading — kramdown
 `auto_ids` would slugify the heading text to `curriculum-vitae-credentials`, not `cv`.
 
+**Markdown is not rendered inside HTML blocks or in `.html` files.** Kramdown leaves the
+contents of a `<div>` untouched (no `markdown="1"`), and `index.html` is never run through
+kramdown at all — `##`, `*`, and `---` there appear as literal text. Use HTML tags.
+
 Service-card anchors: `real-time-ml-systems`, `production-mlops`,
 `enterprise-generative-ai`, `data-driven-decision-making`,
 `forecasting-predictive-analytics`, `cloud-data-ai-platform`, `business-dashboards`,
@@ -161,7 +165,13 @@ exist inside a parent selector:
 
 New top-level rules added: `.tech-pills`, `.service-subtitle`, `.service-benefit`,
 `.service-provenance`, `.service-link`, `.timeline-list` (+ `.timeline-item`,
-`.timeline-period`, `.timeline-role`, `.timeline-org`), `.cv-section`.
+`.timeline-period`, `.timeline-role`, `.timeline-org`), `.cv-section`, `.hero-tagline`
+(light pill for standalone page taglines; the dark-hero variant stays nested in
+`.hero-consulting`), `.landing .page__title` (hides the duplicate H1 on the homepage, which
+sets `classes: [wide, landing]`).
+
+`.service-title` styles any heading level — `/services/` cards use `<h2>`, the grid cards
+on other pages use `<h3>`.
 
 **A SCSS compile error breaks styling for the entire site.** Keep CSS changes in their own
 commit and verify `main.css` serves correctly after pushing.

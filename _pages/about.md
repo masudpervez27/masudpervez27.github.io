@@ -27,7 +27,7 @@ Rather than merely experimenting with algorithms in isolated notebooks, I delive
 
 ## Career Overview
 
-Ten years across five employers, each in a different sector. Full detail — what I owned and the
+Ten years across five organisations, each in a different sector. Full detail — what I owned and the
 results — is on the [Experience](/experience/) page.
 
 <div class="timeline-list">
@@ -111,59 +111,14 @@ A defining strength of my engineering practice is a deep, rigorous background in
 <div id="cv" class="cv-section">
   <h2>Curriculum Vitae &amp; Credentials</h2>
 
-  <p>My complete, unredacted Curriculum Vitae (PDF) — including full project references and
-  technical specifications — is available on request. The summary below covers the essentials.</p>
-
-  <h3>Professional Summary</h3>
-
-  <p>I am a Senior Data Scientist, Machine Learning Engineer, and Statistician with <strong>10+ years of enterprise experience</strong> designing, deploying, and governing real-time fraud detection systems, scalable Apache Spark data pipelines, and quantitative optimization solutions for tier-1 Scandinavian institutions including <strong>Skandinaviska Enskilda Banken (SEB)</strong>, <strong>Bonnier News</strong>, and <strong>Tobii Pro</strong>.</p>
-
-  <h3>Executive Highlights</h3>
-
-  <div class="metrics-grid">
-    <div class="metric-card">
-      <div class="metric-number">&gt;60%–70%</div>
-      <div class="metric-label">Fraud Detection Recall</div>
-      <p class="metric-desc">Engineered real-time transaction scoring at SEB via microservices.</p>
-    </div>
-    <div class="metric-card">
-      <div class="metric-number">+16%</div>
-      <div class="metric-label">Profit Margin Growth</div>
-      <p class="metric-desc">Delivered via mathematical Newsvendor optimization for Bonnier News.</p>
-    </div>
-    <div class="metric-card">
-      <div class="metric-number">10+ Years</div>
-      <div class="metric-label">Enterprise Experience</div>
-      <p class="metric-desc">Tier-1 production track record (SEB, Bonnier News, Tobii Pro).</p>
-    </div>
-    <div class="metric-card">
-      <div class="metric-number">M.Sc.</div>
-      <div class="metric-label">Mathematical Statistics</div>
-      <p class="metric-desc">Stockholm University. Rigorous quantitative probability foundation.</p>
-    </div>
-  </div>
-
-  <h3>Career Summary</h3>
-
-  * **Senior Data Scientist** &bull; *Skandinaviska Enskilda Banken (SEB)* | 2021 – Present  
-    Real-time fraud detection systems, cost-based threshold tuning, modular Spark pipelines on Hadoop, model governance and drift monitoring.
-  * **Data Scientist** &bull; *Bonnier News* | 2018 – 2021  
-    Customer churn and lifetime value (CLV) models, magazine recommendation engines, Newsvendor optimization model (+16% profit growth), GCP deployment.
-  * **Data Scientist / Statistician** &bull; *Tobii Pro* | 2017 – 2018  
-    Eye-tracking behavioral survey analytics, multivariate dimensionality reduction (PCA), regression modeling, interactive dashboards.
-  * **Master's Statistician** &bull; *Clinical Cancer Epidemiology, Karolinska Institutet* | 2012 – 2013  
-    Factor analysis, hierarchical clustering validation for clinical symptom patterns in cancer survivors.
-
-  <h3>Academic History</h3>
-
-  * **M.Sc. in Mathematical Statistics** &bull; *Stockholm University, Sweden (2008 – 2015)*
-  * **M.Sc. in Applied Statistics** &bull; *University of Dhaka (I.S.R.T.), Bangladesh (2004 – 2006)*
-  * **B.Sc. in Applied Statistics** &bull; *University of Dhaka (I.S.R.T.), Bangladesh (1998 – 2004)*
+  <p>The career timeline, education, and technical stack above are the summary. My complete
+  Curriculum Vitae (PDF) — with detailed role descriptions and professional references — is
+  available on request.</p>
 
   <div class="b2b-engagement-banner" style="background: #eff6ff; border-color: #bfdbfe;">
-    <h3 style="color: #1e40af;"><i class="fas fa-lock"></i><span>GDPR-Compliant CV Distribution</span></h3>
+    <h3 style="color: #1e40af;"><i class="fas fa-lock"></i><span>CV Available on Request</span></h3>
     <p style="color: #1e3a8a; margin-bottom: 1.25rem;">
-      To adhere to GDPR standards and protect client references and sensitive contact details from automated scrapers, my complete, unredacted Curriculum Vitae (PDF) is provided upon request to prospective clients, consulting brokers, and engineering leaders.
+      To protect references and personal contact details from automated scrapers, the full CV is shared directly with prospective clients, consulting brokers, and hiring managers rather than published here.
     </p>
     <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
       <a href="/contact/#request-cv" class="btn-consulting-primary"><i class="fas fa-paper-plane"></i><span>Request Full CV (PDF)</span></a>
