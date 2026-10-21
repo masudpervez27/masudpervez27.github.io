@@ -64,8 +64,8 @@ Two more version traps, both of which break the build on a modern Ruby:
 
 | Page | Path | Source | Responsibility |
 |---|---|---|---|
-| Home | `/` | `index.html` | Hero, metric cards, 8 slim pillar cards linking to `/services/#…`, engagement teaser, CTA |
-| Services | `/services/` | `_pages/services.md` | **The offer to the client.** 8 service areas + engagement models |
+| Home | `/` | `index.html` | Hero, metric cards, 7 slim pillar cards linking to `/services/#…`, engagement teaser, CTA |
+| Services | `/services/` | `_pages/services.md` | **The offer to the client.** 7 service areas + engagement models |
 | Experience | `/experience/` | `_pages/experience.md` | **Employers only** — 5 real employee roles with outcomes |
 | About | `/about/` | `_pages/about.md` | Executive summary, condensed career timeline, education, tech arsenal, **CV section (`id="cv"`)** |
 | Blog | `/posts/` | `_pages/posts.md` | Blog index grouped by year (`layout: posts`). Nav label is "Blog"; URL stays `/posts/` so existing links keep working |
@@ -146,9 +146,12 @@ contents of a `<div>` untouched (no `markdown="1"`), and `index.html` is never r
 kramdown at all — `##`, `*`, and `---` there appear as literal text. Use HTML tags.
 
 Service-card anchors: `real-time-ml-systems`, `production-mlops`,
-`enterprise-generative-ai`, `data-driven-decision-making`,
-`forecasting-predictive-analytics`, `cloud-data-ai-platform`, `business-dashboards`,
-`ai-automation-agentic-workflow`.
+`enterprise-generative-ai`, `forecasting-decision-analytics`, `cloud-data-ai-platform`,
+`business-dashboards`, `ai-automation-agentic-workflow`.
+
+The merged forecasting card also carries the legacy anchors `data-driven-decision-making` and
+`forecasting-predictive-analytics` (empty spans) so old links still land on it. Link new content
+to `forecasting-decision-analytics`.
 
 Employer anchors on `/experience/`: `seb`, `bonnier-news`, `tobii-pro`,
 `karolinska-institutet`, `marks-and-spencer`.
@@ -276,7 +279,7 @@ grep -c 'id="request-cv"' _site/contact/index.html               # → 1
 grep -c 'id="cv"' _site/about/index.html                         # → 1
 grep -o 'masthead__menu-item' _site/index.html | wc -l           # → 6
 ls _site/redirects.json                                          # → must NOT exist
-grep -c 'class="service-card"' _site/services/index.html         # → 8
+grep -c 'class="service-card"' _site/services/index.html         # → 7
 grep -c 'case-study-card' _site/experience/index.html            # → 5
 ```
 
@@ -325,7 +328,9 @@ Posts are the showcase for prospective clients. Every post must follow this stan
 1. **Opening paragraph**: first person, states the problem and what the reader will get. Also set
    `excerpt:` in front matter to a one or two sentence summary (used on the blog index).
 2. `## The business problem`: who has it, what it costs, what goes wrong without a solution.
-3. `## The idea in plain English`: the method explained without formulas.
+3. `## The idea in plain English`: the method explained without formulas. End this section with
+   **one simple diagram** (see "Diagrams" below): an architecture diagram for system posts
+   (pipelines, RAG, agents, platforms) or a flow diagram for method posts.
 4. `## How it works: the math, step by step`: every equation is followed by a plain-English
    reading ("In plain English: ...", "Read it as: ...", or a "Line by line" bullet list).
    Derive results, do not just state them.
@@ -367,3 +372,22 @@ true, which is the default for posts. kramdown converts `$$...$$` to `\(...\)` (
   or `\mid`.
 - Never write two opening curly braces, or an opening brace followed by `%`, anywhere in a post,
   including code blocks: Liquid will try to evaluate it and the build fails.
+
+### Diagrams
+
+Every post has **exactly one simple diagram**, built with the pure HTML/CSS component styled in
+`assets/css/main.scss` ("Blog diagrams"). No images, no JavaScript, no external CDN.
+
+- Flow diagram: a `div.diagram` containing a `div.dg-flow` with `div.dg-node` boxes separated by
+  `div.dg-arrow` (with `aria-hidden="true"`). Put alternative outcomes in a `div.dg-branch`.
+  Variants: `.dg-accent` (key step), `.dg-ok` (good outcome), `.dg-warn` (human review or alert).
+  A `<small>` inside a node adds a sub-label.
+- Architecture or lifecycle diagram: a `div.dg-stages` grid of `div.dg-stage` cards (title in
+  `div.dg-stage-title`, then a short `<ul>`), optionally followed by a `div.dg-bar` for
+  cross-cutting concerns.
+- Loops (retry, rewrite, feedback) go in a `p.dg-note` under the flow.
+- Always end with a `p.dg-caption` describing the figure in one line.
+- At most 7 items in a flow row (a branch counts as one). Plain-English labels, no code
+  identifiers and no math inside the diagram.
+- Markdown is not rendered inside the HTML block. Do not leave blank lines inside it.
+- Flows run left to right on wide screens and switch to top to bottom below 1024px.

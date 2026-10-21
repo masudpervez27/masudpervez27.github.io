@@ -60,6 +60,25 @@ When the failure cost is 30 times the action cost, acting becomes worthwhile eve
 probabilities. The threshold should therefore be set by the ratio of costs, not by the convention of
 0.5.
 
+<div class="diagram">
+  <div class="dg-flow">
+    <div class="dg-node">Model<small>raw scores</small></div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-node">Calibration<small>scores become probabilities</small></div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-node">Cost matrix<small>agreed with the business</small></div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-node dg-accent">Decision rule<small>cost threshold or top-K by saving</small></div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-branch">
+      <div class="dg-node dg-ok">Act</div>
+      <div class="dg-node">Do nothing</div>
+    </div>
+  </div>
+  <p class="dg-note">A small random hold-out group keeps measuring what happens without action.</p>
+  <p class="dg-caption">From predicted probability to a decision that minimises expected cost.</p>
+</div>
+
 ## How it works: the math, step by step
 
 ### The cost matrix

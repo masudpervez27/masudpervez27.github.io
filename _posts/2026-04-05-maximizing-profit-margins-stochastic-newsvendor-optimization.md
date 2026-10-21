@@ -59,6 +59,23 @@ percentile depends only on the two costs.
 High margin and cheap waste? Order high in the distribution. Thin margin and expensive waste? Order
 low.
 
+<div class="diagram">
+  <div class="dg-flow">
+    <div class="dg-node">Sales history<small>corrected for sell-outs</small></div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-node">Probabilistic forecast<small>mean and spread, or quantiles</small></div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-node">Unit economics<small>price, cost, salvage</small></div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-node dg-accent">Critical ratio<small>underage vs overage cost</small></div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-node dg-ok">Order quantity<small>forecast quantile at the ratio</small></div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-node">Track waste and sell-outs</div>
+  </div>
+  <p class="dg-caption">Turning a demand forecast into a profit-maximising order.</p>
+</div>
+
 ## How it works: the math, step by step
 
 ### Setting up
@@ -326,5 +343,5 @@ The newsvendor model is more than seventy years old, and it still beats most rul
 it asks the right question: not "what will demand be?" but "what should we do given what demand might
 be?". Combined with a modern probabilistic forecast, it turns forecasting from a reporting exercise
 into a margin lever. If you want to apply this to your own range, see my
-[forecasting and predictive analytics service](/services/#forecasting-predictive-analytics) or
+[forecasting, optimisation and decision analytics service](/services/#forecasting-decision-analytics) or
 [contact me](/contact/).

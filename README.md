@@ -9,7 +9,7 @@ Stockholm.
 The site has two jobs:
 
 1. **Show what I have done** — employment history with measurable production outcomes.
-2. **Sell what I can do for a client** — eight consulting service areas, clear engagement
+2. **Sell what I can do for a client** — seven consulting service areas, clear engagement
    models, and a low-friction way to get in touch or request the full CV.
 
 ---
@@ -58,8 +58,8 @@ the same set): `jekyll-paginate`, `jekyll-sitemap`, `jekyll-gist`, `jekyll-feed`
 
 | Tab | URL | Source | Purpose |
 |---|---|---|---|
-| Home | `/` | `index.html` | Hero, key metrics, 8 service teasers, engagement teaser, CTA |
-| Services | `/services/` | `_pages/services.md` | The client offer: 8 service areas (problem → deliverables → benefit) + 4 engagement models |
+| Home | `/` | `index.html` | Hero, key metrics, 7 service teasers, engagement teaser, CTA |
+| Services | `/services/` | `_pages/services.md` | The client offer: 7 service areas (problem → deliverables → benefit) + 4 engagement models |
 | Experience | `/experience/` | `_pages/experience.md` | Five past roles with what I owned and the outcome |
 | About | `/about/` | `_pages/about.md` | Summary, career timeline, education, tech stack, business details, CV request (`#cv`) |
 | Blog | `/posts/` | `_pages/posts.md` | Technical blog index, grouped by year (`layout: posts`) |
@@ -217,7 +217,7 @@ keep it that way.
    `/experience/` or blog posts, not service titles.
 4. **Consistent numbers.** Experience is stated as "10+ years" / "ten years" everywhere.
 5. **Anchors that must exist exactly once:** `#request-cv` (contact form), `#cv` (About),
-   `#engagement-levels` and the eight service ids (Services).
+   `#engagement-levels` and the seven service ids (Services).
 
 ---
 
@@ -261,8 +261,9 @@ build locally before pushing CSS changes.
 **Recommended follow-ups** (require action in external accounts):
 
 - **FormSubmit alias:** after the first submission, FormSubmit emails an activation link and
-  offers a random alias (e.g. `https://formsubmit.co/el/xxxxxx`). Replace the plain email in
-  the form `action` with that alias so the address is not harvestable from the HTML.
+  offers a random alias (e.g. `https://formsubmit.co/xxxxxxxx`). Put that URL in
+  `contact_form_action` in `_config.yml`; the contact form reads it from there, so the address
+  is no longer harvestable from the form HTML.
 - **Privacy notice:** form submissions are processed by FormSubmit (a third party). For full
   GDPR transparency, consider a short `/privacy/` page naming the processor and retention.
 - **Enforce HTTPS** in *Settings → Pages* (on by default for `github.io`).
@@ -279,7 +280,7 @@ After `bundle exec jekyll build`:
 grep -c 'id="request-cv"' _site/contact/index.html            # 1
 grep -c 'id="cv"' _site/about/index.html                       # 1
 grep -o 'masthead__menu-item' _site/index.html | wc -l         # 6
-grep -c 'class="service-card"' _site/services/index.html       # 8
+grep -c 'class="service-card"' _site/services/index.html       # 7
 grep -c 'case-study-card' _site/experience/index.html          # 5
 grep -o 'http-equiv="refresh"[^>]*' _site/projects/index.html  # → /experience/
 grep -o 'http-equiv="refresh"[^>]*' _site/cv/index.html        # → /about/#cv
@@ -299,21 +300,11 @@ curl -so /dev/null -w '%{http_code} %{size_download}\n' \
 
 ## Known issues & backlog
 
-- **Unused images (~4 MB):** `bg-contact.jpg`, `bg-contact-resize2.png`, `bg-index.jpg`,
-  `bg-index-resize.jpg`, `bg-post.jpg`, `foo-bar-identity-th.jpg`, `headshot-2.jpeg`,
-  `headshot-3.jpeg`, `Intent-Classification-with-BERT.png`, `unsplash-image-8.jpg` are not
-  referenced anywhere. Delete them or move them out of `assets/` (they are still published).
-- **Avatar size:** `bio-photo.jpeg` is ~580 KB for a ~150 px avatar. Resize/compress to
-  < 60 KB and strip EXIF metadata (location data) before publishing photos.
-- **Open Graph image:** `og_image` points to the avatar; a dedicated 1200×630 social card
-  would look better on LinkedIn shares.
+- **Open Graph image:** `og_image` points to the avatar (600×600, ~40 KB, no metadata); a
+  dedicated 1200×630 social card would look better on LinkedIn shares.
 - **Unused `projects` collection** is still declared in `_config.yml` (harmless).
-- **Service overlap:** "Data-Driven Decision Making" and "Forecasting" both mention demand /
-  inventory optimisation — consider keeping it in one place.
-- **Fact check:** Service 6 says GCP was used at SEB, while the SEB role lists Hadoop /
-  on-prem tooling. Confirm and align.
-- **Contact email:** a domain address (e.g. `masud@yourdomain.se`) looks more professional
-  than a Yahoo address for B2B clients.
+- **Contact email and domain:** a domain address (e.g. `masud@yourdomain.se`) looks more
+  professional than a Yahoo address for B2B clients.
 
 ---
 

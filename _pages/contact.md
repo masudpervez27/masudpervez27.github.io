@@ -63,7 +63,7 @@ Whether you are looking to bring in a senior specialist for an upcoming machine 
     Fill out the form below to initiate an inquiry or request my full CV (PDF) with detailed role descriptions and professional references. Messages are delivered directly to my inbox.
   </p>
 
-  <form action="https://formsubmit.co/masud.pervez@yahoo.com" method="POST">
+  <form action="{{ site.contact_form_action }}" method="POST">
     <!-- FormSubmit Configuration -->
     <input type="hidden" name="_subject" value="New Inquiry / CV Request via masudpervez27.github.io">
     <input type="hidden" name="_captcha" value="true">

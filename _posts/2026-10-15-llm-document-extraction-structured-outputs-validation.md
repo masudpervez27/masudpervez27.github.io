@@ -60,6 +60,26 @@ The pipeline has five steps:
 The person only checks what the machine is unsure about, and the threshold for "unsure" is set from
 the cost of a review versus the cost of an error.
 
+<div class="diagram">
+  <div class="dg-flow">
+    <div class="dg-node">PDF or scan</div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-node">OCR and layout</div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-node">Language model extraction<small>run several times</small></div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-node">Schema and business rules</div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-node dg-accent">Confidence score<small>agreement between runs</small></div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-branch">
+      <div class="dg-node dg-ok">Post automatically</div>
+      <div class="dg-node dg-warn">Review flagged fields</div>
+    </div>
+  </div>
+  <p class="dg-caption">Extraction that knows when it is unsure, and sends only those documents to a person.</p>
+</div>
+
 ## How it works: the math, step by step
 
 ### Measuring extraction quality per field

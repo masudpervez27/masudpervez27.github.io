@@ -55,6 +55,23 @@ Three rules carry most of the weight:
 Everything else, like partitioning, caching and cluster sizing, is about making these three rules
 fast and cheap.
 
+<div class="diagram">
+  <div class="dg-flow">
+    <div class="dg-node">Raw events<small>data lake</small></div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-node dg-accent">Point-in-time join<small>only events before the snapshot</small></div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-node">Window and decay features</div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-node">Quality checks<small>unique keys, null rates</small></div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-node dg-warn">Drift check<small>PSI against a reference</small></div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-node dg-ok">Partition overwrite<small>feature table for training and scoring</small></div>
+  </div>
+  <p class="dg-caption">One daily job, safe to rerun, used for both the training backfill and live scoring.</p>
+</div>
+
 ## How it works: the math, step by step
 
 ### Point-in-time correctness

@@ -53,6 +53,25 @@ When most cells are zero, the list is far shorter than the spreadsheet. When mos
 the list becomes longer than the spreadsheet, because you are paying for coordinates as well as
 values. So the right choice depends on one number: how full the matrix is.
 
+<div class="diagram">
+  <div class="dg-flow">
+    <div class="dg-node">Raw data<small>interactions, text, categories</small></div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-node dg-accent">Measure density<small>non-zeros / all cells</small></div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-branch">
+      <div class="dg-node dg-ok">Sparse path<small>build COO, convert once to CSR</small></div>
+      <div class="dg-node">Dense path<small>plain NumPy array</small></div>
+    </div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-node">Sparse-safe pipeline<small>guards after every step</small></div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-node">Model or search index</div>
+  </div>
+  <p class="dg-note">Below about 1% density go sparse, above about 10% go dense, in between measure both.</p>
+  <p class="dg-caption">Choosing the storage format from the data, not by habit.</p>
+</div>
+
 ## How it works: the math, step by step
 
 ### Density

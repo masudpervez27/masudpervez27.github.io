@@ -58,6 +58,27 @@ Low-risk read-only tools run automatically. Actions that change something run au
 they are below a risk limit; otherwise the agent pauses and a person approves or rejects with one
 click. Everything is recorded. The model is creative; the controller is strict.
 
+<div class="diagram">
+  <div class="dg-flow">
+    <div class="dg-node">Request</div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-node">Planner<small>language model proposes a step</small></div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-node dg-accent">Controller<small>validate, budget, risk</small></div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-branch">
+      <div class="dg-node dg-ok">Run tool automatically</div>
+      <div class="dg-node dg-warn">Pause for human approval</div>
+    </div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-node">Your systems<small>orders, CRM, ERP</small></div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-node">Answer and audit log</div>
+  </div>
+  <p class="dg-note">Tool results go back to the planner until it gives a final answer or the step budget runs out.</p>
+  <p class="dg-caption">A creative planner inside a strict controller.</p>
+</div>
+
 ## How it works: the math, step by step
 
 ### Why multi-step agents fail more than you expect

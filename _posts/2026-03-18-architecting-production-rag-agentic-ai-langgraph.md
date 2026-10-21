@@ -62,6 +62,30 @@ model re-read the top candidates and put them in the best order. Finally, before
 system checks whether the evidence actually answers the question. If not, it rewrites the query and
 tries again, or says honestly that it does not know.
 
+<div class="diagram">
+  <div class="dg-flow">
+    <div class="dg-node">Question</div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-branch">
+      <div class="dg-node">Keyword search<small>BM25</small></div>
+      <div class="dg-node">Vector search<small>embeddings</small></div>
+    </div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-node">Rank fusion<small>RRF</small></div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-node dg-accent">Reranker<small>cross-encoder on top 30</small></div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-node">Score check<small>minimum relevance</small></div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-branch">
+      <div class="dg-node dg-ok">Answer with citations</div>
+      <div class="dg-node dg-warn">Decline honestly</div>
+    </div>
+  </div>
+  <p class="dg-note">If nothing passes the score check, the query is rewritten and retrieval runs again, at most twice.</p>
+  <p class="dg-caption">Hybrid retrieval with reranking and a self-correcting loop.</p>
+</div>
+
 ## How it works: the math, step by step
 
 ### Keyword search with BM25

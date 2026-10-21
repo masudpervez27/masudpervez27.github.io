@@ -1006,6 +1006,192 @@ mjx-container[display="true"] {
 }
 
 /* ==========================================================================
+   Blog diagrams: pure HTML/CSS flow and architecture diagrams (no JS)
+   ========================================================================== */
+
+.diagram {
+  margin: 1.75rem 0 2rem 0;
+  padding: 1.25rem;
+  background: #f8fafc;
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+}
+
+.dg-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.dg-node {
+  flex: 1 1 0;
+  min-width: 0;
+  background: #ffffff;
+  border: 1px solid #bae6fd;
+  border-radius: 10px;
+  padding: 0.55rem 0.6rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.3;
+  text-align: center;
+  color: var(--dark-slate);
+  box-shadow: var(--card-shadow);
+  overflow-wrap: break-word;
+
+  small {
+    display: block;
+    margin-top: 0.15rem;
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: #64748b;
+  }
+}
+
+.dg-accent {
+  background: var(--dark-slate);
+  border-color: var(--dark-slate);
+  color: #ffffff;
+
+  small {
+    color: #cbd5e1;
+  }
+}
+
+.dg-ok {
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+  color: #065f46;
+}
+
+.dg-warn {
+  background: #fffbeb;
+  border-color: #fde68a;
+  color: #92400e;
+}
+
+.dg-arrow {
+  flex: 0 0 auto;
+  color: var(--primary-accent);
+  font-weight: 700;
+  font-size: 1rem;
+
+  &::before {
+    content: "\2192";
+  }
+}
+
+.dg-branch {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  .dg-node {
+    flex: none;
+  }
+}
+
+.dg-stages {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+}
+
+.dg-stage {
+  background: #ffffff;
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 0.75rem 0.85rem;
+  box-shadow: var(--card-shadow);
+}
+
+.dg-stage-title {
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--primary-accent-dark);
+  margin-bottom: 0.4rem;
+}
+
+.diagram .dg-stage ul {
+  margin: 0;
+  padding-left: 1rem;
+  font-size: 0.78rem;
+  line-height: 1.4;
+
+  li {
+    margin: 0 0 0.2rem 0;
+  }
+}
+
+.dg-bar {
+  margin-top: 0.75rem;
+  background: var(--dark-slate);
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 0.55rem 0.8rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.diagram .dg-note {
+  margin: 0.85rem 0 0 0;
+  font-size: 0.8rem;
+  color: #475569;
+  text-align: center;
+}
+
+.diagram .dg-caption {
+  margin: 0.75rem 0 0 0;
+  font-size: 0.8rem;
+  font-style: italic;
+  color: #64748b;
+  text-align: center;
+}
+
+@media (max-width: 1024px) {
+  .dg-flow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .dg-node,
+  .dg-branch {
+    flex: none;
+  }
+
+  .dg-branch {
+    flex-direction: row;
+
+    .dg-node {
+      flex: 1 1 0;
+    }
+  }
+
+  .dg-arrow {
+    align-self: center;
+
+    &::before {
+      content: "\2193";
+    }
+  }
+
+  .dg-stages {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .dg-stages {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
    Responsive tweaks
    ========================================================================== */
 

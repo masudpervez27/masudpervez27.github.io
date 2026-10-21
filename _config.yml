@@ -28,6 +28,8 @@ repository               : "masudpervez27/masudpervez27.github.io"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : "/assets/images/mp-monogram.svg" # monogram mark shown in the masthead
 masthead_title           : "Masud Pervez"
+# Replace with the FormSubmit alias (https://formsubmit.co/<random-string>) once the address is activated
+contact_form_action      : "https://formsubmit.co/masud.pervez@yahoo.com"
 breadcrumbs              : false
 words_per_minute         : 200
 enable_copy_code_button  : # true, false (default)

@@ -31,7 +31,8 @@ result it produced.
   <ul>
     <li>Architecture and live deployment of real-time machine learning fraud detection, delivered as microservices with low-latency scoring endpoints.</li>
     <li>A cost-based threshold optimization framework that prices false positives against false negatives using the bank's own loss structure, so the business can trade fraud loss against customer friction explicitly.</li>
-    <li>Modular Apache Spark pipelines on Hadoop for distributed feature computation, batch inference, and metric logging across high-volume transactional data.</li>
+    <li>Modular Apache Spark pipelines on the on-premise Hadoop platform for distributed feature computation, batch inference, and metric logging across high-volume transactional data.</li>
+    <li>The move of model workloads from on-premise Hadoop to Google Cloud Platform: Terraform for the model training infrastructure and Dataform for the feature engineering pipelines.</li>
     <li>End-to-end model governance — concept drift detection, distribution-shift monitoring, and automated recalibration and retraining protocols.</li>
     <li>Technical due diligence on external fraud-prevention vendors, and cross-functional work with engineering, compliance, and product on financial-crime defences.</li>
   </ul>
@@ -46,6 +47,9 @@ result it produced.
     <span class="tech-pill">Apache Spark</span>
     <span class="tech-pill">Scala</span>
     <span class="tech-pill">Hadoop / HDFS</span>
+    <span class="tech-pill">Google Cloud Platform</span>
+    <span class="tech-pill">Terraform</span>
+    <span class="tech-pill">Dataform</span>
     <span class="tech-pill">Scikit-Learn</span>
     <span class="tech-pill">Microservices</span>
     <span class="tech-pill">Model Governance</span>

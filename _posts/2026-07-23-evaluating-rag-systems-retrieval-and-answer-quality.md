@@ -57,6 +57,26 @@ factual claims and check whether each claim is supported by the retrieved text.
 Finally, because test sets are finite, a difference of two percentage points might be luck. A simple
 resampling method tells us how confident we can be that version B is really better than version A.
 
+<div class="diagram">
+  <div class="dg-flow">
+    <div class="dg-node">Real questions<small>incl. out-of-scope</small></div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-node">Label relevant passages</div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-node">Run version A and B</div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-branch">
+      <div class="dg-node">Retrieval metrics<small>recall, MRR, nDCG</small></div>
+      <div class="dg-node">Answer checks<small>faithfulness, declines</small></div>
+    </div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-node dg-accent">Paired bootstrap<small>is the gain real?</small></div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-node dg-ok">Ship or keep</div>
+  </div>
+  <p class="dg-caption">An evaluation loop that turns "it seems better" into a measured decision.</p>
+</div>
+
 ## How it works: the math, step by step
 
 Let the test set have $$N$$ questions. For question $$i$$, let $$R_i$$ be the set of relevant

@@ -57,6 +57,28 @@ delivery is slower than expected. The size of that buffer depends on how much pr
 The key insight is that a late delivery multiplies the problem: every extra day of delay adds a full
 day of average demand that must be covered. That is why lead-time variability often dominates.
 
+<div class="diagram">
+  <div class="dg-flow">
+    <div class="dg-branch">
+      <div class="dg-node">Daily demand history</div>
+      <div class="dg-node">Supplier receipts<small>actual lead times</small></div>
+    </div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-node">Means and spreads<small>demand and lead time</small></div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-branch">
+      <div class="dg-node">Normal formula</div>
+      <div class="dg-node">Bootstrap simulation</div>
+    </div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-node dg-accent">Safety stock and reorder point</div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-node dg-ok">Report to procurement<small>share of risk from suppliers</small></div>
+  </div>
+  <p class="dg-note">When the formula and the simulation disagree, the item's data deserves a closer look.</p>
+  <p class="dg-caption">Setting reorder points from both demand and supplier uncertainty.</p>
+</div>
+
 ## How it works: the math, step by step
 
 ### Demand during the lead time
@@ -338,5 +360,5 @@ permanently. That is a negotiation argument with a number attached.
 A correct safety stock formula is a small change with a large effect: fewer stock-outs where it
 matters, less capital tied up where it does not, and a clear, quantified case for working with
 suppliers on reliability. If you want an inventory policy that matches what your supply chain actually
-does, see my [forecasting and predictive analytics service](/services/#forecasting-predictive-analytics)
+does, see my [forecasting, optimisation and decision analytics service](/services/#forecasting-decision-analytics)
 or [get in touch](/contact/).

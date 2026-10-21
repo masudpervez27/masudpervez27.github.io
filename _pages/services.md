@@ -111,63 +111,36 @@ solve it, and hand over something your team can run without me.
 
 ---
 
-<div class="service-card" id="data-driven-decision-making">
-  <div class="service-icon-box">
-    <i class="fas fa-chart-pie"></i>
-  </div>
-  <h2 class="service-title">Data-Driven Decision Making &amp; Business Intelligence</h2>
-
-  <p class="service-desc">
-    <strong>The problem:</strong> you have the data, but it stays in a spreadsheet while the
-    decisions get made on instinct.
-  </p>
-
-  <h4 class="service-subtitle">What I deliver</h4>
-  <ul class="service-features">
-    <li><i class="fas fa-check"></i><span>Demand and inventory optimisation models that balance supply uncertainty against cost, in any distribution or supply chain context</span></li>
-    <li><i class="fas fa-check"></i><span>Retention and Customer Lifetime Value modelling — survival analysis and predictive ML to identify at-risk customers and design reactivation strategies</span></li>
-    <li><i class="fas fa-check"></i><span>Personalised recommendation systems using collaborative filtering and matrix factorization for e-commerce, media, or SaaS platforms</span></li>
-    <li><i class="fas fa-check"></i><span>Scientific A/B testing and experimentation — hypothesis formulation, power analysis, and multi-armed bandit frameworks</span></li>
-  </ul>
-
-  <div class="service-benefit">
-    <strong>Your benefit:</strong>
-    <p>Direct margin expansion and lower churn, with decisions supported by evidence rather than by whoever argued hardest in the last meeting.</p>
-  </div>
-
-  <div class="service-provenance">
-    <i class="fas fa-building"></i><span>Delivered at Bonnier News across 40+ publications</span>
-  </div>
-</div>
-
----
-
-<div class="service-card" id="forecasting-predictive-analytics">
+<div class="service-card" id="forecasting-decision-analytics">
+  <!-- old anchors kept so existing links still land here -->
+  <span id="data-driven-decision-making"></span><span id="forecasting-predictive-analytics"></span>
   <div class="service-icon-box">
     <i class="fas fa-chart-line"></i>
   </div>
-  <h2 class="service-title">Forecasting &amp; Predictive Analytics</h2>
+  <h2 class="service-title">Forecasting, Optimisation &amp; Decision Analytics</h2>
 
   <p class="service-desc">
-    <strong>The problem:</strong> planning on last quarter's numbers means you are always one
-    cycle behind — overstocking what nobody wants and understocking what everyone does.
+    <strong>The problem:</strong> plans are built on last quarter's numbers and decisions on
+    instinct, so you overstock what nobody wants, run short on what everyone does, and cannot
+    tell which customer actions actually pay off.
   </p>
 
   <h4 class="service-subtitle">What I deliver</h4>
   <ul class="service-features">
-    <li><i class="fas fa-check"></i><span>Demand forecasting across horizons — short-term operational and long-term strategic — with quantified uncertainty bands</span></li>
-    <li><i class="fas fa-check"></i><span>Time-series modelling with seasonality, promotions, and external drivers, benchmarked against naive and statistical baselines</span></li>
-    <li><i class="fas fa-check"></i><span>Probabilistic demand density forecasts used downstream for inventory and capacity decisions</span></li>
-    <li><i class="fas fa-check"></i><span>Automated forecast monitoring, drift detection, and re-fitting as the business changes</span></li>
+    <li><i class="fas fa-check"></i><span>Probabilistic demand forecasts across horizons, with calibrated uncertainty ranges instead of a single number</span></li>
+    <li><i class="fas fa-check"></i><span>Inventory, ordering and capacity decisions optimised against your own costs of shortage and waste</span></li>
+    <li><i class="fas fa-check"></i><span>Customer analytics: retention and lifetime value models, next-best-offer recommendations and clear explanations of what drives each prediction</span></li>
+    <li><i class="fas fa-check"></i><span>A/B testing and experimentation design, from hypothesis and power analysis to a decision you can defend</span></li>
+    <li><i class="fas fa-check"></i><span>Monitoring, drift detection and scheduled re-fitting so forecasts and models keep up as the business changes</span></li>
   </ul>
 
   <div class="service-benefit">
     <strong>Your benefit:</strong>
-    <p>Working capital freed from excess stock, fewer stock-outs on your best sellers, and a planning process that adapts when conditions change instead of breaking.</p>
+    <p>Working capital freed from excess stock, fewer stock-outs and lost sales, and lower churn, with every decision backed by evidence rather than by whoever argued hardest in the last meeting.</p>
   </div>
 
   <div class="service-provenance">
-    <i class="fas fa-building"></i><span>Built in production at Bonnier News</span>
+    <i class="fas fa-building"></i><span>Built in production at Bonnier News across 40+ publications</span>
   </div>
 </div>
 
@@ -187,7 +160,7 @@ solve it, and hand over something your team can run without me.
   <h4 class="service-subtitle">What I deliver</h4>
   <ul class="service-features">
     <li><i class="fas fa-check"></i><span>Cloud-native data platform design on Google Cloud Platform — ingestion, storage, transformation, and serving layers</span></li>
-    <li><i class="fas fa-check"></i><span>Orchestrated pipeline deployment with Airflow, infrastructure-as-code, and reproducible environments</span></li>
+    <li><i class="fas fa-check"></i><span>Infrastructure as code with Terraform, SQL feature pipelines with Dataform on BigQuery, and Airflow orchestration, giving reproducible environments for training and serving</span></li>
     <li><i class="fas fa-check"></i><span>Data governance, access control, and GDPR-aligned handling built into the platform layer</span></li>
     <li><i class="fas fa-check"></i><span>Cost governance, observability, and platform handover documentation so your team owns it after I leave</span></li>
   </ul>

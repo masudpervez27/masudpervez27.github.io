@@ -58,6 +58,24 @@ The second half of the idea is honesty. If the P90 is exceeded 25 percent of the
 the ranges are lying. We fix that with a calibration step that adjusts the ranges using recent
 errors, so a "90 percent" range really covers about 90 percent of outcomes.
 
+<div class="diagram">
+  <div class="dg-flow">
+    <div class="dg-node">Volume history<small>per site and day</small></div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-node">Features<small>only what is known a week ahead</small></div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-node dg-accent">Quantile models<small>P10, P50, P90</small></div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-node">Conformal calibration<small>recent hold-out window</small></div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-node">Pick the quantile<small>from shortage vs idle cost</small></div>
+    <div class="dg-arrow" aria-hidden="true"></div>
+    <div class="dg-node dg-ok">Staffing plan</div>
+  </div>
+  <p class="dg-note">Interval coverage is checked every month and the calibration is refreshed on a rolling window.</p>
+  <p class="dg-caption">From history to a staffing decision that reflects uncertainty.</p>
+</div>
+
 ## How it works: the math, step by step
 
 ### What a quantile is
@@ -371,5 +389,5 @@ automatically.
 Moving from point forecasts to calibrated ranges is one of the most practical upgrades a planning team
 can make. It does not need exotic models, just the right loss function, an honest calibration step
 and a clear link to costs. If you are planning capacity, staffing or stock under uncertainty, I would
-be glad to help. See my [forecasting and predictive analytics service](/services/#forecasting-predictive-analytics)
+be glad to help. See my [forecasting, optimisation and decision analytics service](/services/#forecasting-decision-analytics)
 or [contact me](/contact/).

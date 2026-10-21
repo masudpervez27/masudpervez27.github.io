@@ -21,7 +21,7 @@ Rather than merely experimenting with algorithms in isolated notebooks, I delive
 * **Intelligent Automation:** Designed and deployed real-time ML systems at **Skandinaviska Enskilda Banken (SEB)** detecting patterns in live transaction data with **over 60–70% recall** while maintaining strict precision controls.
 * **Cost Optimization:** Engineered cost-based threshold tuning frameworks that directly balance operational loss against customer friction, applicable to any industry with asymmetric decision costs.
 * **Profit Growth:** Increased physical distribution profitability by **16%** at **Bonnier News** through a custom stochastic Newsvendor optimization model — the same mathematical approach applies to any supply chain or inventory challenge.
-* **Production MLOps:** Built robust, modular Apache Spark and Python pipelines on Hadoop and Google Cloud Platform (GCP), backed by continuous model governance and drift monitoring.
+* **Production MLOps:** Built modular Apache Spark and Python pipelines on on-premise Hadoop, then moved model workloads to Google Cloud Platform (GCP) with Terraform and Dataform, backed by continuous model governance and drift monitoring.
 
 ---
 
@@ -89,7 +89,7 @@ A defining strength of my engineering practice is a deep, rigorous background in
   </div>
   <div class="service-card">
     <h3 class="service-title"><i class="fas fa-cloud"></i> Cloud, DevOps &amp; MLOps</h3>
-    <p class="service-desc">Google Cloud Platform (GCP), OpenShift, Docker, Airflow, CI/CD, Microservices, Model Drift Monitoring.</p>
+    <p class="service-desc">Google Cloud Platform (GCP), BigQuery, Dataform, Terraform, OpenShift, Docker, Airflow, CI/CD, Microservices, Model Drift Monitoring.</p>
   </div>
   <div class="service-card">
     <h3 class="service-title"><i class="fas fa-robot"></i> Generative AI &amp; LLMs</h3>
