@@ -1,4 +1,9 @@
---- # Only the main Sass file needs front matter (the dashes are enough) search: false --- @charset "utf-8";
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+search: false
+---
+
+@charset "utf-8";
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
@@ -89,7 +94,7 @@ body {
 
 /* Author Sidebar Styling & Links */
 .author__avatar img {
-  border-radius: 16px;
+  border-radius: 50%;
   border: 3px solid #f1f5f9;
   box-shadow: var(--card-shadow);
   transition: transform 0.2s ease;

@@ -1,0 +1,12 @@
+{
+    // The HTML/SCSS formatters do not understand Liquid or Jekyll front matter and corrupt them.
+    "[html]": {
+        "editor.formatOnSave": false
+    },
+    "[scss]": {
+        "editor.formatOnSave": false
+    },
+    "[markdown]": {
+        "editor.formatOnSave": false
+    }
+}

@@ -62,7 +62,7 @@ the same set): `jekyll-paginate`, `jekyll-sitemap`, `jekyll-gist`, `jekyll-feed`
 | Services | `/services/` | `_pages/services.md` | The client offer: 8 service areas (problem → deliverables → benefit) + 4 engagement models |
 | Experience | `/experience/` | `_pages/experience.md` | Five past roles with what I owned and the outcome |
 | About | `/about/` | `_pages/about.md` | Summary, career timeline, education, tech stack, business details, CV request (`#cv`) |
-| Insights | `/posts/` | `_pages/posts.md` | Technical blog index |
+| Insights | `/posts/` | `_pages/posts.md` | Technical blog index, grouped by year (`layout: posts`) |
 | Contact | `/contact/` | `_pages/contact.md` | Email / LinkedIn / GitHub + the contact & CV-request form (`#request-cv`) |
 
 Navigation is defined in `_data/navigation.yml`.
@@ -185,6 +185,13 @@ in the timeline on `_pages/about.md`.
 kramdown does **not** process markdown inside HTML blocks (`<div>…</div>`), and `index.html`
 is never processed as markdown at all. Inside those, write HTML (`<h2>`, `<ul><li>`, `<hr>`,
 `<strong>`), not `##`, `*`, `---`, or `**`.
+
+### Gotcha: auto-formatters break Liquid
+
+HTML/SCSS formatters rewrite `{%- endif %}` as `{% - endif %}` (a Liquid syntax error) and
+collapse the `---` front matter in `main.scss` onto one line (main.css stops being
+generated). `.vscode/settings.json` disables format-on-save for HTML, SCSS, and Markdown —
+keep it that way.
 
 ---
 
