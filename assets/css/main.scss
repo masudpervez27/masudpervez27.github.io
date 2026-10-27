@@ -1215,3 +1215,118 @@ mjx-container[display="true"] {
     padding: 0.9rem 1.1rem;
   }
 }
+
+/* ==========================================================================
+   Booking page
+   ========================================================================== */
+
+.booking-intro {
+  margin-bottom: 1.5rem;
+
+  > p {
+    max-width: 48rem;
+  }
+}
+
+.booking-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.booking-option {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  min-height: 15rem;
+  padding: 1.5rem;
+  color: var(--dark-slate);
+  text-decoration: none;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  box-shadow: var(--card-shadow);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, transform 0.15s ease-in-out;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--dark-slate);
+    border-color: var(--primary-accent);
+    box-shadow: var(--card-shadow-hover);
+    transform: translateY(-2px);
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--primary-accent-light);
+    outline-offset: 3px;
+  }
+}
+
+.booking-option-icon {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  color: var(--primary-accent-dark);
+  background: var(--primary-accent-light);
+  border-radius: 10px;
+  font-size: 1.2rem;
+}
+
+.booking-option-duration {
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.booking-option-description {
+  flex: 1;
+  color: #475569;
+  font-size: 0.95rem;
+}
+
+.booking-option-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--primary-accent-dark);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.booking-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+  color: #475569;
+  font-size: 0.88rem;
+}
+
+.booking-note i {
+  margin-top: 0.35rem;
+  color: var(--primary-accent-dark);
+}
+
+.booking-contact {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--card-border);
+
+  p {
+    display: inline;
+    margin-inline-end: 0.35rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .booking-options {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-option {
+    min-height: 0;
+  }
+}

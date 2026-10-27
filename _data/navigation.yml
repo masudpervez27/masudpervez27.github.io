@@ -6,6 +6,8 @@ main:
     url: /services/
   - title: "Experience"
     url: /experience/
+  - title: "Book a Call"
+    url: /book/
   - title: "About"
     url: /about/
   - title: "Blog"
