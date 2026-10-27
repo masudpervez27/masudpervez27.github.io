@@ -1228,6 +1228,36 @@ mjx-container[display="true"] {
   }
 }
 
+.booking-contact-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+  border-radius: 14px;
+
+  h2 {
+    margin: 0 0 0.35rem;
+    color: var(--dark-slate);
+    font-size: 1.2rem;
+    font-weight: 800;
+  }
+
+  h2 i {
+    margin-inline-end: 0.35rem;
+    color: var(--primary-accent-dark);
+  }
+
+  p {
+    margin: 0;
+    color: #475569;
+    font-size: 0.92rem;
+  }
+}
+
 .booking-options {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1322,6 +1352,11 @@ mjx-container[display="true"] {
 }
 
 @media (max-width: 600px) {
+  .booking-contact-cta {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
   .booking-options {
     grid-template-columns: 1fr;
   }

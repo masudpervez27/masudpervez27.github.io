@@ -12,6 +12,14 @@ classes: wide
 
 Whether you are looking to bring in a senior specialist for an upcoming machine learning initiative, audit an existing fraud prevention architecture, or request a complete Curriculum Vitae (PDF), I welcome the opportunity to connect.
 
+<div class="booking-contact-cta">
+  <div>
+    <h2><i class="fas fa-calendar-check" aria-hidden="true"></i> Prefer to talk?</h2>
+    <p>Choose a 30-minute introduction or a 1-hour consultation and book a time that works for you.</p>
+  </div>
+  <a href="/book/" class="btn-consulting-primary"><i class="fas fa-calendar-alt" aria-hidden="true"></i><span>View Available Times</span></a>
+</div>
+
 ---
 
 <div class="services-grid" style="margin-top: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
