@@ -1035,6 +1035,21 @@ mjx-container[display="true"] {
   gap: 0.4rem;
 }
 
+.dg-flow--vertical {
+  flex-direction: column;
+  align-items: stretch;
+  max-width: 34rem;
+  margin-inline: auto;
+
+  .dg-arrow {
+    align-self: center;
+
+    &::before {
+      content: "\2193";
+    }
+  }
+}
+
 .dg-node {
   flex: 1 1 0;
   min-width: 0;
