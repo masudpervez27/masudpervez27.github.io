@@ -178,6 +178,10 @@ matching service. Examples stay generic (no employer or client names).
 lines with a blank line before and after. Single `$x$` is not rendered. MathJax is loaded only on
 pages with `math: true` (all posts by default).
 
+**Mermaid diagrams:** use a fenced code block with the `mermaid` language and put the diagram
+source inside the fences. The site renders these blocks automatically on any page; no page-specific
+front matter or script is needed.
+
 ### Add or change a service
 
 1. Edit the card in `_pages/services.md` (copy an existing `<div class="service-card" id="…">`

@@ -372,8 +372,10 @@ true, which is the default for posts. kramdown converts `$$...$$` to `\(...\)` (
 
 ### Diagrams
 
-Every post has **exactly one simple diagram**, built with the pure HTML/CSS component styled in
-`assets/css/main.scss` ("Blog diagrams"). No images, no JavaScript, no external CDN.
+Every post has **exactly one simple diagram**. Prefer the pure HTML/CSS component styled in
+`assets/css/main.scss` ("Blog diagrams"). Mermaid is also supported through fenced `mermaid` code
+blocks, which are rendered automatically site-wide by `assets/js/mermaid.js`; no page-specific
+front matter or script is needed. Mermaid is loaded only on pages that contain a Mermaid block.
 
 - Flow diagram: a `div.diagram` containing a `div.dg-flow` with `div.dg-node` boxes separated by
   `div.dg-arrow` (with `aria-hidden="true"`). Put alternative outcomes in a `div.dg-branch`.

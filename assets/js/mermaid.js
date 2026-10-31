@@ -3,7 +3,7 @@ async function renderMermaidDiagrams() {
   if (!codeBlocks.length) return;
 
   try {
-    var module = await import("https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs");
+    var module = await import("https://cdn.jsdelivr.net/npm/mermaid@12.2.0/dist/mermaid.esm.min.mjs");
     var mermaid = module.default;
 
     mermaid.initialize({
