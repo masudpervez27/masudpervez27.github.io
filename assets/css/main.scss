@@ -1009,6 +1009,17 @@ mjx-container[display="true"] {
    Blog diagrams: pure HTML/CSS flow and architecture diagrams (no JS)
    ========================================================================== */
 
+.mermaid {
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  text-align: center;
+
+  svg {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
 .diagram {
   margin: 1.75rem 0 2rem 0;
   padding: 1.25rem;
