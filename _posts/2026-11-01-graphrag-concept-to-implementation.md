@@ -35,6 +35,17 @@ When people do this manually, they repeat searches, reconcile naming differences
 
 Represent the facts as a typed graph. Nodes are entities such as suppliers, components, products, facilities, and bulletins. Edges are typed relationships such as `SUPPLIES`, `CONTAINS`, `STORED_AT`, and `ADDRESSES`. Each relationship carries provenance: the source record, its identifier, an effective date, and, where useful, a confidence or status.
 
+A small example makes the retrieval idea concrete. Suppose a graph contains a `Person A` entity and three `VISITED` relationships, one each to Paris, New York, and New Orleans:
+
+```mermaid
+flowchart LR
+    A["Person A"] -->|VISITED| B["Paris"]
+    A -->|VISITED| C["New York"]
+    A -->|VISITED| D["New Orleans"]
+```
+
+For the question “Which cities did Person A visit?”, retrieval starts at the person entity and follows its outgoing `VISITED` edges. The connected city nodes provide the answer, and each edge can retain the source record that supports the relationship. This simple example shows relationship traversal; a production GraphRAG system also needs entity resolution, bounded retrieval, provenance, and evidence-grounded answer generation.
+
 When a user asks about a recall, first identify the component and supplier mentioned. Resolve aliases such as an internal part code and a supplier's catalogue code to the same canonical entity only when evidence supports the match. Then find relevant documents with both semantic and exact-term search, and traverse a bounded number of approved graph relationships from the resolved entities. Return the connected records and their source evidence, not just a fluent summary.
 
 The graph does not replace documents. A document may explain an exception or contain nuance not represented by an edge. Conversely, graph relationships make it easier to follow a chain across structured records. The answer should combine both, state the path that led to each result, and expose uncertainty for review.

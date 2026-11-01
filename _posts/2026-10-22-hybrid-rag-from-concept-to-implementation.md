@@ -484,7 +484,10 @@ Exact TF-IDF formulas vary by implementation, including smoothing, normalization
 
 ### Understanding BM25 (Best Matching 25) Algorithm
 
-BM25 (Best Matching 25) is a lexical ranking method related to TF-IDF, but it is not simply another name for TF-IDF. It scores a document against a query by combining how often each query term appears in the document, how rare that term is across the collection, and how the document's length compares with the average.
+BM25 (Best Matching 25) is a lexical ranking method related to TF-IDF, but it is not simply another name for TF-IDF. It scores a document against a query by combining 
+- how often each query term appears in the document, 
+- how rare that term is across the collection, and 
+- how the document's length compares with the average.
 
 One common BM25 form is:
 
@@ -526,7 +529,8 @@ Where:
 - $\operatorname{IDF}(q_i)$ gives more weight to query terms that appear in fewer documents.
 - $k_1$ controls how quickly the benefit of repeated occurrences of a term levels off.
 - $b$ controls how strongly document length affects the score, usually with a value between $0$ and $1$.
-- $\operatorname{field\_len}(D)$ is the length of the document field being searched, and $\operatorname{avg\_field\_len}$ is the average length of that field across the collection.
+- $\operatorname{field\_len}(D)$ is the length of the document field being searched, and 
+- $\operatorname{avg\_field\_len}$ is the average length of that field across the collection.
 
 In plain language, BM25 asks three questions about each query term:
 
@@ -547,7 +551,7 @@ The two primary components are:
 1. Semantic search using dense vectors.
 2. Keyword or lexical search using sparse representations or an inverted index.
 
-The combination can improve retrieval coverage because the two approaches address different weaknesses.
+The combination improve the retrieval coverage imensely because the two approaches address different weaknesses.
 
 ## 6.1 Semantic search vs. keyword search
 
@@ -737,8 +741,6 @@ The important mathematical challenge is how to combine two result lists that may
 
 ---
 
-
-
 A hybrid retrieval system typically performs these steps:
 
 1. Convert the query into a dense embedding.
@@ -751,7 +753,7 @@ A hybrid retrieval system typically performs these steps:
 
 # 8\. Reciprocal Rank Fusion (RRF)
 
-**Reciprocal Rank Fusion (RRF)** is the central ranking formula explained in the video.
+**Reciprocal Rank Fusion (RRF)** is the central ranking formula for hybrid search.
 
 It combines results from different retrieval methods using their ranks rather than requiring their original scores to be directly comparable.
 
@@ -825,7 +827,7 @@ When the same document ranks highly across multiple retrieval methods, it can ac
 
 The smoothing constant reduces the influence of differences between individual rank positions.
 
-The video describes the constant as varying across implementations. A commonly used RRF constant is $k=60$, although the appropriate value depends on the implementation.
+The constant $k$ can varying across implementations. A commonly used RRF constant is $k=60$, although the appropriate value depends on the implementation.
 
 ## 8.2 Simplified RRF calculation
 
@@ -873,7 +875,7 @@ $$
 
 In this simplified example, $D_4$ scores higher than $D_1$.
 
-These are **unweighted reciprocal-rank scores with****$k=0$**, used purely for illustration. They are not the usual scores from an implementation that uses $k=60$.
+These are **unweighted reciprocal-rank scores with** **$k=0$**, used purely for illustration. They are not the usual scores from an implementation that uses $k=60$.
 
 ## 8.3 Calculate the scores for all documents
 
@@ -909,6 +911,7 @@ $$
 $$
 
 $$
+\operatorname{RRF}(D_1)
 =
 \frac{1}{61}+\frac{1}{65}
 $$
@@ -930,6 +933,7 @@ $$
 $$
 
 $$
+\operatorname{RRF}(D_4) 
 =
 \frac{1}{64}+\frac{1}{61}
 $$
@@ -948,7 +952,7 @@ The positive constant reduces the effect of rank differences, making the contrib
 
 ## 8.5 Weighted Reciprocal Rank Fusion
 
-The video also discusses assigning different weights to keyword and semantic search.
+In practice, it is useful to assign different weights to keyword-based and semantic search.
 
 A weighted version can be expressed as:
 
