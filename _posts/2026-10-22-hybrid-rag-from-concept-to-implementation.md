@@ -1454,3 +1454,5 @@ The complete process can be represented as:
 Understanding these concepts provides a strong foundation for building, debugging, and improving hybrid-search RAG applications.
 
 The most important lesson is that **good retrieval combines complementary signals, while good answer generation depends on retrieving the right evidence in the first place**.
+
+For other RAG architectures, read [GraphRAG](/posts/2026-11-01-graphrag-concept-to-implementation/), [Agentic RAG](/posts/2026-10-25-agentic-rag-concept-to-implementation/), and [Corrective RAG](/posts/2026-10-30-corrective-rag-crag-concept-to-implementation/) and [Multimodal RAG](/posts/2026-11-01-multimodal-rag-concept-to-implementation/).

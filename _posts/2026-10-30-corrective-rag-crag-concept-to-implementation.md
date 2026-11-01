@@ -399,4 +399,4 @@ Corrective RAG makes a useful distinction: retrieving documents is not the same 
 
 If you are planning an internal assistant or a governed RAG workflow, see my [enterprise generative AI services](/services/#enterprise-generative-ai) or [contact me](/contact/) to discuss the problem and its constraints.
 
-For related approaches, read [GraphRAG](/posts/2026-11-01-graphrag-concept-to-implementation/), [Agentic RAG](/posts/2026-10-25-agentic-rag-concept-to-implementation/), and [Multimodal RAG](/posts/2026-11-01-multimodal-rag-concept-to-implementation/).
+For related approaches, read  [HybridRAG](/posts/2026-10-22-hybrid-rag-from-concept-to-implementation/), [GraphRAG](/posts/2026-11-01-graphrag-concept-to-implementation/), [Agentic RAG](/posts/2026-10-25-agentic-rag-concept-to-implementation/), and [Multimodal RAG](/posts/2026-11-01-multimodal-rag-concept-to-implementation/).

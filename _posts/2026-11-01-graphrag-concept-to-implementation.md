@@ -1,4 +1,4 @@
-﻿---
+---
 title: "GraphRAG: From Graph Foundations to a Recall-Traceability Implementation"
 date: 2026-11-01T07:00:00+01:00
 excerpt: "A supplier recall can span components, products, facilities, and service bulletins that no single document reveals. I explain how graph-aware retrieval connects these facts, derive the scoring foundations, and build a vendor-neutral Python workflow with evidence you can inspect."
@@ -358,4 +358,4 @@ Graph-aware retrieval is useful when the question depends on connected facts acr
 
 If you are evaluating graph retrieval or enterprise RAG for a real workflow, see [Enterprise Generative AI](/services/#enterprise-generative-ai) or [contact me](/contact/).
 
-For a complementary foundation in combining semantic and exact-term retrieval, see [Hybrid Search RAG](/posts/2026-10-22-hybrid-rag-from-concept-to-implementation/). For related patterns, read [Agentic RAG](/posts/2026-10-25-agentic-rag-concept-to-implementation/), [Corrective RAG](/posts/2026-11-01-corrective-rag-crag-concept-to-implementation/), and [Multimodal RAG](/posts/2026-11-01-multimodal-rag-concept-to-implementation/).
+For a complementary foundation in combining semantic and exact-term retrieval, see [Hybrid Search RAG](/posts/2026-10-22-hybrid-rag-from-concept-to-implementation/). For related patterns, [Agentic RAG](/posts/2026-10-25-agentic-rag-concept-to-implementation/), [Corrective RAG](/posts/2026-10-30-corrective-rag-crag-concept-to-implementation/), and [Multimodal RAG](/posts/2026-11-01-multimodal-rag-concept-to-implementation/).
