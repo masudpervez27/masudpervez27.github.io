@@ -19,7 +19,7 @@ toc_icon: "shield-halved"
 math: true
 ---
 
-This article explains the mathematical foundations of hybrid search in Retrieval-Augmented Generation (RAG) applications. It covers semantic search, lexical search, dense and sparse vector representations, similarity metrics, Reciprocal Rank Fusion, graph-based retrieval, and an end-to-end implementation workflow using LangChain and Pinecone.
+This article explains the mathematical foundations of hybrid search in Retrieval-Augmented Generation (RAG) applications. It covers semantic search, lexical search, dense and sparse vector representations, similarity metrics, Reciprocal Rank Fusion, and an end-to-end implementation workflow using LangChain and Pinecone.
 
 The goal is to understand not only how hybrid search works, but also the mathematical concepts behind it and why combining different retrieval methods can improve the quality of a RAG application.
 
@@ -551,7 +551,9 @@ The two primary components are:
 1. Semantic search using dense vectors.
 2. Keyword or lexical search using sparse representations or an inverted index.
 
-The combination improve the retrieval coverage imensely because the two approaches address different weaknesses.
+The combination can improve retrieval coverage because the two approaches address different weaknesses.
+
+Graph retrieval can add a relationship-based signal, but it is a separate capability rather than an automatic part of hybrid search. This article focuses on combining semantic and lexical retrieval; for graph-based retrieval and GraphRAG, see [GraphRAG: From Graph Foundations to a Recall-Traceability Implementation](/posts/2026-11-01-graphrag-concept-to-implementation/).
 
 ## 6.1 Semantic search vs. keyword search
 
@@ -1008,62 +1010,9 @@ Weighting the two ranking contributions is one way to control their relative inf
 
 ---
 
-# 9\. Graph-Based Retrieval and Graph RAG
+# 9\. Practical Implementation Using LangChain and Pinecone
 
-The video briefly introduces graph databases, such as Neo4j, and graph-based retrieval.
-
-A graph represents information through nodes and relationships.
-
-- **Nodes:** Entities, concepts, documents, or other objects.
-- **Edges or relationships:** Connections between nodes.
-
-For example, consider a person who visited Paris.
-
-```mermaid
-flowchart LR
-    A["Person A"] -->|visited| B["Paris"]
-    A -->|visited| C["New York"]
-    A -->|visited| D["New Orleans"]
-```
-
-The graph stores information as connected entities rather than representing every piece of information only as an isolated text chunk.
-
-## 9.1 How graph retrieval works
-
-Suppose a user asks:
-
-"Which cities did Person A visit?"
-
-A graph-based retrieval system can follow the relationships associated with Person A and retrieve the connected city entities.
-
-This approach can be particularly useful for questions that require reasoning across relationships.
-
-Examples include:
-
-- Which employees work on a particular project?
-- Which companies are connected to a specific organization?
-- Which products depend on a particular component?
-- Which researchers collaborated on a particular paper?
-
-## 9.2 Three retrieval approaches
-
-The video contrasts three approaches:
-
-1. **Lexical search:** Finds matching terms.
-2. **Semantic search:** Finds conceptually similar content.
-3. **Graph-based retrieval:** Explores entities and their relationships.
-
-These methods can complement one another in sophisticated RAG systems.
-
-However, a graph database does not automatically support all three retrieval methods. The capabilities depend on the database, its indexing, and the retrieval pipeline.
-
-Graph-based retrieval is therefore best understood as an additional retrieval capability rather than a guaranteed feature of every graph database.
-
----
-
-# 10\. Practical Implementation Using LangChain and Pinecone
-
-The second part of the video implements hybrid search using LangChain and Pinecone.
+This section walks through a practical hybrid-search implementation using LangChain and Pinecone.
 
 Pinecone is used as the vector database, while LangChain provides integrations that help connect the embedding model, sparse encoder, and retriever.
 
@@ -1076,15 +1025,15 @@ The implementation uses:
 - A BM25 encoder for sparse retrieval.
 - `PineconeHybridSearchRetriever` as the hybrid retriever.
 
-## 10.1 Install dependencies
+## 9.1 Install dependencies
 
 The project requires the appropriate Pinecone and LangChain libraries.
 
-The video mentions installing packages such as the Pinecone client, Pinecone text utilities, and Pinecone notebook utilities.
+Install the Pinecone client and the text and integration packages required by the chosen LangChain retriever.
 
 Package names and import paths can vary between library versions, so they should be checked against the current documentation for the chosen environment.
 
-## 10.2 Configure the API key
+## 9.2 Configure the API key
 
 The application needs a Pinecone API key to connect to the database.
 
@@ -1103,15 +1052,15 @@ if not PINECONE_API_KEY:
     raise ValueError("PINECONE_API_KEY is not configured")
 ```
 
-The key should never be committed to a public repository or shared in a video or blog post.
+The key should never be committed to a public repository or shared in documentation or other publicly accessible material.
 
 If a real API key has been exposed, it should be rotated or revoked.
 
-## 10.3 Create a Pinecone index
+## 9.3 Create a Pinecone index
 
 An index is a named collection that stores and organizes vectors for retrieval.
 
-The video creates an index with the following configuration:
+The example index uses the following configuration:
 
 | Parameter | Value or meaning |
 | --- | --- |
@@ -1128,9 +1077,9 @@ The index configuration must match the vector representation being inserted.
 
 The exact cloud and region options depend on the account, deployment configuration, and current Pinecone service offerings.
 
-## 10.4 Dense embeddings using Hugging Face
+## 9.4 Dense embeddings using Hugging Face
 
-The video uses the following embedding model:
+The example uses the following embedding model:
 
 `all-MiniLM-L6-v2`
 
@@ -1160,7 +1109,7 @@ The values shown here are illustrative, not actual model output.
 
 The resulting dense vector is stored in the vector database and used for semantic retrieval.
 
-## 10.5 Sparse retrieval using BM25
+## 9.5 Sparse retrieval using BM25
 
 The implementation also configures a sparse encoder.
 
@@ -1183,9 +1132,9 @@ The sparse encoder and dense embedding model serve different purposes:
 | Pinecone index | Stores and retrieves the representations |
 | Hybrid retriever | Coordinates the retrieval process |
 
-## 10.6 Create the hybrid retriever
+## 9.6 Create the hybrid retriever
 
-The video uses `PineconeHybridSearchRetriever`.
+The retriever used here is `PineconeHybridSearchRetriever`.
 
 Conceptually, the retriever connects:
 
@@ -1199,9 +1148,9 @@ The retriever is responsible for coordinating the two retrieval signals accordin
 
 The exact way that scores or rankings are combined depends on the retriever version and configuration. If explicit RRF is required, verify that the chosen integration implements RRF rather than assuming that every hybrid retriever uses it.
 
-## 10.7 Insert documents
+## 9.7 Insert documents
 
-The video uses three sample sentences about visits to different cities in different years.
+For a small demonstration, use three sample sentences about visits to different cities in different years.
 
 The examples are:
 
@@ -1215,9 +1164,9 @@ The retriever indexes the documents with the required dense and sparse represent
 
 Once insertion is complete, the records can be retrieved using a query.
 
-## 10.8 Query the retriever
+## 9.8 Query the retriever
 
-The video demonstrates questions such as:
+Example questions include:
 
 - "Which city did I visit last?"
 - "Which city did I visit first?"
@@ -1242,7 +1191,7 @@ This is one reason retrieval quality and answer-generation quality should be eva
 
 ---
 
-# 11\. Mathematical and Technical Terms in the Practical Implementation
+# 10\. Mathematical and Technical Terms in the Practical Implementation
 
 The following table summarizes the main terms used in the implementation.
 
@@ -1260,9 +1209,9 @@ The following table summarizes the main terms used in the implementation.
 | Serverless deployment | Cloud-hosted database infrastructure |
 | Top-$K$ retrieval | Return the highest-ranked $K$ candidates |
 
-## 11.1 Why is the vector dimension 384?
+## 10.1 Why is the vector dimension 384?
 
-The model used in the video, `all-MiniLM-L6-v2`, generates embeddings with 384 numerical components.
+The `all-MiniLM-L6-v2` model generates embeddings with 384 numerical components.
 
 For a text chunk, its embedding can be represented as:
 
@@ -1274,7 +1223,7 @@ The vector therefore contains 384 values.
 
 The Pinecone index must be configured with the same dimension as the dense embeddings being inserted. Otherwise, vector insertion or querying can fail.
 
-## 11.2 Why use the dot product?
+## 10.2 Why use the dot product?
 
 The dot product of two vectors of dimension $n$ is:
 
@@ -1314,7 +1263,7 @@ $$
 \boxed{\mathbf{a}\cdot\mathbf{b}=32}
 $$
 
-The video selects the dot-product metric for the Pinecone index because its hybrid retrieval setup needs to support sparse as well as dense vector values.
+The example selects the dot-product metric for the Pinecone index because its hybrid retrieval setup needs to support sparse as well as dense vector values.
 
 The exact metric requirements should be checked against the database's current API and configuration.
 
@@ -1322,7 +1271,7 @@ For dense embeddings, dot-product ranking and cosine-similarity ranking can be e
 
 ---
 
-# 12\. End-to-End Implementation Workflow
+# 11\. End-to-End Implementation Workflow
 
 The practical project follows this sequence.
 
@@ -1387,11 +1336,11 @@ The precise requirements depend on the encoder implementation and how it stores 
 
 ---
 
-# 13\. Formula Sheet: Quick Revision
+# 12\. Formula Sheet: Quick Revision
 
 These are the most important mathematical formulas associated with the discussion of hybrid search.
 
-## 13.1 Cosine similarity
+## 12.1 Cosine similarity
 
 $$
 \boxed{
@@ -1403,7 +1352,7 @@ $$
 
 **Purpose:** Measures the directional similarity of two nonzero vectors.
 
-## 13.2 Dot product
+## 12.2 Dot product
 
 $$
 \boxed{
@@ -1413,7 +1362,7 @@ $$
 
 **Purpose:** Multiplies corresponding vector components and sums the products.
 
-## 13.3 TF-IDF
+## 12.3 TF-IDF
 
 $$
 \boxed{
@@ -1434,7 +1383,7 @@ $$
 
 **Purpose:** Weights terms according to their frequency in a document and rarity across the collection.
 
-## 13.4 Reciprocal Rank Fusion
+## 12.4 Reciprocal Rank Fusion
 
 $$
 \boxed{
@@ -1446,7 +1395,7 @@ $$
 
 **Purpose:** Combines the ranks of documents returned by multiple retrieval methods.
 
-## 13.5 Weighted Reciprocal Rank Fusion
+## 12.5 Weighted Reciprocal Rank Fusion
 
 $$
 \boxed{
@@ -1460,7 +1409,7 @@ $$
 
 ---
 
-# 14\. Key Takeaways
+# 13\. Key Takeaways
 
 - **RAG** connects document retrieval with LLM-based answer generation.
 - **Dense embeddings** represent semantic information in numerical vectors.
@@ -1485,7 +1434,7 @@ The goal is not simply to retrieve more documents. It is to retrieve the **most 
 
 ---
 
-# 15\. Final Summary
+# 14\. Final Summary
 
 Hybrid search is an important retrieval strategy for modern RAG applications because it combines two complementary retrieval techniques.
 
@@ -1506,4 +1455,4 @@ Understanding these concepts provides a strong foundation for building, debuggin
 
 The most important lesson is that **good retrieval combines complementary signals, while good answer generation depends on retrieving the right evidence in the first place**.
 
-For other RAG architectures, read [GraphRAG](/posts/2026-11-01-graphrag-concept-to-implementation/), [Agentic RAG](/posts/2026-10-25-agentic-rag-concept-to-implementation/),  [Corrective RAG](/posts/2026-10-30-corrective-rag-crag-concept-to-implementation/) and [Multimodal RAG](/posts/2026-11-01-multimodal-rag-concept-to-implementation/).
+For other RAG architectures, read [GraphRAG](/posts/2026-11-01-graphrag-concept-to-implementation/), [Agentic RAG](/posts/2026-10-25-agentic-rag-concept-to-implementation/), [Corrective RAG](/posts/2026-10-30-corrective-rag-crag-concept-to-implementation/), and [Multimodal RAG](/posts/2026-11-01-multimodal-rag-concept-to-implementation/).
