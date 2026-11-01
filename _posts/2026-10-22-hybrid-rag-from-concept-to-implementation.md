@@ -357,7 +357,7 @@ This is the main reason hybrid search combines them rather than relying on only 
 
 Several methods can represent text as sparse numerical features.
 
-The video discusses one-hot encoding, Bag of Words, and TF-IDF.
+Classical text-representation methods include one-hot encoding, Bag of Words, and TF-IDF.
 
 ## 5.1 One-hot encoding
 
@@ -482,13 +482,59 @@ TF-IDF attempts to assign greater importance to terms that are frequent within a
 
 Exact TF-IDF formulas vary by implementation, including smoothing, normalization, and term-frequency definitions.
 
-### Important distinction: TF-IDF vs. BM25
+### Understanding BM25 (Best Matching 25) Algorithm
 
-BM25 is related to the TF-IDF family of methods, but it is not simply the same as TF-IDF.
+BM25 (Best Matching 25) is a lexical ranking method related to TF-IDF, but it is not simply another name for TF-IDF. It scores a document against a query by combining how often each query term appears in the document, how rare that term is across the collection, and how the document's length compares with the average.
 
-BM25 is a lexical information-retrieval ranking method that considers factors such as term frequency, inverse document frequency, and document length.
+One common BM25 form is:
 
-The specific sparse encoder used in an implementation must be checked to determine whether it produces TF-IDF weights, BM25-style weights, or another representation.
+$$
+\boxed{
+\operatorname{BM25}(D,Q)
+=
+\sum_{i=1}^{n}
+\operatorname{IDF}(q_i)
+\cdot
+\frac{
+f(q_i,D)\cdot(k_1+1)
+}{
+f(q_i,D)+k_1\left(1-b+b\cdot\frac{\operatorname{field\_len}(D)}{\operatorname{avg\_field\_len}}\right)
+}
+}
+$$
+
+The inverse document frequency (IDF) term is commonly defined as:
+
+$$
+\boxed{
+\operatorname{IDF}(q_i)
+=
+\log\left(
+1+
+\frac{N-n(q_i)+0.5}{n(q_i)+0.5}
+\right)
+}
+$$
+
+Where:
+
+- $D$ is the document being scored, and $Q$ is the query.
+- $Q$ contains $n$ query terms; $q_i$ is the term at position $i$.
+- $f(q_i,D)$ is the number of times query term $q_i$ occurs in document $D$.
+- $N$ is the total number of documents in the collection.
+- $n(q_i)$ is the number of documents containing query term $q_i$.
+- $\operatorname{IDF}(q_i)$ gives more weight to query terms that appear in fewer documents.
+- $k_1$ controls how quickly the benefit of repeated occurrences of a term levels off.
+- $b$ controls how strongly document length affects the score, usually with a value between $0$ and $1$.
+- $\operatorname{field\_len}(D)$ is the length of the document field being searched, and $\operatorname{avg\_field\_len}$ is the average length of that field across the collection.
+
+In plain language, BM25 asks three questions about each query term:
+
+1. **Does the term occur in this document, and how often?** More occurrences can increase the score, but the effect levels off rather than growing without limit.
+2. **How informative is the term across the collection?** A rare term contributes more than a very common one.
+3. **Is the document unusually long or short?** The length adjustment helps avoid automatically favoring long documents simply because they have more opportunities to contain query terms.
+
+BM25 scores and ranks documents for a query; it does not produce a universal, query-independent representation of each document. Implementations can vary in details such as IDF smoothing, field-length handling, and parameter defaults. Check the sparse encoder or search engine documentation to confirm whether it uses BM25, TF-IDF, or another weighting scheme.
 
 ---
 
