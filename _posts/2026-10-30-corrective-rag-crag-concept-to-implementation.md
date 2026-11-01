@@ -16,6 +16,7 @@ header:
 toc: true
 toc_label: "Contents"
 toc_icon: "shield-halved"
+math: true
 read_time: true
 author_profile: true
 ---

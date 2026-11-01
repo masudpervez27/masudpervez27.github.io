@@ -15,6 +15,7 @@ header:
   teaser: /assets/images/bg-post-resize.jpg
 toc: true
 read_time: true
+math: true
 author_profile: true
 toc_label: "Contents"
 toc_icon: "diagram-project"

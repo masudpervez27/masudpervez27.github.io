@@ -16,6 +16,7 @@ header:
 toc: true
 toc_label: "Contents"
 toc_icon: "shield-halved"
+math: true
 ---
 
 This article explains the mathematical foundations of hybrid search in Retrieval-Augmented Generation (RAG) applications. It covers semantic search, lexical search, dense and sparse vector representations, similarity metrics, Reciprocal Rank Fusion, graph-based retrieval, and an end-to-end implementation workflow using LangChain and Pinecone.
@@ -186,7 +187,7 @@ Where:
 
 - $A$ and $B$ are two vectors.
 - $A\cdot B$ is their dot product.
-- $\|A\|$ and $\|B\|$ are their magnitudes, also called Euclidean norms.
+- $\lVert A\rVert$ and $\lVert B\rVert$ are their magnitudes, also called Euclidean norms.
 
 The dot product is calculated as:
 
@@ -1455,4 +1456,4 @@ Understanding these concepts provides a strong foundation for building, debuggin
 
 The most important lesson is that **good retrieval combines complementary signals, while good answer generation depends on retrieving the right evidence in the first place**.
 
-For other RAG architectures, read [GraphRAG](/posts/2026-11-01-graphrag-concept-to-implementation/), [Agentic RAG](/posts/2026-10-25-agentic-rag-concept-to-implementation/), and [Corrective RAG](/posts/2026-10-30-corrective-rag-crag-concept-to-implementation/) and [Multimodal RAG](/posts/2026-11-01-multimodal-rag-concept-to-implementation/).
+For other RAG architectures, read [GraphRAG](/posts/2026-11-01-graphrag-concept-to-implementation/), [Agentic RAG](/posts/2026-10-25-agentic-rag-concept-to-implementation/),  [Corrective RAG](/posts/2026-10-30-corrective-rag-crag-concept-to-implementation/) and [Multimodal RAG](/posts/2026-11-01-multimodal-rag-concept-to-implementation/).

@@ -16,6 +16,7 @@ header:
 toc: true
 toc_label: "Contents"
 toc_icon: "shield-halved"
+math: true
 ---
 
 When a machine stops, the useful clue may be a sentence in a manual, a table value, or a mark in a photograph. I want technicians to search all of it in one workflow and get an answer that points to the exact page or image region. I explain the retrieval math, build a vendor-neutral Python design, and follow a maintenance question from query to evidence.
